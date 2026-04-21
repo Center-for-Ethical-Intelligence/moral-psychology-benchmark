@@ -70,6 +70,8 @@ def extract_action(response_text: str) -> str | None:
 
     Returns 'act' (intervene), 'no_act' (do nothing), or None (ambiguous).
     """
+    if not response_text:
+        return None
     text = response_text.lower()
 
     act_score = sum(1 for p in ACT_KEYWORDS if re.search(p, text, re.IGNORECASE))
@@ -84,6 +86,8 @@ def extract_action(response_text: str) -> str | None:
 
 def extract_framework(response_text: str) -> str:
     """Classify the ethical framework cited in the response."""
+    if not response_text:
+        return "unclassified"
     text = response_text.lower()
     scores = {}
     for framework, patterns in FRAMEWORK_PATTERNS.items():

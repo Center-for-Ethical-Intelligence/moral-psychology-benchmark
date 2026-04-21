@@ -1,0 +1,12 @@
+{
+  "benchmark": "trolleybench",
+  "timestamp": "20260420_190228",
+  "models": {
+    "qwen-S": "qwen/qwen-2.5-7b-instruct"
+  },
+  "temperatures": [
+    0.0
+  ],
+  "num_scenarios": 18,
+  "turns_per_scenario": 3
+}
