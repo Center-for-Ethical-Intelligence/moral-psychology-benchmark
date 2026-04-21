@@ -114,6 +114,87 @@ Range: 0 (never changes answer) to 1 (maximally unpredictable). Lower = more con
 | `run_trolleybench.py` | Create | Multi-turn benchmark runner |
 | `eval_trolleybench.py` | Create | ECI + entropy scoring + report generation |
 
+## Models
+
+5 open-source families × 3 sizes (L/M/S) = **15 models**, each run at **T=0.0 and T=0.7** = **30 model×temp combos**.
+
+All models accessed via [OpenRouter](https://openrouter.ai) API. IDs verified 2026-04-21.
+
+### Qwen3
+
+| Size | Model ID | Parameters |
+|------|----------|------------|
+| L | `qwen/qwen3-235b-a22b` | 235B total, 22B active (MoE) |
+| M | `qwen/qwen3-32b` | 32B |
+| S | `qwen/qwen3-8b` | 8B |
+
+### DeepSeek
+
+| Size | Model ID | Parameters |
+|------|----------|------------|
+| L | `deepseek/deepseek-r1` | 671B total (MoE), reasoning model |
+| M | `deepseek/deepseek-chat-v3.1` | 671B total (MoE), chat-optimized |
+| S | `deepseek/deepseek-r1-distill-llama-70b` | 70B, distilled from R1 |
+
+### Llama
+
+| Size | Model ID | Parameters |
+|------|----------|------------|
+| L | `meta-llama/llama-3.3-70b-instruct` | 70B |
+| M | `meta-llama/llama-3.1-8b-instruct` | 8B |
+| S | `meta-llama/llama-3.2-3b-instruct` | 3B |
+
+### Gemma 3
+
+| Size | Model ID | Parameters |
+|------|----------|------------|
+| L | `google/gemma-3-27b-it` | 27B |
+| M | `google/gemma-3-12b-it` | 12B |
+| S | `google/gemma-3-4b-it` | 4B |
+
+### MiniMax
+
+| Size | Model ID | Parameters |
+|------|----------|------------|
+| L | `minimax/minimax-m2.5` | latest flagship |
+| M | `minimax/minimax-m1` | mid-tier |
+| S | `minimax/minimax-01` | compact |
+
+### Run Matrix
+
+```
+                     T=0.0    T=0.7
+qwen-L (235B)        [x]      [x]     ← completed
+qwen-M (32B)         [x]      [~]     ← T=0.7 in progress
+qwen-S (8B)          [ ]      [ ]
+deepseek-L (R1)      [ ]      [ ]
+deepseek-M (V3.1)    [ ]      [ ]
+deepseek-S (70B)     [ ]      [ ]
+llama-L (70B)        [ ]      [ ]
+llama-M (8B)         [ ]      [ ]
+llama-S (3B)         [ ]      [ ]
+gemma-L (27B)        [ ]      [ ]
+gemma-M (12B)        [ ]      [ ]
+gemma-S (4B)         [ ]      [ ]
+minimax-L (M2.5)     [ ]      [ ]
+minimax-M (M1)       [ ]      [ ]
+minimax-S (01)       [ ]      [ ]
+                    ─────    ─────
+Total:              15 runs  15 runs = 30 combos
+Per combo:          18 scenarios × 3 turns = 54 API calls
+Grand total:        30 × 54 = 1,620 API calls
+```
+
+### Frontier Models (Optional Track)
+
+Not included in the primary run. May be added later for comparison.
+
+| Model | Model ID |
+|-------|----------|
+| GPT-4o | `openai/gpt-4o` |
+| Claude 3.5 Sonnet | `anthropic/claude-3.5-sonnet` |
+| Gemini 2.5 Pro | `google/gemini-2.5-pro-preview-03-25` |
+
 ## Verification
 
 1. **Smoke test**: Run 1 model (qwen-S) at T=0.0 on all scenarios — verify output format
