@@ -1,0 +1,31 @@
+{
+  "benchmark": "trolleybench",
+  "paper": "TrolleyBench (Zhu 2025)",
+  "timestamp": "20260421_100038",
+  "status": "in_progress",
+  "description": "Full TrolleyBench run with corrected OpenRouter model IDs. 18 trolley-problem scenarios × 15 models × 2 temperatures.",
+  "models": {
+    "qwen-L": "qwen/qwen3-235b-a22b",
+    "qwen-M": "qwen/qwen3-32b",
+    "qwen-S": "qwen/qwen3-8b",
+    "deepseek-L": "deepseek/deepseek-r1",
+    "deepseek-M": "deepseek/deepseek-chat-v3.1",
+    "deepseek-S": "deepseek/deepseek-r1-distill-llama-70b",
+    "llama-L": "meta-llama/llama-3.3-70b-instruct",
+    "llama-M": "meta-llama/llama-3.1-8b-instruct",
+    "llama-S": "meta-llama/llama-3.2-3b-instruct",
+    "gemma-L": "google/gemma-3-27b-it",
+    "gemma-M": "google/gemma-3-12b-it",
+    "gemma-S": "google/gemma-3-4b-it",
+    "minimax-L": "minimax/minimax-m2.5",
+    "minimax-M": "minimax/minimax-m1",
+    "minimax-S": "minimax/minimax-01"
+  },
+  "temperatures": [0.0, 0.7],
+  "num_scenarios": 18,
+  "turns_per_scenario": 3,
+  "total_runs": 540,
+  "total_api_calls": 1620,
+  "api_provider": "OpenRouter",
+  "notes": "Model IDs verified against OpenRouter /api/v1/models on 2026-04-21."
+}
