@@ -9,16 +9,17 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 # Open-source models — 3 sizes each (L, M, S)
+# Verified against OpenRouter API 2026-04-21
 MODELS = {
     "qwen": {
-        "L": "qwen/qwen-2.5-72b-instruct",
-        "M": "qwen/qwen-2.5-32b-instruct",
-        "S": "qwen/qwen-2.5-7b-instruct",
+        "L": "qwen/qwen3-235b-a22b",
+        "M": "qwen/qwen3-32b",
+        "S": "qwen/qwen3-8b",
     },
     "deepseek": {
         "L": "deepseek/deepseek-r1",
-        "M": "deepseek/deepseek-v3-0324",
-        "S": "deepseek/deepseek-r1-distill-llama-8b",
+        "M": "deepseek/deepseek-chat-v3.1",
+        "S": "deepseek/deepseek-r1-distill-llama-70b",
     },
     "llama": {
         "L": "meta-llama/llama-3.3-70b-instruct",
@@ -31,9 +32,9 @@ MODELS = {
         "S": "google/gemma-3-4b-it",
     },
     "minimax": {
-        "L": "minimax/minimax-m1-80k",
-        "M": "minimax/minimax-m1-40k",
-        "S": "minimax/minimax-m1-20k",
+        "L": "minimax/minimax-m2.5",
+        "M": "minimax/minimax-m1",
+        "S": "minimax/minimax-01",
     },
 }
 
