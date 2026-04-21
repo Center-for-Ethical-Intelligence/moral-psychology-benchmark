@@ -29,6 +29,26 @@ def query(model: str, prompt: str, temperature: float = 0.0, max_tokens: int = 2
     }
 
 
+def query_multiturn(model: str, messages: list[dict], temperature: float = 0.0, max_tokens: int = 2048) -> dict:
+    """Send a multi-turn conversation to a model via OpenRouter."""
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    return {
+        "model": model,
+        "temperature": temperature,
+        "content": response.choices[0].message.content,
+        "usage": {
+            "prompt_tokens": response.usage.prompt_tokens,
+            "completion_tokens": response.usage.completion_tokens,
+            "total_tokens": response.usage.total_tokens,
+        },
+    }
+
+
 def query_with_system(model: str, system: str, prompt: str, temperature: float = 0.0, max_tokens: int = 2048) -> dict:
     """Send a system + user message to a model via OpenRouter."""
     response = client.chat.completions.create(
