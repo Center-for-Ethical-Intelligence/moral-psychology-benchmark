@@ -5,23 +5,66 @@ Usage:
     python run.py [--tasks evals/ethics.py] [--model hf/Qwen/Qwen3-0.6B] \
                   [--log_dir ../../results/inspect/logs/] \
                   [--limit 5] [--no_sandbox]
+
+Examples:
+    python run.py --tasks evals/ethics.py
+    python run.py --tasks evals/moral_psych.py::unimoral_action_prediction
 """
 
 import argparse
 import ast
 import glob
 import importlib.util
+import json
+import os
 import sys
 from pathlib import Path
+from zipfile import BadZipFile, ZipFile
+
+
+def load_env_file(path: Path) -> None:
+    """Load a simple .env file without overriding variables already in the shell."""
+    if not path.exists():
+        return
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[len("export ") :].strip()
+        if "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key or key in os.environ:
+            continue
+
+        if value and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+
+        os.environ[key] = value
+
+
+def configure_inspect_trace_file(log_dir: Path) -> None:
+    """Keep Inspect trace logs inside the writable run log tree by default."""
+    if os.environ.get("INSPECT_TRACE_FILE"):
+        return
+
+    trace_dir = log_dir / "_inspect_traces"
+    trace_dir.mkdir(parents=True, exist_ok=True)
+    os.environ["INSPECT_TRACE_FILE"] = str(trace_dir / f"trace-{os.getpid()}.log")
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run Inspect AI benchmarks")
+    parser = argparse.ArgumentParser(description="Run Inspect AI task suites from the CEI workspace.")
     parser.add_argument(
         "--tasks",
         default="evals/ethics.py",
         help=(
-            "Task module path(s) to run. Accepts a single file (evals/ethics.py), "
+            "Task module path(s) to run. Accepts a single file (evals/ethics.py or evals/moral_psych.py), "
             "a glob pattern (evals/*.py), or a specific task name. "
             "Default: evals/ethics.py"
         ),
@@ -49,19 +92,106 @@ def parse_args():
         help="Max concurrent samples to evaluate at once (default: 1)",
     )
     parser.add_argument(
+        "--max_tasks",
+        type=int,
+        default=1,
+        help="Max task files to evaluate concurrently (default: 1)",
+    )
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=None,
+        help="Generation temperature passed to CEI task factories via CEI_TEMPERATURE",
+    )
+    parser.add_argument(
+        "--reasoning_effort",
+        choices=["none", "minimal", "low", "medium", "high", "xhigh"],
+        default=None,
+        help="Reasoning effort passed through Inspect generate config (use 'none' to disable reasoning on supported models).",
+    )
+    parser.add_argument(
         "--no_sandbox",
         action="store_true",
         help="Disable sandboxing (avoids Docker-in-Docker issues)",
     )
     parser.add_argument(
         "--model_args",
-        default="enable_thinking=False",
+        default="",
         help=(
             "Comma-separated key=value pairs passed to the model provider "
-            "(default: enable_thinking=False to disable reasoning tokens for Qwen3-style models)"
+            "(default: none; pass provider-specific options explicitly when needed)"
+        ),
+    )
+    parser.add_argument(
+        "--model_args_json",
+        default="",
+        help=(
+            "JSON object merged into model_args. Use this for nested provider routing "
+            "config such as extra_body/provider settings."
+        ),
+    )
+    parser.add_argument(
+        "--extra_body_json",
+        default="",
+        help=(
+            "JSON object passed through Inspect generate config as extra_body. "
+            "Use this for provider request-body options such as chat_template_kwargs."
         ),
     )
     return parser.parse_args()
+
+
+def parse_model_args(raw_pairs: str = "", raw_json: str = "") -> dict:
+    """Parse legacy key=value args plus an optional JSON object for nested provider config."""
+    model_args: dict = {}
+
+    if raw_pairs:
+        for pair in raw_pairs.split(","):
+            k, _, v = pair.strip().partition("=")
+            if not k:
+                continue
+            try:
+                model_args[k] = ast.literal_eval(v)
+            except (ValueError, SyntaxError):
+                model_args[k] = v
+
+    if raw_json:
+        try:
+            json_args = json.loads(raw_json)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"Invalid --model_args_json: {exc}") from exc
+        if not isinstance(json_args, dict):
+            raise ValueError("--model_args_json must decode to a JSON object.")
+        model_args.update(json_args)
+
+    return model_args
+
+
+def parse_json_object(raw_json: str = "", *, flag_name: str) -> dict:
+    if not raw_json:
+        return {}
+    try:
+        value = json.loads(raw_json)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid {flag_name}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise ValueError(f"{flag_name} must decode to a JSON object.")
+    return value
+
+
+def eval_log_status(log_location: str | Path) -> str:
+    """Read an Inspect `.eval` archive and return its terminal status."""
+    try:
+        with ZipFile(log_location) as zf:
+            header = json.loads(zf.read("header.json").decode("utf-8"))
+    except (BadZipFile, FileNotFoundError):
+        return "unreadable"
+    except KeyError:
+        return "missing_header"
+
+    if isinstance(header, dict):
+        return str(header.get("status", "success"))
+    return "unknown"
 
 
 def load_tasks_from_file(filepath: str) -> list:
@@ -69,6 +199,9 @@ def load_tasks_from_file(filepath: str) -> list:
     Import a Python module and collect all @task-decorated callables.
     Identifies tasks by finding zero-arg callables defined in the module
     without invoking them (to avoid side effects like dataset downloads).
+
+    Modules may also expose an explicit TASK_EXPORTS list to curate a suite
+    that spans multiple files.
     """
     import inspect as _inspect
 
@@ -79,6 +212,16 @@ def load_tasks_from_file(filepath: str) -> list:
     spec = importlib.util.spec_from_file_location(path.stem, path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+
+    exported_tasks = getattr(module, "TASK_EXPORTS", None)
+    if exported_tasks is not None:
+        curated = []
+        seen = set()
+        for obj in exported_tasks:
+            if callable(obj) and obj not in seen:
+                curated.append(obj)
+                seen.add(obj)
+        return curated
 
     tasks = []
     for name in dir(module):
@@ -104,38 +247,63 @@ def load_tasks_from_file(filepath: str) -> list:
     return tasks
 
 
+def parse_task_spec(task_spec: str) -> tuple[str, list[str] | None]:
+    """Support file.py::task_name or file.py::task_a,task_b selectors."""
+    if "::" not in task_spec:
+        return task_spec, None
+    filepath, names = task_spec.split("::", 1)
+    requested = [name.strip() for name in names.split(",") if name.strip()]
+    return filepath, requested or None
+
+
 def resolve_task_files(tasks_arg: str) -> list[str]:
     """Resolve a tasks argument (file path, glob, or task name) to file paths."""
+    base_spec, requested = parse_task_spec(tasks_arg)
     script_dir = Path(__file__).parent
 
     # Try as glob relative to cwd, then relative to script dir
-    matches = glob.glob(tasks_arg) or glob.glob(str(script_dir / tasks_arg))
+    matches = glob.glob(base_spec) or glob.glob(str(script_dir / base_spec))
     if matches:
+        if requested:
+            return [f"{match}::{','.join(requested)}" for match in sorted(matches)]
         return sorted(matches)
     # Try as direct path, then relative to script dir
-    if Path(tasks_arg).exists():
+    if Path(base_spec).exists():
         return [tasks_arg]
-    if (script_dir / tasks_arg).exists():
-        return [str(script_dir / tasks_arg)]
+    if (script_dir / base_spec).exists():
+        resolved = str(script_dir / base_spec)
+        return [f"{resolved}::{','.join(requested)}" if requested else resolved]
     # Return as-is (may be a registered task name)
     return [tasks_arg]
 
 
 def main():
-    args = parse_args()
+    project_root = Path(__file__).resolve().parents[2]
+    load_env_file(project_root / ".env")
+    load_env_file(project_root / ".env.local")
 
-    from inspect_ai import eval as inspect_eval
+    args = parse_args()
+    if args.temperature is not None:
+        os.environ["CEI_TEMPERATURE"] = str(args.temperature)
+
     from pathlib import Path as _Path
 
     log_dir = _Path(args.log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
+    configure_inspect_trace_file(log_dir)
+
+    from inspect_ai import eval as inspect_eval
 
     task_files = resolve_task_files(args.tasks)
 
     all_tasks = []
     for task_file in task_files:
-        if task_file.endswith(".py") and Path(task_file).exists():
-            task_factories = load_tasks_from_file(task_file)
+        task_path, requested_names = parse_task_spec(task_file)
+        if task_path.endswith(".py") and Path(task_path).exists():
+            task_factories = load_tasks_from_file(task_path)
+            if requested_names is not None:
+                requested_set = set(requested_names)
+                task_factories = [factory for factory in task_factories if factory.__name__ in requested_set]
             for factory in task_factories:
                 task_obj = factory(limit=args.limit) if args.limit is not None else factory()
                 all_tasks.append(task_obj)
@@ -152,24 +320,31 @@ def main():
     if args.limit:
         print(f"Limit: {args.limit} samples per task")
 
-    # Parse model_args from "key=val,key=val" string into a dict
-    model_args: dict = {}
-    if args.model_args:
-        for pair in args.model_args.split(","):
-            k, _, v = pair.strip().partition("=")
-            if k:
-                try:
-                    model_args[k] = ast.literal_eval(v)
-                except (ValueError, SyntaxError):
-                    model_args[k] = v
+    try:
+        model_args = parse_model_args(args.model_args, args.model_args_json)
+        extra_body = parse_json_object(args.extra_body_json, flag_name="--extra_body_json")
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        sys.exit(1)
+
+    models: str | list[str]
+    if "," in args.model:
+        models = [model.strip() for model in args.model.split(",") if model.strip()]
+    else:
+        models = args.model
 
     eval_kwargs = dict(
         tasks=all_tasks,
-        model=args.model,
+        model=models,
         model_args=model_args,
         log_dir=str(log_dir),
         max_connections=args.max_connections,
+        max_tasks=args.max_tasks,
     )
+    if args.reasoning_effort is not None:
+        eval_kwargs["reasoning_effort"] = args.reasoning_effort
+    if extra_body:
+        eval_kwargs["extra_body"] = extra_body
     if args.limit is not None:
         eval_kwargs["limit"] = args.limit
     if args.no_sandbox:
@@ -178,12 +353,21 @@ def main():
     logs = inspect_eval(**eval_kwargs)
 
     print("\n=== Eval Complete ===")
+    had_non_success = False
     for log in logs:
         print(f"  Log: {log.location}")
+        log_status = eval_log_status(log.location)
+        print(f"    status: {log_status}")
+        if log_status != "success":
+            had_non_success = True
         if hasattr(log, "results") and log.results:
             metrics = getattr(log.results, "metrics", {})
             for metric_name, metric_val in metrics.items():
                 print(f"    {metric_name}: {metric_val}")
+
+    if had_non_success:
+        print("\nOne or more eval logs finished with non-success status.", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":

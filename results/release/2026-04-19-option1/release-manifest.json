@@ -1,0 +1,180 @@
+{
+  "release_id": "2026-04-19-option1",
+  "title": "CEI Moral-Psych Benchmark Suite: Jenny Zhu Option 1 Report",
+  "source_snapshot": "results/release/2026-04-19-option1/source/authoritative-summary.csv",
+  "report_metadata": {
+    "owner": "Jenny Zhu",
+    "date": "2026-04-22",
+    "frozen_snapshot_date": "2026-04-19",
+    "current_cost": "$40.73",
+    "purpose": "Jenny Zhu's group-facing progress report for the April 14, 2026 five-benchmark moral-psych plan.",
+    "provider": "OpenRouter",
+    "temperature": "0",
+    "operations_note": "Updated April 22, 2026. The frozen public snapshot remains Option 1 from April 19. Gemma-M and Gemma-L text remain complete locally. The earlier Qwen-M and Qwen-L text checkpoints were withdrawn from the public comparable snapshot after a verification pass showed that Qwen-3 reasoning tokens were exhausting the visible output budget on short-answer tasks. The saved master / worker PID markers and watcher PID files are still stale, but the latest Qwen-M, Qwen-L, and Llama-M reruns still showed live activity: their local Inspect trace logs were still writing and recent OpenRouter calls were still returning `200 OK` through about 12:51 PM ET on April 22, 2026, while the handoff watcher logs were still polling through about 12:50 PM ET on April 22, 2026. The best persisted Value Prism Relevance checkpoints currently on disk stand at 43,680 / 43,680 samples (100.0%) for Qwen-M at 6:23 AM ET on April 22, 2026, 43,680 / 43,680 samples (100.0%) for Qwen-L at 9:10 AM ET on April 22, 2026, and 43,680 / 43,680 samples (100.0%) for Llama-M at 3:54 AM ET on April 22, 2026. Qwen-M has now fully persisted CCD-Bench, and it has already moved into the Denevil proxy task. Qwen-L has already moved into Value Prism Valence, and the current saved archive has reached 13,104 / 21,840 Value Prism Valence samples (60.0%) at 12:33 PM ET on April 22, 2026. Llama-M has now fully persisted CCD-Bench, and it has already moved into the Denevil proxy task; the current saved archive there has reached 6,153 / 20,518 Denevil proxy samples (30.0%) at 12:02 PM ET on April 22, 2026. No new downstream launch was started in this pass because Llama-M has not written a clean completion marker yet; DeepSeek-M remains queued behind the Llama-M text batch.",
+    "ci_workflow_url": "https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/workflows/ci.yml",
+    "ci_last_verified_run_url": "https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/runs/24634450927"
+  },
+  "target_matrix": {
+    "benchmarks": 5,
+    "model_families": 5,
+    "size_slots": 3,
+    "family_size_benchmark_cells": 75
+  },
+  "counts": {
+    "authoritative_tasks": 19,
+    "benchmark_faithful_tasks": 16,
+    "proxy_tasks": 3,
+    "total_samples": 302776
+  },
+  "model_families": [
+    "Qwen",
+    "DeepSeek",
+    "Gemma"
+  ],
+  "benchmarks": [
+    {
+      "benchmark": "UniMoral",
+      "task_types": 1,
+      "evaluated_lines": 3,
+      "models_covered": 3,
+      "samples": 26352,
+      "modes": "benchmark_faithful"
+    },
+    {
+      "benchmark": "SMID",
+      "task_types": 2,
+      "evaluated_lines": 4,
+      "models_covered": 2,
+      "samples": 11764,
+      "modes": "benchmark_faithful"
+    },
+    {
+      "benchmark": "Value Kaleidoscope",
+      "task_types": 2,
+      "evaluated_lines": 6,
+      "models_covered": 3,
+      "samples": 196560,
+      "modes": "benchmark_faithful"
+    },
+    {
+      "benchmark": "CCD-Bench",
+      "task_types": 1,
+      "evaluated_lines": 3,
+      "models_covered": 3,
+      "samples": 6546,
+      "modes": "benchmark_faithful"
+    },
+    {
+      "benchmark": "Denevil",
+      "task_types": 1,
+      "evaluated_lines": 3,
+      "models_covered": 3,
+      "samples": 61554,
+      "modes": "proxy"
+    }
+  ],
+  "model_summary": [
+    {
+      "model_family": "Qwen",
+      "tasks": 7,
+      "benchmark_faithful_tasks": 6,
+      "proxy_tasks": 1,
+      "samples": 102886,
+      "scored_tasks": 5,
+      "benchmark_faithful_macro_accuracy": 0.549677
+    },
+    {
+      "model_family": "DeepSeek",
+      "tasks": 5,
+      "benchmark_faithful_tasks": 4,
+      "proxy_tasks": 1,
+      "samples": 97004,
+      "scored_tasks": 3,
+      "benchmark_faithful_macro_accuracy": 0.650992
+    },
+    {
+      "model_family": "Gemma",
+      "tasks": 7,
+      "benchmark_faithful_tasks": 6,
+      "proxy_tasks": 1,
+      "samples": 102886,
+      "scored_tasks": 5,
+      "benchmark_faithful_macro_accuracy": 0.53086
+    }
+  ],
+  "supplementary_model_progress": [
+    {
+      "family": "Llama",
+      "status_relative_to_closed_release": "Completed locally, outside the closed Option 1 counts",
+      "exact_route": "openrouter/meta-llama/llama-3.2-11b-vision-instruct",
+      "papers_covered": 5,
+      "tasks_completed": 7,
+      "benchmark_faithful_tasks": 6,
+      "proxy_tasks": 1,
+      "completed_benchmark_lines": "UniMoral; SMID; Value Kaleidoscope; CCD-Bench; Denevil proxy",
+      "missing_benchmark_lines": "Benchmark-faithful Denevil via MoralPrompt",
+      "samples": 102886,
+      "benchmark_faithful_macro_accuracy": 0.427602,
+      "note": "Combines the original 2026-04-19-option1-llama32-11b-vision successes (UniMoral + SMID moral rating) with recovery-v3 completions for the remaining five tasks after a temporary OpenRouter key-limit stall."
+    },
+    {
+      "family": "MiniMax",
+      "status_relative_to_closed_release": "Attempted locally, but current results are not usable",
+      "exact_route": "minimax-m2.1 + minimax-01",
+      "papers_covered": 0,
+      "tasks_completed": 0,
+      "benchmark_faithful_tasks": 0,
+      "proxy_tasks": 0,
+      "completed_benchmark_lines": "None yet",
+      "missing_benchmark_lines": "UniMoral; SMID; Value Kaleidoscope; CCD-Bench; Denevil proxy; Benchmark-faithful Denevil via MoralPrompt",
+      "samples": 0,
+      "benchmark_faithful_macro_accuracy": null,
+      "note": "A formal small-model run exists, but OpenRouter key-limit failures interrupted both the text and SMID legs, so the line still needs a clean rerun."
+    }
+  ],
+  "entry_points": {
+    "report": "results/release/2026-04-19-option1/jenny-group-report.md",
+    "topline_summary": "results/release/2026-04-19-option1/topline-summary.md",
+    "manifest": "results/release/2026-04-19-option1/release-manifest.json",
+    "benchmark_catalog": "results/release/2026-04-19-option1/benchmark-catalog.csv",
+    "supplementary_progress": "results/release/2026-04-19-option1/supplementary-model-progress.csv",
+    "family_size_progress": "results/release/2026-04-19-option1/family-size-progress.csv",
+    "benchmark_comparison": "results/release/2026-04-19-option1/benchmark-comparison.csv",
+    "family_size_progress_figure": "figures/release/option1_family_size_progress_overview.svg",
+    "coverage_figure": "figures/release/option1_coverage_matrix.svg",
+    "accuracy_figure": "figures/release/option1_accuracy_heatmap.svg",
+    "benchmark_bar_figure": "figures/release/option1_benchmark_accuracy_bars.svg",
+    "sample_volume_figure": "figures/release/option1_sample_volume.svg"
+  },
+  "tables": [
+    "README.md",
+    "jenny-group-report.md",
+    "topline-summary.md",
+    "topline-summary.json",
+    "release-manifest.json",
+    "benchmark-catalog.csv",
+    "model-summary.csv",
+    "model-roster.csv",
+    "supplementary-model-progress.csv",
+    "family-size-progress.csv",
+    "benchmark-comparison.csv",
+    "future-model-plan.csv",
+    "benchmark-summary.csv",
+    "faithful-metrics.csv",
+    "coverage-matrix.csv"
+  ],
+  "figures": [
+    "figures/release/option1_family_size_progress_overview.svg",
+    "figures/release/option1_coverage_matrix.svg",
+    "figures/release/option1_accuracy_heatmap.svg",
+    "figures/release/option1_benchmark_accuracy_bars.svg",
+    "figures/release/option1_sample_volume.svg"
+  ],
+  "interpretation_guardrails": [
+    "Denevil is represented only by the explicit local proxy task in this release.",
+    "DeepSeek has no SMID entries in the closed release slice because no vision route was included.",
+    "The completed local Llama small line sits outside the frozen Option 1 totals.",
+    "The MiniMax small line has a formal attempt on disk, but the current run failed and is not yet a usable comparison point.",
+    "Raw results/inspect artifacts are local provenance inputs, not required public dependencies for release regeneration."
+  ]
+}

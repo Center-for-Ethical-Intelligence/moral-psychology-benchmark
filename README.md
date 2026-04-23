@@ -149,6 +149,10 @@ python src/inspect/run.py --model hf/Qwen/Qwen3-0.6B --limit 5 --no_sandbox
 
 python src/lm-evaluation-harness/run.py --tasks cei_ethics --limit 5
 
+# --- Moral-Psych Benchmarks (Inspect AI, Jenny) ---
+
+python src/inspect/run.py --tasks evals/moral_psych.py --model openrouter/qwen/qwen3-8b --no_sandbox --limit 5
+
 # --- Docker ---
 
 docker compose run lm-harness
@@ -185,6 +189,62 @@ Uses [lm-eval](https://github.com/EleutherAI/lm-evaluation-harness) with custom 
 python src/lm-evaluation-harness/run.py --tasks cei_ethics --limit 5
 ```
 
+## Moral-Psych Benchmark Suite (Jenny Zhu)
+
+The repo also includes **5 moral-psychology benchmarks** from Jenny Zhu's assigned papers, built on the same Inspect AI framework:
+
+| Benchmark | Paper | Modality | Tasks |
+|-----------|-------|----------|-------|
+| UniMoral | Kumar et al. (ACL 2025 Findings) | Text, multilingual | action_prediction, moral_typology, factor_attribution, consequence_generation |
+| SMID | Crone et al. (PLOS ONE 2018) | Vision | moral_rating, foundation_classification |
+| Value Kaleidoscope | Sorensen et al. (AAAI 2024) | Text | relevance, valence |
+| CCD-Bench | Rahman et al. (arXiv 2025) | Text | selection (Latin square cultural clusters) |
+| Denevil | Duan et al. (ICLR 2024) | Text | generation, fulcra_proxy_generation |
+
+### Running Moral-Psych Benchmarks
+
+```bash
+# Run all moral-psych tasks
+python src/inspect/run.py --tasks evals/moral_psych.py --model openrouter/qwen/qwen3-8b --no_sandbox
+
+# Run a specific benchmark
+python src/inspect/run.py --tasks evals/unimoral.py --model openrouter/qwen/qwen3-8b --limit 10 --no_sandbox
+
+# With temperature and concurrency controls
+python src/inspect/run.py --tasks evals/smid.py --model openrouter/qwen/qwen3-vl-8b-instruct --temperature 0 --max_tasks 4 --no_sandbox
+```
+
+### Data Directory Setup
+
+Each benchmark requires data paths set in `.env`:
+
+```bash
+UNIMORAL_DATA_DIR=/path/to/unimoral/data
+SMID_DATA_DIR=/path/to/smid/images
+VALUEPRISM_RELEVANCE_FILE=/path/to/valueprism/relevance.csv
+VALUEPRISM_VALENCE_FILE=/path/to/valueprism/valence.csv
+CCD_BENCH_DATA_FILE=/path/to/ccd-bench.json
+DENEVIL_DATA_FILE=/path/to/denevil/data
+```
+
+### Release Artifact System
+
+```bash
+# Build release artifacts (CSVs, SVGs, reports)
+make release
+
+# Run all tests
+make test
+
+# Smoke test
+make smoke
+
+# Audit release
+make audit
+```
+
+Release outputs go to `results/release/` and `figures/release/`.
+
 ## Project Structure
 
 ```
@@ -198,11 +258,19 @@ cei/
 ├── prompts/                         # Benchmark prompt files (JSONL)
 │   └── trolleybench.jsonl           # 18 trolley scenarios × 3 turns
 ├── src/
-│   ├── inspect/                     # Inspect AI framework (Erik)
-│   │   ├── run.py                   # CLI wrapper
+│   ├── inspect/                     # Inspect AI framework
+│   │   ├── run.py                   # Enhanced CLI runner (multi-model, TASK_EXPORTS)
 │   │   ├── pyproject.toml           # Package dependencies
 │   │   └── evals/
-│   │       └── ethics.py            # 5 ETHICS task definitions
+│   │       ├── ethics.py            # 5 Hendrycks ETHICS tasks (Erik)
+│   │       ├── _benchmark_utils.py  # Shared utilities (Jenny)
+│   │       ├── moral_psych.py       # Task registry for all benchmarks (Jenny)
+│   │       ├── unimoral.py          # UniMoral benchmark (Jenny)
+│   │       ├── smid.py              # SMID vision benchmark (Jenny)
+│   │       ├── value_kaleidoscope.py # Value Kaleidoscope (Jenny)
+│   │       ├── ccd_bench.py         # CCD-Bench cultural benchmark (Jenny)
+│   │       ├── denevil.py           # Denevil generation benchmark (Jenny)
+│   │       └── data/unimoral/       # Prompt templates (PROMPTS*.txt)
 │   └── lm-evaluation-harness/       # lm-eval framework (Erik)
 │       ├── run.py                   # CLI wrapper
 │       ├── pyproject.toml           # Package dependencies
@@ -210,12 +278,26 @@ cei/
 │           ├── _cei_ethics.yaml     # Task group config
 │           ├── cei_ethics_*.yaml    # 5 subset task configs
 │           └── utils.py             # Utilitarianism/virtue helpers
+├── scripts/                         # Run launchers, recovery helpers, release builders (Jenny)
+│   ├── build_release_artifacts.py   # Generates release package (CSVs, SVGs, reports)
+│   ├── build_authoritative_option1_status.py
+│   ├── summarize_inspect_eval_progress.py
+│   ├── check_denevil_dataset.py
+│   └── *.sh                         # Batch run scripts
+├── docs/                            # Documentation (Jenny)
+│   ├── data-access.md, reproducibility.md, how-to-read-results.md
+│   └── history/                     # Historical runbooks and briefs
+├── figures/release/                 # SVG charts (Jenny)
 ├── vendor/                          # Vendored Python wheels
 ├── tests/                           # Unit tests
 ├── results/                         # Timestamped run outputs
 │   ├── trolleybench/                # TrolleyBench results
+│   ├── release/                     # Frozen release packages (Jenny)
 │   ├── inspect/logs/                # Inspect AI eval logs
 │   └── lm-harness/                  # lm-eval-harness results
+├── Makefile                         # setup, test, release, smoke, audit (Jenny)
+├── .github/workflows/ci.yml        # GitHub Actions CI (Jenny)
+├── CONTRIBUTING.md                  # Contribution guidelines (Jenny)
 ├── Dockerfile                       # Multi-stage Docker build
 ├── docker-compose.yml               # Docker services
 ├── pyproject.toml                   # uv workspace root
