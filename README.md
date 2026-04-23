@@ -319,12 +319,127 @@ cei/
 | Gemma 3 | 27B | 12B | 4B |
 | MiniMax | M2.5 | M1 | 01 |
 
+## Running the Benchmarks
+
+### Setup
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your OPENROUTER_API_KEY (and optionally HF_TOKEN, OPENAI/ANTHROPIC keys)
+```
+
+### Joseph's TrolleyBench
+
+Multi-turn ethical consistency evaluation via OpenRouter.
+
+```bash
+# Smoke test (single model, single temperature)
+python run_trolleybench.py -m qwen -s S -t 0.0
+
+# Full run (all models, multiple temperatures)
+python run_trolleybench.py --all-models -t 0.0 0.7
+
+# Evaluate results
+python eval_trolleybench.py -r results/trolleybench/<timestamp>
+
+# Export to CSV/markdown
+python export_results.py -r results/trolleybench/<timestamp>
+```
+
+### Erik's Hendrycks ETHICS
+
+5 subsets: commonsense, deontology, justice, utilitarianism, virtue.
+
+```bash
+# Via Inspect AI
+python src/inspect/run.py --model hf/Qwen/Qwen3-0.6B --limit 5 --no_sandbox
+
+# Via lm-evaluation-harness
+python src/lm-evaluation-harness/run.py --tasks cei_ethics --limit 5
+
+# Via Docker
+docker compose run inspect
+docker compose run lm-harness
+```
+
+### Jenny's Moral-Psych Benchmarks
+
+5 benchmarks: UniMoral, SMID, Value Kaleidoscope, CCD-Bench, Denevil.
+
+```bash
+# Run all 5 benchmarks
+python src/inspect/run.py --tasks evals/moral_psych.py --model openrouter/qwen/qwen3-8b --no_sandbox
+
+# Run a single benchmark
+python src/inspect/run.py --tasks evals/unimoral.py --model openrouter/qwen/qwen3-8b --limit 10 --no_sandbox
+python src/inspect/run.py --tasks evals/smid.py --model openrouter/qwen/qwen3-vl-8b-instruct --temperature 0 --max_tasks 4 --no_sandbox
+python src/inspect/run.py --tasks evals/value_kaleidoscope.py --model openrouter/qwen/qwen3-8b --no_sandbox
+python src/inspect/run.py --tasks evals/ccd_bench.py --model openrouter/qwen/qwen3-8b --no_sandbox
+python src/inspect/run.py --tasks evals/denevil.py --model openrouter/qwen/qwen3-8b --no_sandbox
+```
+
+Requires data paths in `.env`: `UNIMORAL_DATA_DIR`, `SMID_DATA_DIR`, `VALUEPRISM_RELEVANCE_FILE`, `VALUEPRISM_VALENCE_FILE`, `CCD_BENCH_DATA_FILE`, `DENEVIL_DATA_FILE`.
+
+### Makefile Shortcuts
+
+```bash
+make setup     # install dependencies
+make test      # run all tests
+make release   # rebuild release artifacts (CSVs, SVGs, reports)
+make smoke     # quick smoke test
+make audit     # audit release integrity
+```
+
 ## Adding a Benchmark
 
 1. Prepare prompts as JSONL in `prompts/<benchmark_id>.jsonl`
 2. Write a runner (single-turn: use `run_benchmark.py`, multi-turn: see `run_trolleybench.py`)
 3. Write an evaluator (see `eval_trolleybench.py` for reference)
 4. Results saved to `results/<benchmark_id>/<timestamp>/`
+
+## Claude Code Slash Commands
+
+This repo includes project-level [Claude Code](https://claude.com/claude-code) slash commands that any teammate can use. After cloning the repo, open Claude Code in the project directory and type any of these:
+
+| Command | What it does |
+|---------|-------------|
+| `/run-trolleybench` | Run Joseph's TrolleyBench pipeline (run, evaluate, export) |
+| `/run-ethics` | Run Erik's Hendrycks ETHICS benchmark (Inspect AI or lm-eval) |
+| `/run-moral-psych` | Run Jenny's 5 moral-psych benchmarks |
+| `/release` | Build release artifacts (CSVs, SVGs, reports) |
+| `/create-pr` | Create a PR against the org repo with reviewers |
+
+You can pass arguments after the command, e.g.:
+
+```
+/run-trolleybench -m qwen -s S -t 0.0
+/run-moral-psych --tasks evals/unimoral.py --model openrouter/qwen/qwen3-8b --limit 10
+/run-ethics --model hf/Qwen/Qwen3-0.6B --limit 5
+/create-pr Add new benchmark results
+```
+
+### Setup
+
+1. Install [Claude Code](https://claude.com/claude-code) if you haven't already
+2. Install GitHub CLI (needed for `/create-pr`):
+   ```bash
+   brew install gh
+   gh auth login
+   ```
+3. `cd` into the repo and run `claude` to start a session — the slash commands are available automatically
+
+## Contributing
+
+All changes go through pull requests — no direct pushes to `main`.
+
+1. Create a branch: `git checkout -b my-feature`
+2. Make your changes and commit
+3. Push: `git push -u origin my-feature`
+4. Open a PR and add a teammate as reviewer
+5. Or simply use `/create-pr` in Claude Code to do steps 3-4 for you
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
 
 ## Team
 
