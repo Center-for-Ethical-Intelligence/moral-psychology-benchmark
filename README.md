@@ -2,6 +2,8 @@
 
 Systematic evaluation of LLM moral reasoning across 13 Tier-1 papers from the [Center for Ethical Intelligence](https://www.ethical-intel.org/).
 
+**[Tier-1 Benchmark Experiment Guide](https://moiren.github.io/cei-moralpsy-bench/index.html)** — Full reference for all 13 benchmarks: datasets, prompt templates, evaluation methods, and theory coverage matrix.
+
 ## Architecture
 
 ```
