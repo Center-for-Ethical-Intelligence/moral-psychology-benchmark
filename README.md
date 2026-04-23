@@ -398,6 +398,37 @@ make audit     # audit release integrity
 3. Write an evaluator (see `eval_trolleybench.py` for reference)
 4. Results saved to `results/<benchmark_id>/<timestamp>/`
 
+## Claude Code Slash Commands
+
+This repo includes project-level [Claude Code](https://claude.com/claude-code) slash commands that any teammate can use. After cloning the repo, open Claude Code in the project directory and type any of these:
+
+| Command | What it does |
+|---------|-------------|
+| `/run-trolleybench` | Run Joseph's TrolleyBench pipeline (run, evaluate, export) |
+| `/run-ethics` | Run Erik's Hendrycks ETHICS benchmark (Inspect AI or lm-eval) |
+| `/run-moral-psych` | Run Jenny's 5 moral-psych benchmarks |
+| `/release` | Build release artifacts (CSVs, SVGs, reports) |
+| `/create-pr` | Create a PR against the org repo with reviewers |
+
+You can pass arguments after the command, e.g.:
+
+```
+/run-trolleybench -m qwen -s S -t 0.0
+/run-moral-psych --tasks evals/unimoral.py --model openrouter/qwen/qwen3-8b --limit 10
+/run-ethics --model hf/Qwen/Qwen3-0.6B --limit 5
+/create-pr Add new benchmark results
+```
+
+### Setup
+
+1. Install [Claude Code](https://claude.com/claude-code) if you haven't already
+2. Install GitHub CLI (needed for `/create-pr`):
+   ```bash
+   brew install gh
+   gh auth login
+   ```
+3. `cd` into the repo and run `claude` to start a session — the slash commands are available automatically
+
 ## Contributing
 
 All changes go through pull requests — no direct pushes to `main`.
@@ -406,16 +437,9 @@ All changes go through pull requests — no direct pushes to `main`.
 2. Make your changes and commit
 3. Push: `git push -u origin my-feature`
 4. Open a PR and add a teammate as reviewer
+5. Or simply use `/create-pr` in Claude Code to do steps 3-4 for you
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
-
-**Tip:** If you're using [Claude Code](https://claude.com/claude-code), you can have it install GitHub CLI to help create PRs and manage the workflow directly from the terminal:
-
-```bash
-brew install gh
-gh auth login
-# Then ask Claude Code to create a PR for you
-```
 
 ## Team
 
