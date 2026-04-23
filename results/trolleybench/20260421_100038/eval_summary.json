@@ -1,10 +1,63 @@
 {
-  "qwen-L_T0.0": {
-    "file": "qwen-L_T0.0.json",
+  "deepseek-L_T0.0": {
+    "file": "deepseek-L_T0.0.json",
     "num_scenarios": 18,
     "eci": {
-      "eci": 1.0,
+      "eci": 0.42857142857142855,
       "pairs": 28,
+      "consistent_pairs": 12,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.2086048612313038,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.9182958340544896,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.9182958340544896,
+        "organ_01": 1.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.42857142857142855,
+      "reversals": 3,
+      "total": 7
+    },
+    "framework_distribution": {
+      "consequentialist": 11,
+      "mixed": 5,
+      "unclassified": 1,
+      "deontological": 1
+    }
+  },
+  "deepseek-L_T0.7": {
+    "file": "deepseek-L_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.7777777777777778,
+      "pairs": 36,
       "consistent_pairs": 28,
       "variant_actions": {
         "switch": "act",
@@ -13,7 +66,488 @@
         "trapdoor": "act",
         "man_in_front": "act",
         "saboteur": "act",
-        "bystander": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.2208757354213805,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 1.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.9182958340544896,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": null,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.09090909090909091,
+      "reversals": 1,
+      "total": 11
+    },
+    "framework_distribution": {
+      "mixed": 6,
+      "consequentialist": 9,
+      "double_effect": 1,
+      "deontological": 2
+    }
+  },
+  "deepseek-M_T0.0": {
+    "file": "deepseek-M_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.5333333333333333,
+      "pairs": 45,
+      "consistent_pairs": 24,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.37073240756766435,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 1.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.9182958340544896,
+        "footbridge_03": 1.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.9182958340544896,
+        "man_in_front_01": 1.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.9182958340544896,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.15384615384615385,
+      "reversals": 2,
+      "total": 13
+    },
+    "framework_distribution": {
+      "consequentialist": 11,
+      "mixed": 5,
+      "virtue_ethics": 1,
+      "double_effect": 1
+    }
+  },
+  "deepseek-M_T0.7": {
+    "file": "deepseek-M_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.7777777777777778,
+      "pairs": 36,
+      "consistent_pairs": 28,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.16212754633636053,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 1.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 1.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.08333333333333333,
+      "reversals": 1,
+      "total": 12
+    },
+    "framework_distribution": {
+      "consequentialist": 10,
+      "double_effect": 2,
+      "mixed": 1,
+      "deontological": 1,
+      "virtue_ethics": 4
+    }
+  },
+  "deepseek-S_T0.0": {
+    "file": "deepseek-S_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6666666666666666,
+      "pairs": 15,
+      "consistent_pairs": 10,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "saboteur": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.06666666666666667,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": null,
+        "footbridge_02": 1.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": null,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 4
+    },
+    "framework_distribution": {
+      "consequentialist": 9,
+      "mixed": 4,
+      "deontological": 5
+    }
+  },
+  "deepseek-S_T0.7": {
+    "file": "deepseek-S_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 1.0,
+      "pairs": 10,
+      "consistent_pairs": 10,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "trapdoor": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.0,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": null,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": null,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 6
+    },
+    "framework_distribution": {
+      "consequentialist": 8,
+      "mixed": 6,
+      "deontological": 2,
+      "unclassified": 2
+    }
+  },
+  "gemma-L_T0.0": {
+    "file": "gemma-L_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.5714285714285714,
+      "pairs": 28,
+      "consistent_pairs": 16,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.2304879902384994,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.9182958340544896,
+        "man_in_front_01": 1.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 1.0,
+        "saboteur_02": 1.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.125,
+      "reversals": 1,
+      "total": 8
+    },
+    "framework_distribution": {
+      "consequentialist": 12,
+      "deontological": 2,
+      "mixed": 3,
+      "virtue_ethics": 1
+    }
+  },
+  "gemma-L_T0.7": {
+    "file": "gemma-L_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6444444444444445,
+      "pairs": 45,
+      "consistent_pairs": 29,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.37073240756766435,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.9182958340544896,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 1.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.9182958340544896,
+        "saboteur_01": 1.0,
+        "saboteur_02": 1.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.36363636363636365,
+      "reversals": 4,
+      "total": 11
+    },
+    "framework_distribution": {
+      "consequentialist": 12,
+      "deontological": 3,
+      "mixed": 3
+    }
+  },
+  "gemma-M_T0.0": {
+    "file": "gemma-M_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6444444444444445,
+      "pairs": 45,
+      "consistent_pairs": 29,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.25962129645655324,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.9182958340544896,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 1.0,
+        "man_in_front_02": 0.9182958340544896,
+        "saboteur_01": 0.9182958340544896,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.3333333333333333,
+      "reversals": 3,
+      "total": 9
+    },
+    "framework_distribution": {
+      "consequentialist": 8,
+      "virtue_ethics": 2,
+      "mixed": 4,
+      "deontological": 4
+    }
+  },
+  "gemma-M_T0.7": {
+    "file": "gemma-M_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.4666666666666667,
+      "pairs": 45,
+      "consistent_pairs": 21,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "no_act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.3197159723424149,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.9182958340544896,
+        "man_in_front_01": 1.0,
+        "man_in_front_02": 1.0,
+        "saboteur_01": 1.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.2222222222222222,
+      "reversals": 2,
+      "total": 9
+    },
+    "framework_distribution": {
+      "consequentialist": 10,
+      "deontological": 5,
+      "virtue_ethics": 1,
+      "mixed": 2
+    }
+  },
+  "gemma-S_T0.0": {
+    "file": "gemma-S_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.75,
+      "pairs": 28,
+      "consistent_pairs": 21,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
         "self_sacrifice": "act"
       }
     },
@@ -30,35 +564,89 @@
         "loop_02": 0.0,
         "trapdoor_01": 0.0,
         "trapdoor_02": 0.0,
-        "man_in_front_01": 0.0,
+        "man_in_front_01": 1.0,
         "man_in_front_02": 0.0,
         "saboteur_01": 0.0,
-        "saboteur_02": 1.0,
-        "organ_01": null,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 5
+    },
+    "framework_distribution": {
+      "mixed": 3,
+      "consequentialist": 14,
+      "virtue_ethics": 1
+    }
+  },
+  "gemma-S_T0.7": {
+    "file": "gemma-S_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.5333333333333333,
+      "pairs": 45,
+      "consistent_pairs": 24,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.15758842600605438,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.9182958340544896,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 1.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
         "bystander_01": 0.0,
         "self_sacrifice_01": 0.0,
         "autonomous_vehicle_01": 0.0
       }
     },
     "followup_impact": {
-      "reversal_rate": 0.0,
-      "reversals": 0,
+      "reversal_rate": 0.25,
+      "reversals": 2,
       "total": 8
     },
     "framework_distribution": {
-      "consequentialist": 10,
-      "mixed": 5,
-      "deontological": 2,
-      "virtue_ethics": 1
+      "mixed": 4,
+      "consequentialist": 12,
+      "virtue_ethics": 1,
+      "deontological": 1
     }
   },
-  "qwen-L_T0.7": {
-    "file": "qwen-L_T0.7.json",
+  "llama-L_T0.0": {
+    "file": "llama-L_T0.0.json",
     "num_scenarios": 18,
     "eci": {
-      "eci": 0.75,
-      "pairs": 28,
-      "consistent_pairs": 21,
+      "eci": 0.6444444444444445,
+      "pairs": 45,
+      "consistent_pairs": 29,
       "variant_actions": {
         "switch": "act",
         "footbridge": "no_act",
@@ -66,19 +654,21 @@
         "trapdoor": "act",
         "man_in_front": "act",
         "saboteur": "act",
-        "bystander": "act",
-        "self_sacrifice": "act"
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
       }
     },
     "entropy_inconsistency": {
-      "mean_inconsistency": 0.17647058823529413,
+      "mean_inconsistency": 0.21314398156160996,
       "per_scenario": {
         "switch_01": 0.0,
         "switch_02": 0.0,
         "switch_03": 0.0,
-        "footbridge_01": 0.0,
-        "footbridge_02": 1.0,
-        "footbridge_03": 0.0,
+        "footbridge_01": 0.9182958340544896,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.9182958340544896,
         "loop_01": 0.0,
         "loop_02": 0.0,
         "trapdoor_01": 0.0,
@@ -87,26 +677,81 @@
         "man_in_front_02": 0.0,
         "saboteur_01": 0.0,
         "saboteur_02": 0.0,
-        "organ_01": null,
+        "organ_01": 1.0,
         "bystander_01": 0.0,
-        "self_sacrifice_01": 1.0,
+        "self_sacrifice_01": 0.0,
         "autonomous_vehicle_01": 0.0
       }
     },
     "followup_impact": {
-      "reversal_rate": 0.09090909090909091,
+      "reversal_rate": 0.1111111111111111,
       "reversals": 1,
-      "total": 11
+      "total": 9
     },
     "framework_distribution": {
-      "mixed": 8,
-      "consequentialist": 5,
-      "virtue_ethics": 2,
-      "deontological": 3
+      "mixed": 5,
+      "consequentialist": 8,
+      "deontological": 4,
+      "virtue_ethics": 1
     }
   },
-  "qwen-M_T0.0": {
-    "file": "qwen-M_T0.0.json",
+  "llama-L_T0.7": {
+    "file": "llama-L_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6444444444444445,
+      "pairs": 45,
+      "consistent_pairs": 29,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "no_act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.16212754633636053,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 1.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.9182958340544896,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 1.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.125,
+      "reversals": 1,
+      "total": 8
+    },
+    "framework_distribution": {
+      "consequentialist": 9,
+      "mixed": 4,
+      "deontological": 3,
+      "virtue_ethics": 2
+    }
+  },
+  "llama-M_T0.0": {
+    "file": "llama-M_T0.0.json",
     "num_scenarios": 18,
     "eci": {
       "eci": 1.0,
@@ -119,31 +764,85 @@
         "trapdoor": "act",
         "man_in_front": "act",
         "saboteur": "act",
-        "bystander": "act",
+        "bystander_dilemma": "act",
         "self_sacrifice": "act"
       }
     },
     "entropy_inconsistency": {
-      "mean_inconsistency": 0.1721804688852168,
+      "mean_inconsistency": 0.10803480400641054,
       "per_scenario": {
         "switch_01": 0.0,
         "switch_02": 0.0,
-        "switch_03": 0.9182958340544896,
+        "switch_03": 0.0,
         "footbridge_01": 0.0,
         "footbridge_02": 0.0,
-        "footbridge_03": 0.9182958340544896,
+        "footbridge_03": 0.0,
         "loop_01": 0.0,
         "loop_02": 0.0,
-        "trapdoor_01": 0.0,
+        "trapdoor_01": 0.9182958340544896,
         "trapdoor_02": 0.0,
-        "man_in_front_01": null,
+        "man_in_front_01": 0.0,
         "man_in_front_02": 0.0,
+        "saboteur_01": 0.9182958340544896,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.1111111111111111,
+      "reversals": 1,
+      "total": 9
+    },
+    "framework_distribution": {
+      "consequentialist": 7,
+      "deontological": 4,
+      "mixed": 3,
+      "unclassified": 3,
+      "virtue_ethics": 1
+    }
+  },
+  "llama-M_T0.7": {
+    "file": "llama-M_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 1.0,
+      "pairs": 28,
+      "consistent_pairs": 28,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.18910611120726528,
+      "per_scenario": {
+        "switch_01": 1.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.9182958340544896,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": null,
         "saboteur_01": 0.0,
         "saboteur_02": 0.0,
         "organ_01": null,
         "bystander_01": 0.0,
-        "self_sacrifice_01": 0.9182958340544896,
-        "autonomous_vehicle_01": 0.0
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
       }
     },
     "followup_impact": {
@@ -152,11 +851,740 @@
       "total": 9
     },
     "framework_distribution": {
+      "consequentialist": 11,
+      "mixed": 5,
+      "unclassified": 2
+    }
+  },
+  "llama-S_T0.0": {
+    "file": "llama-S_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.5714285714285714,
+      "pairs": 28,
+      "consistent_pairs": 16,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.0573934896284056,
+      "per_scenario": {
+        "switch_01": 0.9182958340544896,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": null,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.14285714285714285,
+      "reversals": 1,
+      "total": 7
+    },
+    "framework_distribution": {
+      "consequentialist": 14,
+      "mixed": 2,
+      "deontological": 2
+    }
+  },
+  "llama-S_T0.7": {
+    "file": "llama-S_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.8,
+      "pairs": 45,
+      "consistent_pairs": 36,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.16212754633636053,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 1.0,
+        "footbridge_02": 1.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.25,
+      "reversals": 2,
+      "total": 8
+    },
+    "framework_distribution": {
+      "consequentialist": 9,
+      "virtue_ethics": 1,
+      "deontological": 3,
+      "mixed": 5
+    }
+  },
+  "minimax-L_T0.0": {
+    "file": "minimax-L_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": null,
+      "pairs": 0,
+      "consistent_pairs": 0
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.06666666666666667,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": null,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": null,
+        "organ_01": 1.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": null,
+      "reversals": 0,
+      "total": 0
+    },
+    "framework_distribution": {
+      "unclassified": 16,
+      "consequentialist": 1,
+      "virtue_ethics": 1
+    }
+  },
+  "minimax-L_T0.7": {
+    "file": "minimax-L_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6666666666666666,
+      "pairs": 15,
+      "consistent_pairs": 10,
+      "variant_actions": {
+        "switch": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.2612197222702993,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": null,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": null,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 1.0,
+        "organ_01": 0.0,
+        "bystander_01": 1.0,
+        "self_sacrifice_01": 1.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.4,
+      "reversals": 2,
+      "total": 5
+    },
+    "framework_distribution": {
+      "mixed": 6,
+      "virtue_ethics": 2,
+      "consequentialist": 5,
+      "unclassified": 4,
+      "deontological": 1
+    }
+  },
+  "minimax-M_T0.0": {
+    "file": "minimax-M_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.5714285714285714,
+      "pairs": 28,
+      "consistent_pairs": 16,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.26416041678685936,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.9182958340544896,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 1.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 1.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.9182958340544896,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.4,
+      "reversals": 4,
+      "total": 10
+    },
+    "framework_distribution": {
+      "mixed": 4,
+      "consequentialist": 10,
+      "deontological": 2,
+      "unclassified": 1,
+      "virtue_ethics": 1
+    }
+  },
+  "minimax-M_T0.7": {
+    "file": "minimax-M_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6444444444444445,
+      "pairs": 45,
+      "consistent_pairs": 29,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act",
+        "autonomous_vehicle": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.25962129645655324,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.9182958340544896,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.9182958340544896,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 1.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.4,
+      "reversals": 4,
+      "total": 10
+    },
+    "framework_distribution": {
+      "consequentialist": 11,
+      "mixed": 6,
+      "unclassified": 1
+    }
+  },
+  "minimax-S_T0.0": {
+    "file": "minimax-S_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.6111111111111112,
+      "pairs": 36,
+      "consistent_pairs": 22,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "organ_transplant": "no_act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.16685833341817524,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.9182958340544896,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.9182958340544896,
+        "bystander_01": 1.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.3333333333333333,
+      "reversals": 3,
+      "total": 9
+    },
+    "framework_distribution": {
+      "consequentialist": 15,
+      "mixed": 2,
+      "deontological": 1
+    }
+  },
+  "minimax-S_T0.7": {
+    "file": "minimax-S_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.75,
+      "pairs": 28,
+      "consistent_pairs": 21,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.1823934896284056,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": null,
+        "switch_03": 0.0,
+        "footbridge_01": 1.0,
+        "footbridge_02": 1.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.9182958340544896,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.125,
+      "reversals": 1,
+      "total": 8
+    },
+    "framework_distribution": {
+      "consequentialist": 14,
+      "mixed": 2,
+      "deontological": 2
+    }
+  },
+  "qwen-L_T0.0": {
+    "file": "qwen-L_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.7142857142857143,
+      "pairs": 21,
+      "consistent_pairs": 15,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "no_act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.3333333333333333,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 1.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 1.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 1.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": null,
+        "saboteur_01": 1.0,
+        "saboteur_02": 1.0,
+        "organ_01": null,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 6
+    },
+    "framework_distribution": {
+      "consequentialist": 10,
+      "mixed": 5,
+      "deontological": 2,
+      "virtue_ethics": 1
+    }
+  },
+  "qwen-L_T0.7": {
+    "file": "qwen-L_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.7142857142857143,
+      "pairs": 21,
+      "consistent_pairs": 15,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "no_act",
+        "loop": "act",
+        "trapdoor": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.1772869792568112,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.9182958340544896,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": null,
+        "saboteur_01": 0.9182958340544896,
+        "saboteur_02": 1.0,
+        "organ_01": null,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.1,
+      "reversals": 1,
+      "total": 10
+    },
+    "framework_distribution": {
+      "mixed": 8,
+      "consequentialist": 5,
+      "virtue_ethics": 2,
+      "deontological": 3
+    }
+  },
+  "qwen-M_T0.0": {
+    "file": "qwen-M_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.75,
+      "pairs": 28,
+      "consistent_pairs": 21,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.058823529411764705,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 1.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": null,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.1,
+      "reversals": 1,
+      "total": 10
+    },
+    "framework_distribution": {
       "deontological": 6,
       "mixed": 6,
       "consequentialist": 4,
       "unclassified": 1,
       "virtue_ethics": 1
+    }
+  },
+  "qwen-M_T0.7": {
+    "file": "qwen-M_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 1.0,
+      "pairs": 28,
+      "consistent_pairs": 28,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.0,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 8
+    },
+    "framework_distribution": {
+      "consequentialist": 3,
+      "mixed": 9,
+      "deontological": 2,
+      "unclassified": 2,
+      "double_effect": 1,
+      "virtue_ethics": 1
+    }
+  },
+  "qwen-S_T0.0": {
+    "file": "qwen-S_T0.0.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 1.0,
+      "pairs": 28,
+      "consistent_pairs": 28,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.11764705882352941,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 1.0,
+        "switch_03": 1.0,
+        "footbridge_01": 0.0,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": 0.0,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": null
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 8
+    },
+    "framework_distribution": {
+      "mixed": 3,
+      "consequentialist": 12,
+      "deontological": 3
+    }
+  },
+  "qwen-S_T0.7": {
+    "file": "qwen-S_T0.7.json",
+    "num_scenarios": 18,
+    "eci": {
+      "eci": 0.75,
+      "pairs": 28,
+      "consistent_pairs": 21,
+      "variant_actions": {
+        "switch": "act",
+        "footbridge": "act",
+        "loop": "act",
+        "trapdoor": "act",
+        "man_in_front": "no_act",
+        "saboteur": "act",
+        "bystander_dilemma": "act",
+        "self_sacrifice": "act"
+      }
+    },
+    "entropy_inconsistency": {
+      "mean_inconsistency": 0.0,
+      "per_scenario": {
+        "switch_01": 0.0,
+        "switch_02": 0.0,
+        "switch_03": 0.0,
+        "footbridge_01": null,
+        "footbridge_02": 0.0,
+        "footbridge_03": 0.0,
+        "loop_01": 0.0,
+        "loop_02": 0.0,
+        "trapdoor_01": 0.0,
+        "trapdoor_02": 0.0,
+        "man_in_front_01": 0.0,
+        "man_in_front_02": 0.0,
+        "saboteur_01": 0.0,
+        "saboteur_02": 0.0,
+        "organ_01": null,
+        "bystander_01": 0.0,
+        "self_sacrifice_01": 0.0,
+        "autonomous_vehicle_01": 0.0
+      }
+    },
+    "followup_impact": {
+      "reversal_rate": 0.0,
+      "reversals": 0,
+      "total": 6
+    },
+    "framework_distribution": {
+      "mixed": 10,
+      "consequentialist": 7,
+      "deontological": 1
     }
   }
 }

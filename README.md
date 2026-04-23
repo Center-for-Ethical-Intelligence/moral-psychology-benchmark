@@ -125,7 +125,9 @@ pip install -r requirements.txt
 
 # Set up your API key
 cp .env.example .env
-# Edit .env with your OpenRouter API key
+# Edit .env with your OpenRouter API key (and optionally HF_TOKEN, OPENAI/ANTHROPIC keys)
+
+# --- TrolleyBench (multi-turn, OpenRouter API) ---
 
 # Run TrolleyBench (smoke test)
 python run_trolleybench.py -m qwen -s S -t 0.0
@@ -138,6 +140,49 @@ python eval_trolleybench.py -r results/trolleybench/<timestamp>
 
 # Export to CSV/markdown
 python export_results.py -r results/trolleybench/<timestamp>
+
+# --- Hendrycks ETHICS (via Inspect AI) ---
+
+python src/inspect/run.py --model hf/Qwen/Qwen3-0.6B --limit 5 --no_sandbox
+
+# --- Hendrycks ETHICS (via lm-evaluation-harness) ---
+
+python src/lm-evaluation-harness/run.py --tasks cei_ethics --limit 5
+
+# --- Docker ---
+
+docker compose run lm-harness
+docker compose run inspect
+```
+
+## Hendrycks ETHICS Benchmark
+
+The repo also includes the [Hendrycks ETHICS](https://arxiv.org/abs/2008.02275) benchmark (2020) with two evaluation frameworks, contributed by **Erik Nordby**.
+
+### 5 ETHICS Subsets
+
+| Subset | Task | Label Semantics |
+|--------|------|----------------|
+| Commonsense | Classify actions as ethical/unethical | 0=unethical, 1=ethical |
+| Deontology | Judge scenario+excuse as excusable/inexcusable | 0=inexcusable, 1=excusable |
+| Justice | Classify scenarios as just/unjust | 0=unjust, 1=just |
+| Utilitarianism | Compare paired scenarios for utility | baseline always preferred |
+| Virtue | Determine if trait is exhibited in scenario | 0=not exhibited, 1=exhibited |
+
+### Inspect AI Framework
+
+Uses [Inspect AI](https://inspect.ai/) (UK AISI) with `@task`-decorated functions in `src/inspect/evals/ethics.py`. Each task creates a `Task` with `MemoryDataset`, zero-shot generation (`max_tokens=16, temperature=0.01`), and pattern scoring (`r"\b([01])\b"`).
+
+```bash
+python src/inspect/run.py --model hf/Qwen/Qwen3-0.6B --limit 5 --no_sandbox
+```
+
+### lm-evaluation-harness Framework
+
+Uses [lm-eval](https://github.com/EleutherAI/lm-evaluation-harness) with custom YAML task configs in `src/lm-evaluation-harness/tasks/`. Supports the `cei_ethics` task group covering all 5 subsets.
+
+```bash
+python src/lm-evaluation-harness/run.py --tasks cei_ethics --limit 5
 ```
 
 ## Project Structure
@@ -152,8 +197,29 @@ cei/
 ├── export_results.py                # CSV/markdown exporter
 ├── prompts/                         # Benchmark prompt files (JSONL)
 │   └── trolleybench.jsonl           # 18 trolley scenarios × 3 turns
+├── src/
+│   ├── inspect/                     # Inspect AI framework (Erik)
+│   │   ├── run.py                   # CLI wrapper
+│   │   ├── pyproject.toml           # Package dependencies
+│   │   └── evals/
+│   │       └── ethics.py            # 5 ETHICS task definitions
+│   └── lm-evaluation-harness/       # lm-eval framework (Erik)
+│       ├── run.py                   # CLI wrapper
+│       ├── pyproject.toml           # Package dependencies
+│       └── tasks/
+│           ├── _cei_ethics.yaml     # Task group config
+│           ├── cei_ethics_*.yaml    # 5 subset task configs
+│           └── utils.py             # Utilitarianism/virtue helpers
+├── vendor/                          # Vendored Python wheels
+├── tests/                           # Unit tests
 ├── results/                         # Timestamped run outputs
-│   └── trolleybench/
+│   ├── trolleybench/                # TrolleyBench results
+│   ├── inspect/logs/                # Inspect AI eval logs
+│   └── lm-harness/                  # lm-eval-harness results
+├── Dockerfile                       # Multi-stage Docker build
+├── docker-compose.yml               # Docker services
+├── pyproject.toml                   # uv workspace root
+├── requirements.txt                 # pip dependencies (TrolleyBench)
 ├── meeting-notes/                   # Team meeting notes
 ├── moral-psychology-benchmarks.md   # 13 Tier-1 paper summaries
 └── openrouter-setup.md              # OpenRouter setup guide

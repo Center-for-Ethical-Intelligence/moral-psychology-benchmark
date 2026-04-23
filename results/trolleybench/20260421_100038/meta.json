@@ -1,9 +1,6 @@
 {
   "benchmark": "trolleybench",
-  "paper": "TrolleyBench (Zhu 2025)",
   "timestamp": "20260421_100038",
-  "status": "in_progress",
-  "description": "Full TrolleyBench run with corrected OpenRouter model IDs. 18 trolley-problem scenarios × 15 models × 2 temperatures.",
   "models": {
     "qwen-L": "qwen/qwen3-235b-a22b",
     "qwen-M": "qwen/qwen3-32b",
@@ -21,11 +18,10 @@
     "minimax-M": "minimax/minimax-m1",
     "minimax-S": "minimax/minimax-01"
   },
-  "temperatures": [0.0, 0.7],
+  "temperatures": [
+    0.0,
+    0.7
+  ],
   "num_scenarios": 18,
-  "turns_per_scenario": 3,
-  "total_runs": 540,
-  "total_api_calls": 1620,
-  "api_provider": "OpenRouter",
-  "notes": "Model IDs verified against OpenRouter /api/v1/models on 2026-04-21."
+  "turns_per_scenario": 3
 }
