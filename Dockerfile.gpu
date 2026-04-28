@@ -1,0 +1,71 @@
+# syntax=docker/dockerfile:1
+
+# ---------------------------------------------------------------------------
+# CEI Eval — GPU-enabled Docker image
+# Supports both Inspect AI and lm-evaluation-harness frameworks.
+# ---------------------------------------------------------------------------
+
+FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04 AS base
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3.11 python3.11-venv python3.11-dev python3-pip \
+        git curl openssh-client && \
+    ln -sf /usr/bin/python3.11 /usr/bin/python3 && \
+    ln -sf /usr/bin/python3.11 /usr/bin/python && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+ENV UV_SYSTEM_PYTHON=1 \
+    UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy
+
+WORKDIR /app
+
+# Copy dependency manifests first for layer caching
+COPY pyproject.toml uv.lock ./
+COPY vendor/ ./vendor/
+COPY src/inspect/pyproject.toml ./src/inspect/
+COPY src/lm-evaluation-harness/pyproject.toml ./src/lm-evaluation-harness/
+
+# ---------------------------------------------------------------------------
+# Stage: inspect (GPU)
+# ---------------------------------------------------------------------------
+FROM base AS inspect-gpu
+
+RUN uv sync --package cei-inspect --frozen --no-dev
+
+COPY src/inspect/ ./src/inspect/
+COPY .env* ./
+
+# Data and results are mounted at runtime
+VOLUME ["/data", "/results"]
+
+ENTRYPOINT ["uv", "run", "--package", "cei-inspect", "python", "src/inspect/run.py"]
+
+# ---------------------------------------------------------------------------
+# Stage: lm-harness (GPU)
+# ---------------------------------------------------------------------------
+FROM base AS lm-harness-gpu
+
+RUN uv sync --package cei-lm-harness --frozen --no-dev
+
+COPY src/lm-evaluation-harness/ ./src/lm-evaluation-harness/
+
+VOLUME ["/data", "/results"]
+
+ENTRYPOINT ["uv", "run", "--package", "cei-lm-harness", "python", "src/lm-evaluation-harness/run.py"]
+
+# ---------------------------------------------------------------------------
+# Stage: full (both frameworks, default)
+# ---------------------------------------------------------------------------
+FROM base AS full
+
+RUN uv sync --frozen --no-dev
+
+COPY . .
+
+VOLUME ["/data", "/results"]
+
+ENTRYPOINT ["python"]

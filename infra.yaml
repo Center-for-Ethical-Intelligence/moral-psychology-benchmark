@@ -1,0 +1,28 @@
+# CEI Infrastructure Configuration
+# Override per-provider defaults here. CLI flags and env vars take precedence.
+
+defaults:
+  max_runtime_hours: 4.0
+
+  aws:
+    region: us-east-1
+    gpu: g5.xlarge            # 1x A10G 24GB, 4 vCPU, 16GB RAM
+    # image: ami-...          # Leave blank to auto-resolve AWS Deep Learning AMI
+    ssh_key: ~/.ssh/id_ed25519
+
+  gcp:
+    region: us-central1-a
+    gpu: g2-standard-4        # 1x L4 24GB
+    image: projects/deeplearning-platform-release/global/images/family/pytorch-latest-gpu
+    ssh_key: ~/.ssh/id_ed25519
+
+  azure:
+    region: eastus
+    gpu: Standard_NC4as_T4_v3 # 1x T4 16GB
+    image: microsoft-dsvm:ubuntu-hpc:2204:latest
+    ssh_key: ~/.ssh/id_ed25519
+
+  docker:
+    registry: ""              # e.g. ghcr.io/center-for-ethical-intelligence
+    image_name: cei-eval
+    dockerfile: Dockerfile.gpu

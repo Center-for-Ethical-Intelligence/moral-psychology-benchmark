@@ -1,0 +1,63 @@
+# GPU-enabled Docker Compose for on-premises eval runs.
+# Usage:
+#   docker compose -f docker-compose.gpu.yml up inspect-gpu
+#   docker compose -f docker-compose.gpu.yml up lm-harness-gpu
+#   docker compose -f docker-compose.gpu.yml run full python src/inspect/run.py --tasks ...
+
+services:
+  inspect-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+      target: inspect-gpu
+    env_file: .env
+    volumes:
+      - ./results/inspect:/results
+      - ${DATA_ROOT:-./data}:/data
+      - hf-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  lm-harness-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+      target: lm-harness-gpu
+    env_file: .env
+    volumes:
+      - ./results/lm-harness:/results
+      - ${DATA_ROOT:-./data}:/data
+      - hf-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  full:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+      target: full
+    env_file: .env
+    volumes:
+      - ./results:/app/results
+      - ${DATA_ROOT:-./data}:/data
+      - hf-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  hf-cache:
