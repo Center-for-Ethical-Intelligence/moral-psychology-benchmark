@@ -18,9 +18,9 @@ This section is the fastest summary for a mentor or collaborator: which lines al
 | `Llama-S` | Complete local line | Done | 5 benchmark lines complete (`Denevil` via proxy) | Finished locally, outside the frozen Option 1 counts. |
 | `Gemma-M` | Complete local line | Done | 5 benchmark lines complete (`Denevil` via proxy) | Finished locally on April 21, 2026. |
 | `Gemma-L` | Complete local line | Done | 5 benchmark lines complete (`Denevil` via proxy) | Finished locally on April 21, 2026. |
-| `Qwen-M` | Live local rerun | Live | Earlier text checkpoints withdrawn; UniMoral done; Value Kaleidoscope and CCD-Bench are fully persisted; Denevil proxy has started | Clean text rerun active; detailed checkpoints are summarized in Snapshot. |
-| `Qwen-L` | Live local rerun | Live | SMID recovery stands; UniMoral done; Value Prism Relevance is fully persisted; Value Prism Valence holds a 60.0% persisted checkpoint | SMID recovery complete; clean text rerun active. |
-| `Llama-M` | Live local rerun | Live | UniMoral done; Value Prism and CCD-Bench are fully persisted; Denevil proxy holds a 30.0% persisted checkpoint | Medium text rerun active; detailed checkpoints are summarized in Snapshot. |
+| `Qwen-M` | Live local rerun | Live | Earlier text checkpoints withdrawn; UniMoral done; live rerun checkpoint refreshes at build time | Clean text rerun active; detailed checkpoints are summarized in Snapshot. |
+| `Qwen-L` | Live local rerun | Live | SMID recovery stands; UniMoral done; live rerun checkpoint refreshes at build time | SMID recovery complete; clean text rerun active. |
+| `Llama-M` | Live local rerun | Live | UniMoral done; live rerun checkpoint refreshes at build time | Medium text rerun active; detailed checkpoints are summarized in Snapshot. |
 | `MiniMax-S` | Attempted local line | Error | No usable benchmark line completed | OpenRouter key-limit failures interrupted both text and image paths. |
 
 ### Latest Family-Size Progress Snapshot
@@ -65,8 +65,8 @@ _Topline comparable-accuracy chart. Benchmark-level accuracy comparison across t
 | Extra completed local line outside release | `Llama` small complete via `llama-3.2-11b-vision-instruct` across `5` papers / `7` tasks |
 | MiniMax small status | formal attempt exists, but the current line failed and is not counted as complete |
 | Run provider / temperature | `OpenRouter`, `temperature=0` |
-| Current operations note | Updated April 22, 2026. The frozen public snapshot remains Option 1 from April 19. Gemma-M and Gemma-L text remain complete locally. The earlier Qwen-M and Qwen-L text checkpoints were withdrawn from the public comparable snapshot after a verification pass showed that Qwen-3 reasoning tokens were exhausting the visible output budget on short-answer tasks. The saved master / worker PID markers and watcher PID files are still stale, but the latest Qwen-M, Qwen-L, and Llama-M reruns still showed live activity: their local Inspect trace logs were still writing and recent OpenRouter calls were still returning `200 OK` through about 12:51 PM ET on April 22, 2026, while the handoff watcher logs were still polling through about 12:50 PM ET on April 22, 2026. The best persisted Value Prism Relevance checkpoints currently on disk stand at 43,680 / 43,680 samples (100.0%) for Qwen-M at 6:23 AM ET on April 22, 2026, 43,680 / 43,680 samples (100.0%) for Qwen-L at 9:10 AM ET on April 22, 2026, and 43,680 / 43,680 samples (100.0%) for Llama-M at 3:54 AM ET on April 22, 2026. Qwen-M has now fully persisted CCD-Bench, and it has already moved into the Denevil proxy task. Qwen-L has already moved into Value Prism Valence, and the current saved archive has reached 13,104 / 21,840 Value Prism Valence samples (60.0%) at 12:33 PM ET on April 22, 2026. Llama-M has now fully persisted CCD-Bench, and it has already moved into the Denevil proxy task; the current saved archive there has reached 6,153 / 20,518 Denevil proxy samples (30.0%) at 12:02 PM ET on April 22, 2026. No new downstream launch was started in this pass because Llama-M has not written a clean completion marker yet; DeepSeek-M remains queued behind the Llama-M text batch. |
-| CI status reference | [CI workflow](https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/workflows/ci.yml); latest verified passing run: [24634450927](https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/runs/24634450927) |
+| Current operations note | Updated April 22, 2026. The frozen public snapshot remains Option 1 from April 19. Gemma-M and Gemma-L text remain complete locally. The earlier Qwen-M and Qwen-L text checkpoints were withdrawn from the public comparable snapshot after a verification pass showed that Qwen-3 reasoning tokens were exhausting the visible output budget on short-answer tasks. When the local rerun artifacts are available, this operations note is refreshed from the latest on-disk checkpoints, trace logs, and watcher logs at build time. |
+| CI status reference | [CI workflow](https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml); latest verified passing run: [24821554085](https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/runs/24821554085) |
 | Total evaluated samples in this release | `302,776` |
 
 ## Local Expansion Checkpoint
@@ -125,7 +125,7 @@ Plain-language terms: [`docs/how-to-read-results.md`](../../../docs/how-to-read-
 | Line | UniMoral | SMID | Value Kaleidoscope | CCD-Bench | Denevil | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
 | `Qwen-S` | Done | Done | Done | Done | Proxy | Frozen Option 1 line. |
-| `Qwen-M` | Done | TBD | Done | Done | Live | Clean text rerun active after withdrawn short-answer artifacts. |
+| `Qwen-M` | Done | TBD | Live | Queue | Queue | Clean text rerun active after withdrawn short-answer artifacts. |
 | `Qwen-L` | Done | Done | Live | Queue | Queue | SMID recovery complete; clean text rerun active. |
 | `MiniMax-S` | Error | Error | Error | Error | Error | Attempted, but key-limit failures made the line unusable. |
 | `MiniMax-M` | Queue | TBD | Queue | Queue | Queue | Text queued; no medium SMID route fixed yet. |
@@ -134,7 +134,7 @@ Plain-language terms: [`docs/how-to-read-results.md`](../../../docs/how-to-read-
 | `DeepSeek-M` | Queue | - | Queue | Queue | Queue | No vision route; queued behind the live Llama-M rerun. |
 | `DeepSeek-L` | Done | - | Done | Done | Proxy | Frozen large text line; no SMID route was included. |
 | `Llama-S` | Done | Done | Done | Done | Proxy | Complete locally across all five papers. |
-| `Llama-M` | Done | - | Done | Done | Live | No SMID run planned; medium text rerun active. |
+| `Llama-M` | Done | - | Live | Queue | Queue | No SMID run is planned. UniMoral is complete. The live rerun checkpoint text is refreshed from the local artifacts at build time when those files are available. |
 | `Llama-L` | Queue | Done | Queue | Queue | Queue | SMID done; text is still queued. |
 | `Gemma-S` | Done | Done | Done | Done | Proxy | Frozen Option 1 recovery line. |
 | `Gemma-M` | Done | Done | Done | Done | Proxy | Complete local line across all five papers. |
