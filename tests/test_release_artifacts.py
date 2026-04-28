@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -74,6 +75,12 @@ def test_release_builder_emits_expected_files(tmp_path):
     assert any("Denevil" in item for item in manifest["interpretation_guardrails"])
     assert manifest["report_metadata"]["owner"] == "Jenny Zhu"
     assert manifest["report_metadata"]["current_cost"] == "$40.73"
+    assert manifest["report_metadata"]["ci_workflow_url"] == (
+        "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml"
+    )
+    assert manifest["report_metadata"]["ci_last_verified_run_url"] == (
+        "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/runs/24821554085"
+    )
     assert manifest["target_matrix"]["family_size_benchmark_cells"] == 75
     assert manifest["entry_points"]["report"].endswith("jenny-group-report.md")
     assert manifest["entry_points"]["supplementary_progress"].endswith("supplementary-model-progress.csv")
@@ -161,6 +168,7 @@ def test_release_builder_emits_expected_files(tmp_path):
     assert "## Status Key" in report_text
     assert "## Supporting Figures" in report_text
     assert "option1_family_size_progress_overview.svg" in report_text
+    assert "Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml" in report_text
     assert "Partial" in report_text
     assert "Live" in report_text
     assert "![Coverage matrix]" in report_text
@@ -175,6 +183,7 @@ def test_release_builder_emits_expected_files(tmp_path):
     assert "## Status Key" in release_readme
     assert "## Supporting Figures" in release_readme
     assert "option1_family_size_progress_overview.svg" in release_readme
+    assert "Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml" in release_readme
     assert "Partial" in release_readme
     assert "Live" in release_readme
     assert "Done" in release_readme
@@ -197,3 +206,21 @@ def test_release_builder_emits_expected_files(tmp_path):
     assert "Paper setup:" in sample_volume_svg
     assert "Proxy:" in sample_volume_svg
     assert "% of release" in sample_volume_svg
+
+
+def test_default_release_builder_leaves_repo_readme_untouched(tmp_path):
+    repo_copy = tmp_path / "repo"
+    script_copy = repo_copy / "scripts" / "build_release_artifacts.py"
+    source_copy = repo_copy / "results" / "release" / "2026-04-19-option1" / "source" / "authoritative-summary.csv"
+
+    script_copy.parent.mkdir(parents=True, exist_ok=True)
+    source_copy.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(SCRIPT, script_copy)
+    shutil.copy2(SOURCE, source_copy)
+
+    original_readme = "# Unified Repo README\n\nThis file should not be rewritten by `make release`.\n"
+    (repo_copy / "README.md").write_text(original_readme, encoding="utf-8")
+
+    subprocess.run([sys.executable, str(script_copy)], check=True, cwd=repo_copy)
+
+    assert (repo_copy / "README.md").read_text(encoding="utf-8") == original_readme

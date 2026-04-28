@@ -33,6 +33,8 @@ REPORT_PURPOSE = "Jenny Zhu's group-facing progress report for the April 14, 202
 REPORT_PROVIDER = "OpenRouter"
 REPORT_TEMPERATURE = "0"
 REPORT_CURRENT_COST = "$40.73"
+ORG_REPO_URL = "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark"
+CI_RUN_LABEL = "24821554085"
 REPORT_STATUS_NOTE = (
     "Updated April 22, 2026. "
     "The frozen public snapshot remains Option 1 from April 19. "
@@ -42,8 +44,8 @@ REPORT_STATUS_NOTE = (
     "tasks. When the local rerun artifacts are available, this operations note is refreshed from the latest on-disk "
     "checkpoints, trace logs, and watcher logs at build time."
 )
-CI_WORKFLOW_URL = "https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/workflows/ci.yml"
-CI_RUN_URL = "https://github.com/hanzhenzhujene/CEI-moral-psych-release/actions/runs/24634450927"
+CI_WORKFLOW_URL = f"{ORG_REPO_URL}/actions/workflows/ci.yml"
+CI_RUN_URL = f"{ORG_REPO_URL}/actions/runs/{CI_RUN_LABEL}"
 TEXT_EXPANSION_RUN_PATH = "results/inspect/full-runs/2026-04-19-family-size-text-expansion"
 IMAGE_EXPANSION_RUN_PATH = "results/inspect/full-runs/2026-04-19-family-size-image-expansion"
 
@@ -2998,7 +3000,7 @@ def build_release_readme(
             "| MiniMax small status | formal attempt exists, but the current run failed and is not counted as complete |",
             "| Provider / temperature | `OpenRouter`, `temperature=0` |",
             f"| Current operations note | {REPORT_STATUS_NOTE} |",
-            f"| CI reference | {markdown_link('Workflow', CI_WORKFLOW_URL)}; last verified successful run: {markdown_link('run 24634450927', CI_RUN_URL)} |",
+            f"| CI reference | {markdown_link('Workflow', CI_WORKFLOW_URL)}; last verified successful run: {markdown_link(f'run {CI_RUN_LABEL}', CI_RUN_URL)} |",
             "",
             "## Model Size Cheat Sheet",
             "",
@@ -3190,7 +3192,7 @@ def build_jenny_group_report(
             "| MiniMax small status | formal attempt exists, but the current line failed and is not counted as complete |",
             "| Run provider / temperature | `OpenRouter`, `temperature=0` |",
             f"| Current operations note | {REPORT_STATUS_NOTE} |",
-            f"| CI status reference | {markdown_link('CI workflow', CI_WORKFLOW_URL)}; latest verified passing run: {markdown_link('24634450927', CI_RUN_URL)} |",
+            f"| CI status reference | {markdown_link('CI workflow', CI_WORKFLOW_URL)}; latest verified passing run: {markdown_link(CI_RUN_LABEL, CI_RUN_URL)} |",
             f"| Total evaluated samples in this release | `{total_samples:,}` |",
             "",
             "## Local Expansion Checkpoint",
@@ -3398,6 +3400,11 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT, help="Path to authoritative-summary.csv")
     parser.add_argument("--release-dir", type=Path, default=DEFAULT_RELEASE_DIR, help="Output directory for release tables")
     parser.add_argument("--figure-dir", type=Path, default=DEFAULT_FIGURE_DIR, help="Output directory for SVG figures")
+    parser.add_argument(
+        "--write-root-readme",
+        action="store_true",
+        help="Also refresh the repository root README with the generated CEI landing page.",
+    )
     args = parser.parse_args()
 
     if not args.input.exists():
@@ -3556,7 +3563,7 @@ def main() -> None:
             benchmark_comparison,
         ),
     )
-    if args.release_dir.resolve() == DEFAULT_RELEASE_DIR.resolve() and args.figure_dir.resolve() == DEFAULT_FIGURE_DIR.resolve():
+    if args.write_root_readme and args.release_dir.resolve() == DEFAULT_RELEASE_DIR.resolve() and args.figure_dir.resolve() == DEFAULT_FIGURE_DIR.resolve():
         write_text(
             ROOT / "README.md",
             build_repo_readme(
