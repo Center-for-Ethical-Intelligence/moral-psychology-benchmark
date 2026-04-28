@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""CEI — unified CLI for benchmark evaluation across local, Docker, and cloud GPU backends.
+
+Usage:
+    cei run   --backend <local|docker|aws|gcp|azure> --task <task> --model <model> [options]
+    cei build [--target <stage>] [--push] [--registry <url>] [--tag <tag>]
+    cei push  <image_tag>
+    cei gpus  [--provider <aws|gcp|azure>]
+
+Examples:
+    # Local (existing behavior)
+    cei run --backend local --task evals/unimoral.py --model openrouter/qwen/qwen3-8b --limit 5
+
+    # Docker with GPU
+    cei run --backend docker --task evals/unimoral.py --model hf/Qwen/Qwen3-8B
+
+    # AWS ephemeral GPU
+    cei run --backend aws --task evals/unimoral.py --model hf/Qwen/Qwen3-8B --gpu g5.xlarge
+
+    # Build + push Docker image
+    cei build --push --registry ghcr.io/center-for-ethical-intelligence
+
+    # List GPU instance types
+    cei gpus --provider aws
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+# Ensure project root is on sys.path
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+
+def cmd_run(args: argparse.Namespace) -> int:
+    """Run an eval on the specified backend."""
+    from src.infra.backend import RunConfig, get_backend
+
+    config = RunConfig(
+        task=args.task,
+        model=args.model,
+        backend=args.backend,
+        gpu=args.gpu or "",
+        region=args.region or "",
+        temperature=args.temperature,
+        limit=args.limit,
+        max_connections=args.max_connections,
+        max_runtime_hours=args.max_runtime,
+        spot=args.spot,
+        no_sandbox=not args.sandbox,
+        data_dir=args.data_dir or "",
+        env_file=args.env_file,
+        extra_args=args.extra_args or [],
+    )
+
+    backend = get_backend(args.backend)
+    instance = None
+
+    try:
+        # 1. Provision
+        print(f"=== CEI Eval: {args.backend} backend ===")
+        instance = backend.provision(config)
+
+        # 2. Upload (for cloud backends)
+        if args.backend in ("aws", "gcp", "azure"):
+            backend.upload(instance, PROJECT_ROOT)
+
+        # 3. Run
+        handle = backend.run(instance, config)
+
+        # 4. Download results (for cloud backends)
+        if args.backend in ("aws", "gcp", "azure"):
+            results_dir = PROJECT_ROOT / "results"
+            backend.download_results(handle, results_dir)
+
+        print(f"\n=== Job {handle.job_id}: {handle.status.value} ===")
+        return 0 if handle.status.value == "completed" else 1
+
+    except KeyboardInterrupt:
+        print("\nInterrupted by user.")
+        return 130
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+    finally:
+        # 5. Teardown (always, for cloud backends)
+        if instance and args.backend in ("aws", "gcp", "azure") and not args.keep:
+            try:
+                backend.teardown(instance)
+            except Exception as e:
+                print(f"Warning: teardown failed: {e}", file=sys.stderr)
+
+
+def cmd_build(args: argparse.Namespace) -> int:
+    """Build (and optionally push) a GPU Docker image."""
+    from src.infra.docker_backend import build_image, push_image
+
+    try:
+        full_tag = build_image(
+            dockerfile=args.dockerfile,
+            target=args.target,
+            tag=args.tag,
+            registry=args.registry,
+            image_name=args.image_name,
+        )
+        print(f"Built: {full_tag}")
+
+        if args.push:
+            if not args.registry:
+                print("Error: --registry is required for --push", file=sys.stderr)
+                return 1
+            push_image(full_tag)
+            print(f"Pushed: {full_tag}")
+
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_push(args: argparse.Namespace) -> int:
+    """Push a Docker image to a registry."""
+    from src.infra.docker_backend import push_image
+
+    try:
+        push_image(args.image_tag)
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_gpus(args: argparse.Namespace) -> int:
+    """List available GPU instance types."""
+    from src.infra.instance_types import GPU_INSTANCES, SPOT_DISCOUNT
+
+    providers = [args.provider] if args.provider else ["aws", "gcp", "azure"]
+
+    for provider in providers:
+        types = GPU_INSTANCES.get(provider, {})
+        discount = SPOT_DISCOUNT.get(provider, 0)
+        print(f"\n{provider.upper()} GPU Instances (spot ~{int(discount * 100)}% of on-demand):")
+        print(f"  {'Tier':<10} {'Instance Type':<30}")
+        print(f"  {'----':<10} {'-------------':<30}")
+        for tier, itype in types.items():
+            print(f"  {tier:<10} {itype:<30}")
+
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        prog="cei",
+        description="CEI Benchmark Evaluation CLI — run evals on local, Docker, or cloud GPUs",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # --- run ---
+    run_parser = subparsers.add_parser("run", help="Run an eval on a backend")
+    run_parser.add_argument("--backend", "-b", required=True,
+                            choices=["local", "docker", "aws", "gcp", "azure"],
+                            help="Compute backend")
+    run_parser.add_argument("--task", "-t", required=True,
+                            help="Task spec (e.g. evals/unimoral.py, cei_ethics)")
+    run_parser.add_argument("--model", "-m", required=True,
+                            help="Model ID (e.g. hf/Qwen/Qwen3-8B, openrouter/qwen/qwen3-8b)")
+    run_parser.add_argument("--gpu", "-g", default="",
+                            help="GPU tier or instance type (small/medium/large or literal)")
+    run_parser.add_argument("--region", default="",
+                            help="Cloud region override")
+    run_parser.add_argument("--temperature", type=float, default=None)
+    run_parser.add_argument("--limit", type=int, default=None,
+                            help="Limit samples per task")
+    run_parser.add_argument("--max-connections", type=int, default=1)
+    run_parser.add_argument("--max-runtime", type=float, default=4.0,
+                            help="Max hours before auto-terminate (cloud only)")
+    run_parser.add_argument("--spot", action="store_true",
+                            help="Use spot/preemptible instances")
+    run_parser.add_argument("--sandbox", action="store_true",
+                            help="Enable sandbox (default: disabled)")
+    run_parser.add_argument("--data-dir", default="",
+                            help="Local data directory to mount")
+    run_parser.add_argument("--env-file", default=".env",
+                            help="Env file for credentials")
+    run_parser.add_argument("--keep", action="store_true",
+                            help="Don't teardown cloud instance after completion")
+    run_parser.add_argument("extra_args", nargs="*",
+                            help="Extra args passed to the eval runner")
+
+    # --- build ---
+    build_parser = subparsers.add_parser("build", help="Build a GPU Docker image")
+    build_parser.add_argument("--dockerfile", default="Dockerfile.gpu")
+    build_parser.add_argument("--target", default="full",
+                              choices=["inspect-gpu", "lm-harness-gpu", "full"])
+    build_parser.add_argument("--tag", default="latest")
+    build_parser.add_argument("--registry", default="",
+                              help="Container registry URL")
+    build_parser.add_argument("--image-name", default="cei-eval")
+    build_parser.add_argument("--push", action="store_true",
+                              help="Push image after build")
+
+    # --- push ---
+    push_parser = subparsers.add_parser("push", help="Push a Docker image")
+    push_parser.add_argument("image_tag", help="Full image tag to push")
+
+    # --- gpus ---
+    gpus_parser = subparsers.add_parser("gpus", help="List GPU instance types")
+    gpus_parser.add_argument("--provider", choices=["aws", "gcp", "azure"],
+                             help="Filter by provider")
+
+    args = parser.parse_args()
+    handlers = {
+        "run": cmd_run,
+        "build": cmd_build,
+        "push": cmd_push,
+        "gpus": cmd_gpus,
+    }
+    return handlers[args.command](args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

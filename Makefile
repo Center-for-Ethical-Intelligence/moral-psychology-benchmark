@@ -1,4 +1,5 @@
-.PHONY: help setup ensure-runner test release refresh-authoritative smoke audit clean-release
+.PHONY: help setup ensure-runner test release refresh-authoritative smoke audit clean-release \
+       docker-gpu docker-push cloud-setup gpus
 
 RELEASE_DIR := results/release/2026-04-19-option1
 RELEASE_SOURCE := $(RELEASE_DIR)/source/authoritative-summary.csv
@@ -27,6 +28,12 @@ help:
 	@echo "  make smoke         Run a 2-sample UniMoral smoke test (runner: $(RUNNER_NOTE))"
 	@echo "  make audit         Run the public QA gate (tests + release rebuild)"
 	@echo "  make clean-release Remove generated release tables and figures"
+	@echo ""
+	@echo "GPU / Cloud targets:"
+	@echo "  make docker-gpu    Build GPU-enabled Docker image (all frameworks)"
+	@echo "  make docker-push   Build and push GPU image to registry (set CEI_DOCKER_REGISTRY)"
+	@echo "  make cloud-setup   Install cloud SDK dependencies (boto3, gcloud, azure)"
+	@echo "  make gpus          List available GPU instance types per provider"
 
 setup:
 	@if ! command -v $(UV) >/dev/null 2>&1; then \
@@ -66,6 +73,28 @@ smoke: ensure-runner
 		--limit 2 \
 		--no_sandbox \
 		--log_dir results/inspect/logs/smoke
+
+# ---- GPU / Cloud targets ----
+
+CEI_DOCKER_REGISTRY ?=
+CEI_IMAGE_NAME ?= cei-eval
+CEI_IMAGE_TAG ?= latest
+
+docker-gpu:
+	docker build -f Dockerfile.gpu --target full -t $(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG) .
+
+docker-push: docker-gpu
+	@if [ -z "$(CEI_DOCKER_REGISTRY)" ]; then \
+		echo "Set CEI_DOCKER_REGISTRY (e.g. ghcr.io/center-for-ethical-intelligence)"; exit 1; \
+	fi
+	docker tag $(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG) $(CEI_DOCKER_REGISTRY)/$(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG)
+	docker push $(CEI_DOCKER_REGISTRY)/$(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG)
+
+cloud-setup: ensure-runner
+	$(UV) pip install boto3 google-cloud-compute azure-identity azure-mgmt-compute azure-mgmt-network azure-mgmt-resource
+
+gpus: ensure-runner
+	$(RUN_PYTHON) cei gpus
 
 clean-release:
 	rm -f $(RELEASE_DIR)/README.md \
