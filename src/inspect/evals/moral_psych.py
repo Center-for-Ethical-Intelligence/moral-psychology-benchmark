@@ -8,7 +8,7 @@ from evals.ccd_bench import ccd_bench_selection
 from evals.denevil import denevil_fulcra_proxy_generation, denevil_generation
 from evals.m3oralbench import m3oralbench_foundation, m3oralbench_judgment, m3oralbench_response
 from evals.moral_circuits import moral_circuits_judgment, moral_circuits_reasoning
-from evals.morallens import morallens_cot, morallens_double_standard, morallens_posthoc, morallens_reasoning_quality
+from evals.morallens import morallens_cot, morallens_double_standard, morallens_posthoc
 from evals.morebench import morebench_advisor, morebench_agent
 from evals.smid import smid_foundation_classification, smid_moral_rating
 from evals.unimoral import unimoral_action_prediction
@@ -35,5 +35,4 @@ TASK_EXPORTS = [
     morallens_cot,
     morallens_posthoc,
     morallens_double_standard,
-    morallens_reasoning_quality,
 ]
