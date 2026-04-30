@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 # Run all 4 Joseph benchmarks across all 15 model lines via OpenRouter.
-# Usage: ./run_all_benchmarks.sh [--limit N]
-set -euo pipefail
+# All models run in parallel, each with its own log file.
+#
+# Usage:
+#   ./run_all_benchmarks.sh                    # run all 15 models
+#   ./run_all_benchmarks.sh --limit 10         # limit samples per task
+#   ./run_all_benchmarks.sh --models 3,5,7     # run only model indices 3, 5, 7
+#   ./run_all_benchmarks.sh --max-conn 80      # override max_connections
+set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
@@ -16,15 +22,8 @@ export MORAL_CIRCUITS_DATA_DIR="$SCRIPT_DIR/data/moral_circuits"
 export M3ORAL_DATA_DIR="$SCRIPT_DIR/data/m3oralbench"
 export MORALLENS_DATA_DIR="$SCRIPT_DIR/data/morallens"
 
-# Parse args
-LIMIT_ARGS=()
-if [[ "${1:-}" == "--limit" ]] && [[ -n "${2:-}" ]]; then
-    LIMIT_ARGS=("--limit" "$2")
-    echo ">>> Running with --limit $2"
-fi
-
 # All 15 model routes via OpenRouter
-MODELS=(
+ALL_MODELS=(
     "qwen/qwen3-8b"
     "qwen/qwen3-32b"
     "qwen/qwen3-235b-a22b"
@@ -42,7 +41,6 @@ MODELS=(
     "minimax/minimax-m2.5"
 )
 
-# Benchmarks to run
 BENCHMARKS=(
     "evals/morebench.py"
     "evals/moral_circuits.py"
@@ -57,31 +55,77 @@ BENCHMARK_NAMES=(
     "MoralLens"
 )
 
-RESULTS_LOG="$SCRIPT_DIR/results/run_log_$(date +%Y%m%d_%H%M%S).txt"
+# Defaults
+MAX_CONN=50
+LIMIT_ARGS=()
+MODEL_FILTER=""
+
+# Parse args
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --limit)
+            LIMIT_ARGS=("--limit" "$2")
+            shift 2
+            ;;
+        --max-conn)
+            MAX_CONN="$2"
+            shift 2
+            ;;
+        --models)
+            MODEL_FILTER="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown arg: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Select models to run
+MODELS=()
+if [[ -n "$MODEL_FILTER" ]]; then
+    IFS=',' read -ra INDICES <<< "$MODEL_FILTER"
+    for i in "${INDICES[@]}"; do
+        idx=$((i - 1))
+        if [[ $idx -ge 0 && $idx -lt ${#ALL_MODELS[@]} ]]; then
+            MODELS+=("${ALL_MODELS[$idx]}")
+        else
+            echo "Warning: model index $i out of range (1-${#ALL_MODELS[@]})"
+        fi
+    done
+else
+    MODELS=("${ALL_MODELS[@]}")
+fi
+
 mkdir -p "$SCRIPT_DIR/results"
 
-echo "=== CEI Benchmark Run ===" | tee "$RESULTS_LOG"
-echo "Started: $(date)" | tee -a "$RESULTS_LOG"
-echo "Models: ${#MODELS[@]}" | tee -a "$RESULTS_LOG"
-echo "Benchmarks: ${#BENCHMARKS[@]}" | tee -a "$RESULTS_LOG"
-echo "" | tee -a "$RESULTS_LOG"
+# --- Per-model runner ---
+run_model() {
+    local MODEL="$1"
+    local SLUG
+    SLUG=$(echo "$MODEL" | tr '/' '_')
+    local LOG="$SCRIPT_DIR/results/run_log_${SLUG}_$(date +%Y%m%d_%H%M%S).txt"
 
-TOTAL=${#MODELS[@]}
-MODEL_NUM=0
+    echo "=== $MODEL started: $(date) ===" | tee "$LOG"
 
-for MODEL in "${MODELS[@]}"; do
-    MODEL_NUM=$((MODEL_NUM + 1))
-    MODEL_SLUG=$(echo "$MODEL" | tr '/' '_')
-
-    echo ">>> [$MODEL_NUM/$TOTAL] Model: $MODEL" | tee -a "$RESULTS_LOG"
-
-    BENCH_IDX=0
+    local BENCH_IDX=0
     for BENCH in "${BENCHMARKS[@]}"; do
-        BENCH_NAME="${BENCHMARK_NAMES[$BENCH_IDX]}"
+        local BENCH_NAME="${BENCHMARK_NAMES[$BENCH_IDX]}"
         BENCH_IDX=$((BENCH_IDX + 1))
 
-        echo "  >> $BENCH_NAME ($BENCH)" | tee -a "$RESULTS_LOG"
-        echo "  >> Started: $(date)" | tee -a "$RESULTS_LOG"
+        # Skip Moral Circuits for non-Qwen/Llama models
+        if [[ "$BENCH_NAME" == "MoralCircuits" ]]; then
+            case "$MODEL" in
+                qwen/*|meta-llama/*) ;;
+                *)
+                    echo "  >> $BENCH_NAME SKIPPED (not applicable)" | tee -a "$LOG"
+                    continue
+                    ;;
+            esac
+        fi
+
+        echo "  >> $BENCH_NAME started: $(date)" | tee -a "$LOG"
 
         (
             cd "$SCRIPT_DIR/src/inspect"
@@ -89,21 +133,39 @@ for MODEL in "${MODELS[@]}"; do
                 --tasks "$BENCH" \
                 --model "openai/$MODEL" \
                 --no_sandbox \
-                --max_connections 20 \
+                --max_connections "$MAX_CONN" \
                 ${LIMIT_ARGS[@]+"${LIMIT_ARGS[@]}"} \
-                2>&1 | tee -a "$RESULTS_LOG"; then
-                echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$RESULTS_LOG"
+                2>&1 | tee -a "$LOG"; then
+                echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$LOG"
             else
-                echo "  >> $BENCH_NAME FAILED: $(date)" | tee -a "$RESULTS_LOG"
+                echo "  >> $BENCH_NAME FAILED: $(date)" | tee -a "$LOG"
             fi
         )
 
-        echo "" | tee -a "$RESULTS_LOG"
+        echo "" | tee -a "$LOG"
     done
 
-    echo ">>> [$MODEL_NUM/$TOTAL] $MODEL complete" | tee -a "$RESULTS_LOG"
-    echo "========================================" | tee -a "$RESULTS_LOG"
+    echo "=== $MODEL complete: $(date) ===" | tee -a "$LOG"
+}
+
+# --- Launch all models in parallel ---
+echo "=== CEI Benchmark Run ==="
+echo "Started: $(date)"
+echo "Models: ${#MODELS[@]} (max_connections=$MAX_CONN)"
+echo "Benchmarks: ${#BENCHMARKS[@]}"
+echo ""
+
+PIDS=()
+for MODEL in "${MODELS[@]}"; do
+    run_model "$MODEL" &
+    PIDS+=($!)
+    echo "  Launched $MODEL (PID ${PIDS[-1]})"
 done
 
-echo "" | tee -a "$RESULTS_LOG"
-echo "=== All runs complete: $(date) ===" | tee -a "$RESULTS_LOG"
+echo ""
+echo "All ${#MODELS[@]} models launched. PIDs: ${PIDS[*]}"
+echo "Logs: results/run_log_*.txt"
+echo ""
+
+wait "${PIDS[@]}"
+echo "=== All ${#MODELS[@]} models complete: $(date) ==="
