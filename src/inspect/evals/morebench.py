@@ -16,13 +16,14 @@ from __future__ import annotations
 
 import ast
 import csv
+import functools
 import json
 from pathlib import Path
 
 from inspect_ai import Task, task
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.scorer import Score, Target, mean, scorer, stderr
-from inspect_ai.solver import TaskState, generate
+from inspect_ai.solver import TaskState
 
 from evals._benchmark_utils import env_str, generation_plan, normalize_whitespace
 
@@ -42,13 +43,14 @@ AGENT_SYSTEM = (
 )
 
 
-def _load_csv(filename: str) -> list[dict[str, str]]:
+@functools.lru_cache(maxsize=4)
+def _load_csv(filename: str) -> tuple[dict[str, str], ...]:
     data_path = Path(MOREBENCH_DATA_DIR)
     filepath = data_path / filename
     if not filepath.exists():
         raise FileNotFoundError(f"MoReBench file not found: {filepath}")
     with filepath.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        return tuple(csv.DictReader(f))
 
 
 def _parse_rubric(raw: str) -> list[dict]:
@@ -70,7 +72,7 @@ def _load_scenarios(role: str = "advisor", limit: int | None = None) -> list[Sam
     role_domain = "ai_advisor" if role == "advisor" else "ai_agent"
     system_prompt = ADVISOR_SYSTEM if role == "advisor" else AGENT_SYSTEM
 
-    rows = _load_csv("morebench_public.csv")
+    rows = list(_load_csv("morebench_public.csv"))
     filtered = [r for r in rows if r.get("ROLE_DOMAIN") == role_domain]
 
     if limit:

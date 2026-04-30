@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 # Load API key
-export OPENAI_API_KEY=$(grep OPENROUTER_API_KEY .env | cut -d= -f2)
+export OPENAI_API_KEY="$(grep OPENROUTER_API_KEY .env | cut -d= -f2)"
 export OPENAI_BASE_URL=https://openrouter.ai/api/v1
 
 # Data directories
@@ -17,9 +17,9 @@ export M3ORAL_DATA_DIR="$SCRIPT_DIR/data/m3oralbench"
 export MORALLENS_DATA_DIR="$SCRIPT_DIR/data/morallens"
 
 # Parse args
-LIMIT_ARG=""
+LIMIT_ARGS=()
 if [[ "${1:-}" == "--limit" ]] && [[ -n "${2:-}" ]]; then
-    LIMIT_ARG="--limit $2"
+    LIMIT_ARGS=("--limit" "$2")
     echo ">>> Running with --limit $2"
 fi
 
@@ -83,19 +83,20 @@ for MODEL in "${MODELS[@]}"; do
         echo "  >> $BENCH_NAME ($BENCH)" | tee -a "$RESULTS_LOG"
         echo "  >> Started: $(date)" | tee -a "$RESULTS_LOG"
 
-        cd "$SCRIPT_DIR/src/inspect"
-        if uv run --package cei-inspect python run.py \
-            --tasks "$BENCH" \
-            --model "openai/$MODEL" \
-            --no_sandbox \
-            --max_connections 5 \
-            $LIMIT_ARG \
-            2>&1 | tee -a "$RESULTS_LOG"; then
-            echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$RESULTS_LOG"
-        else
-            echo "  >> $BENCH_NAME FAILED: $(date)" | tee -a "$RESULTS_LOG"
-        fi
-        cd "$SCRIPT_DIR"
+        (
+            cd "$SCRIPT_DIR/src/inspect"
+            if uv run --package cei-inspect python run.py \
+                --tasks "$BENCH" \
+                --model "openai/$MODEL" \
+                --no_sandbox \
+                --max_connections 20 \
+                "${LIMIT_ARGS[@]}" \
+                2>&1 | tee -a "$RESULTS_LOG"; then
+                echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$RESULTS_LOG"
+            else
+                echo "  >> $BENCH_NAME FAILED: $(date)" | tee -a "$RESULTS_LOG"
+            fi
+        )
 
         echo "" | tee -a "$RESULTS_LOG"
     done

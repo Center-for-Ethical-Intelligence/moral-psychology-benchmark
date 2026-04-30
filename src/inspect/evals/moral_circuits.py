@@ -15,12 +15,13 @@ GitHub: https://github.com/coairesearch/mapping_moral_reasoning
 from __future__ import annotations
 
 import ast
+import functools
 from pathlib import Path
 
 from inspect_ai import Task, task
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.scorer import Score, Target, accuracy, mean, scorer, stderr
-from inspect_ai.solver import TaskState, generate
+from inspect_ai.solver import TaskState
 
 from evals._benchmark_utils import env_str, generation_plan
 
@@ -30,6 +31,7 @@ MORAL_CIRCUITS_DATA_DIR = env_str("MORAL_CIRCUITS_DATA_DIR")
 FOUNDATIONS = ["care", "fairness", "loyalty", "authority", "sanctity", "liberty"]
 
 
+@functools.lru_cache(maxsize=1)
 def _load_statement_pairs() -> dict[str, list[tuple[str, str]]]:
     """Load moral foundation statement pairs from mft_dim.py."""
     if not MORAL_CIRCUITS_DATA_DIR:
@@ -43,11 +45,18 @@ def _load_statement_pairs() -> dict[str, list[tuple[str, str]]]:
     # The file defines a `moral_foundations` dict with foundation -> list of (moral, immoral) tuples
     source = path.read_text(encoding="utf-8")
 
-    # Extract the dict by executing the assignment
-    local_vars: dict = {}
-    exec(compile(source, str(path), "exec"), {}, local_vars)
+    # Safely extract the dict using AST parsing (no exec)
+    tree = ast.parse(source)
+    foundations = None
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id == "moral_foundations":
+                    foundations = ast.literal_eval(node.value)
+                    break
+            if foundations is not None:
+                break
 
-    foundations = local_vars.get("moral_foundations", {})
     if not foundations:
         raise ValueError("Could not find 'moral_foundations' dict in mft_dim.py")
 
@@ -138,10 +147,10 @@ def _moral_judgment_scorer():
 
         target_label = target.text.lower()
 
-        # Detect judgment
+        # Detect judgment — check negative terms first; avoid "moral" matching "immoral"
         if "unacceptable" in response or "morally wrong" in response or "immoral" in response:
             predicted = "unacceptable"
-        elif "acceptable" in response or "morally right" in response or "moral" in response:
+        elif "acceptable" in response or "morally right" in response or "morally acceptable" in response:
             predicted = "acceptable"
         else:
             predicted = "unknown"

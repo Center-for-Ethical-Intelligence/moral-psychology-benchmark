@@ -17,13 +17,14 @@ text-only mode, extracting the instruction text from the dataset.
 
 from __future__ import annotations
 
+import functools
 import json
 from pathlib import Path
 
 from inspect_ai import Task, task
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.scorer import Score, Target, accuracy, mean, scorer, stderr
-from inspect_ai.solver import TaskState, generate
+from inspect_ai.solver import TaskState
 
 from evals._benchmark_utils import env_str, generation_plan
 
@@ -33,7 +34,8 @@ M3ORAL_DATA_DIR = env_str("M3ORAL_DATA_DIR")
 MFT_FOUNDATIONS = ["Care", "Fairness", "Loyalty", "Authority", "Sanctity", "Liberty"]
 
 
-def _load_data() -> list[dict]:
+@functools.lru_cache(maxsize=1)
+def _load_data() -> tuple[dict, ...]:
     if not M3ORAL_DATA_DIR:
         raise EnvironmentError(
             "M3ORAL_DATA_DIR not set. Set it to the path containing query.json."
@@ -42,12 +44,12 @@ def _load_data() -> list[dict]:
     if not path.exists():
         raise FileNotFoundError(f"M³oralBench query.json not found at {path}")
     with open(path) as f:
-        return json.load(f)
+        return tuple(json.load(f))
 
 
 def _make_judgment_samples(limit: int | None = None) -> list[Sample]:
     """Create moral judgment samples (type=judge)."""
-    data = _load_data()
+    data = list(_load_data())
     items = [d for d in data if d.get("type") == "judge"]
     if limit:
         items = items[:limit]
@@ -76,7 +78,7 @@ def _make_judgment_samples(limit: int | None = None) -> list[Sample]:
 
 def _make_classification_samples(limit: int | None = None) -> list[Sample]:
     """Create foundation classification samples (type=classification)."""
-    data = _load_data()
+    data = list(_load_data())
     items = [d for d in data if d.get("type") == "classification"]
     if limit:
         items = items[:limit]
@@ -102,7 +104,7 @@ def _make_classification_samples(limit: int | None = None) -> list[Sample]:
 
 def _make_response_samples(limit: int | None = None) -> list[Sample]:
     """Create moral response generation samples (type=response)."""
-    data = _load_data()
+    data = list(_load_data())
     items = [d for d in data if d.get("type") == "response"]
     if limit:
         items = items[:limit]
