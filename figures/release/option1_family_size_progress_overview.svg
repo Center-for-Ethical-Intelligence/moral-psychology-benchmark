@@ -38,10 +38,9 @@
 <rect x="0" y="0" width="1280" height="1040" class="canvas"/>
 <rect x="24" y="24" width="1232" height="992" rx="22" class="panel"/>
 <title>Joseph benchmarks — family-size progress overview</title>
-<desc>Stacked bar overview of Joseph's five-benchmark progress for each model line.</desc>
 <text x="48" y="64" class="title">Joseph Benchmarks — Family-Size Progress Overview</text>
-<text x="48" y="88" class="subtitle">Each bar = 5 benchmarks (TrolleyBench, MoReBench, Moral Circuits, M3oralBench, MoralLens). TrolleyBench done for all 15. Qwen-S: MoReBench + Moral Circuits done, M3oralBench running. Remaining queued.</text>
-<text x="48" y="110" class="subtitle">Green = done, blue = running now, gray = queued / not applicable. Updated: April 29, 2026.</text>
+<text x="48" y="88" class="subtitle">5 benchmarks per line. Qwen-S: TB+MRB+MC done, M3oral partial (JSONDecodeError), MoralLens running. All other lines: TB done, 4 queued.</text>
+<text x="48" y="110" class="subtitle">Green=done, light-blue=partial, blue=running, gray=queued. Updated: April 29, 2026.</text>
 <text x="340" y="158" class="tiny">FIVE BENCHMARK CELLS PER LINE</text>
 <line x1="340.00" y1="184" x2="340.00" y2="908" class="guide"/>
 <text x="340.00" y="174" text-anchor="middle" class="small">0</text>
@@ -54,122 +53,122 @@
 <line x1="772.00" y1="184" x2="772.00" y2="908" class="guide"/>
 <text x="772.00" y="174" text-anchor="middle" class="small">4</text>
 <line x1="880.00" y1="184" x2="880.00" y2="908" class="guide"/>
-<text x="880.00" y="174" text-anchor="end" class="small">5</text>
+<text x="880.00" y="174" text-anchor="middle" class="small">5</text>
 <text x="880" y="174" text-anchor="end" class="small">5</text>
 <text x="48" y="206" class="tiny">QWEN</text>
 <text x="322" y="235" text-anchor="end" class="label">Qwen-S</text>
 <rect x="340" y="216" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="216" width="324.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="216" width="324.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="502.00" y="235" text-anchor="middle" class="celltext">3</text>
-<rect x="664.00" y="216" width="108.00" height="28" fill="#2563eb" stroke="#ffffff" stroke-width="1"/>
-<text x="718.00" y="235" text-anchor="middle" class="celltext">1</text>
-<rect x="772.00" y="216" width="108.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
-<text x="826.00" y="235" text-anchor="middle" class="celltext-dark">1</text>
-<text x="910" y="235" class="label">usable now 3/5 | live 1</text>
+<rect x="664.00" y="216" width="108.00" height="28" fill="#60a5fa" stroke="#fff" stroke-width="1"/>
+<text x="718.00" y="235" text-anchor="middle" class="celltext-dark">1</text>
+<rect x="772.00" y="216" width="108.00" height="28" fill="#2563eb" stroke="#fff" stroke-width="1"/>
+<text x="826.00" y="235" text-anchor="middle" class="celltext">1</text>
+<text x="910" y="235" class="label">usable now 3/5 | partial 1 | live 1</text>
 <text x="322" y="281" text-anchor="end" class="label">Qwen-M</text>
 <rect x="340" y="262" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="262" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="262" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="281" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="262" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="262" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="281" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="281" class="label">usable now 1/5</text>
 <text x="322" y="327" text-anchor="end" class="label">Qwen-L</text>
 <rect x="340" y="308" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="308" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="308" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="327" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="308" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="308" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="327" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="327" class="label">usable now 1/5</text>
 <line x1="48" y1="338" x2="1232" y2="338" class="guide"/>
 <text x="48" y="344" class="tiny">DEEPSEEK</text>
 <text x="322" y="373" text-anchor="end" class="label">DeepSeek-S</text>
 <rect x="340" y="354" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="354" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="354" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="373" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="354" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="354" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="373" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="373" class="label">usable now 1/5</text>
 <text x="322" y="419" text-anchor="end" class="label">DeepSeek-M</text>
 <rect x="340" y="400" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="400" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="400" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="419" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="400" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="400" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="419" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="419" class="label">usable now 1/5</text>
 <text x="322" y="465" text-anchor="end" class="label">DeepSeek-L</text>
 <rect x="340" y="446" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="446" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="446" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="465" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="446" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="446" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="465" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="465" class="label">usable now 1/5</text>
 <line x1="48" y1="476" x2="1232" y2="476" class="guide"/>
 <text x="48" y="482" class="tiny">LLAMA</text>
 <text x="322" y="511" text-anchor="end" class="label">Llama-S</text>
 <rect x="340" y="492" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="492" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="492" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="511" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="492" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="492" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="511" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="511" class="label">usable now 1/5</text>
 <text x="322" y="557" text-anchor="end" class="label">Llama-M</text>
 <rect x="340" y="538" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="538" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="538" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="557" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="538" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="538" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="557" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="557" class="label">usable now 1/5</text>
 <text x="322" y="603" text-anchor="end" class="label">Llama-L</text>
 <rect x="340" y="584" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="584" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="584" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="603" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="584" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="584" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="603" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="603" class="label">usable now 1/5</text>
 <line x1="48" y1="614" x2="1232" y2="614" class="guide"/>
 <text x="48" y="620" class="tiny">GEMMA</text>
 <text x="322" y="649" text-anchor="end" class="label">Gemma-S</text>
 <rect x="340" y="630" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="630" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="630" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="649" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="630" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="630" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="649" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="649" class="label">usable now 1/5</text>
 <text x="322" y="695" text-anchor="end" class="label">Gemma-M</text>
 <rect x="340" y="676" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="676" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="676" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="695" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="676" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="676" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="695" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="695" class="label">usable now 1/5</text>
 <text x="322" y="741" text-anchor="end" class="label">Gemma-L</text>
 <rect x="340" y="722" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="722" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="722" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="741" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="722" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="722" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="741" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="741" class="label">usable now 1/5</text>
 <line x1="48" y1="752" x2="1232" y2="752" class="guide"/>
 <text x="48" y="758" class="tiny">MINIMAX</text>
 <text x="322" y="787" text-anchor="end" class="label">MiniMax-S</text>
 <rect x="340" y="768" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="768" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="768" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="787" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="768" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="768" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="787" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="787" class="label">usable now 1/5</text>
 <text x="322" y="833" text-anchor="end" class="label">MiniMax-M</text>
 <rect x="340" y="814" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="814" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="814" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="833" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="814" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="814" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="833" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="833" class="label">usable now 1/5</text>
 <text x="322" y="879" text-anchor="end" class="label">MiniMax-L</text>
 <rect x="340" y="860" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="860" width="108.00" height="28" fill="#2f855a" stroke="#ffffff" stroke-width="1"/>
+<rect x="340.00" y="860" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
 <text x="394.00" y="879" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="860" width="432.00" height="28" fill="#cbd5e1" stroke="#ffffff" stroke-width="1"/>
+<rect x="448.00" y="860" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
 <text x="664.00" y="879" text-anchor="middle" class="celltext-dark">4</text>
 <text x="910" y="879" class="label">usable now 1/5</text>
 <rect x="48" y="936" width="18" height="18" rx="4" fill="#2f855a"/>
@@ -184,5 +183,5 @@
 <text x="836" y="950" class="label">Error</text>
 <rect x="998" y="936" width="18" height="18" rx="4" fill="#cbd5e1"/>
 <text x="1026" y="950" class="label">Pending / TBD / not planned</text>
-<text x="48" y="974" class="small">Joseph's benchmarks: TrolleyBench | MoReBench | Moral Circuits | M3oralBench | MoralLens. See PROGRESS.md for per-benchmark details.</text>
+<text x="48" y="974" class="small">Joseph: TrolleyBench | MoReBench | Moral Circuits | M3oralBench | MoralLens</text>
 </svg>
