@@ -86,12 +86,14 @@
 <text class="label" x="56" y="256">Qwen-L</text>
 <rect x="168" y="228" width="134" height="44" rx="8" fill="#2ea043"/>
 <text class="celltext" x="235" y="252" text-anchor="middle">Done</text>
-<rect x="308" y="228" width="134" height="44" rx="8" fill="#1f6feb"/>
-<text class="celltext" x="375" y="252" text-anchor="middle">Live</text>
-<rect x="448" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
-<text class="celltext-dark" x="515" y="252" text-anchor="middle">Queue</text>
-<rect x="588" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
-<text class="celltext-dark" x="655" y="252" text-anchor="middle">Queue</text>
+<rect x="308" y="228" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="375" y="252" text-anchor="middle">Done</text>
+<text class="cellsub" x="375" y="266" text-anchor="middle">adv=0.61</text>
+<rect x="448" y="228" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="515" y="252" text-anchor="middle">Done</text>
+<text class="cellsub" x="515" y="266" text-anchor="middle">jdg=0.93</text>
+<rect x="588" y="228" width="134" height="44" rx="8" fill="#1f6feb"/>
+<text class="celltext" x="655" y="252" text-anchor="middle">Live</text>
 <rect x="728" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
 <text class="celltext-dark" x="795" y="252" text-anchor="middle">Queue</text>
 <text class="label" x="56" y="312">DS-S</text>
@@ -227,7 +229,7 @@
 <rect x="728" y="900" width="134" height="44" rx="8" fill="#dbe4ee"/>
 <text class="celltext-dark" x="795" y="924" text-anchor="middle">Queue</text>
 <rect class="panel" x="48" y="970" width="1184" height="90" rx="16"/>
-<text class="metric" x="80" y="1006">Progress: 23 / 69 cells done (33%)</text>
-<text class="body" x="80" y="1028">Qwen-S + Qwen-M complete. Qwen-L MoReBench running. 12 models queued.</text>
-<text class="small" x="80" y="1046">Qwen-M MoralLens much lower than Qwen-S (CoT 0.24 vs 0.92). Scaling pattern inverted on framework detection.</text>
+<text class="metric" x="80" y="1006">Progress: 25 / 69 cells done (36%)</text>
+<text class="body" x="80" y="1028">Qwen family: S+M complete, L running M3oralBench. 12 models queued after Qwen-L.</text>
+<text class="small" x="80" y="1046">U-shape: Qwen-M (32B) scores lowest; Qwen-S (8B) and Qwen-L (235B) both score high on MC judgment (~0.93).</text>
 </svg>
