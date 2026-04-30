@@ -1,7 +1,7 @@
 # CEI Moral-Psych Benchmark — Joseph's Progress Report
 
 **Report owner:** Joseph Sun
-**Last updated:** April 28, 2026
+**Last updated:** April 29, 2026
 **Branch:** `joseph/remaining-benchmarks`
 
 ---
@@ -22,21 +22,21 @@
 
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
-| `Qwen-S` (Qwen3-8B) | Queue | Queue | Queue | Queue | Queue | |
+| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Live** | Queue | Queue | MoReBench: advisor=0.595, agent=0.586 |
 | `Qwen-M` (Qwen3-32B) | **Done** | Queue | Queue | Queue | Queue | T=0.0 + T=0.7 complete |
 | `Qwen-L` (Qwen3-235B) | **Done** | Queue | Queue | Queue | Queue | Both temps; ~81 min/temp (reasoning) |
-| `DeepSeek-S` (R1-Distill-70B) | Queue | Queue | Queue | Queue | Queue | |
-| `DeepSeek-M` (Chat V3.1) | Queue | Queue | Queue | Queue | Queue | |
-| `DeepSeek-L` (DeepSeek-R1) | Queue | Queue | Queue | Queue | Queue | |
-| `Llama-S` (Llama-3.2-3B) | Queue | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Llama-M` (Llama-3.1-8B) | Queue | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Llama-L` (Llama-3.3-70B) | Queue | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Gemma-S` (Gemma-3-4B) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `Gemma-M` (Gemma-3-12B) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `Gemma-L` (Gemma-3-27B) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-S` (MiniMax-01) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-M` (MiniMax-M1) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-L` (MiniMax-M2.5) | Queue | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
+| `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
+| `DeepSeek-L` (DeepSeek-R1) | **Done** | Queue | Queue | Queue | Queue | |
+| `Llama-S` (Llama-3.2-3B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
+| `Llama-M` (Llama-3.1-8B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
+| `Llama-L` (Llama-3.3-70B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
+| `Gemma-S` (Gemma-3-4B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `Gemma-M` (Gemma-3-12B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `Gemma-L` (Gemma-3-27B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `MiniMax-S` (MiniMax-01) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `MiniMax-M` (MiniMax-M1) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `MiniMax-L` (MiniMax-M2.5) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
 
 ---
 
@@ -148,7 +148,10 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | Field | Value |
 | --- | --- |
 | Harnesses complete | 5 / 5 |
-| TrolleyBench cells completed | 3 / 30 (Qwen-L ×2, Qwen-M T=0.0) |
-| Other benchmarks cells completed | 0 / 60+ (harnesses ready, data needed) |
+| TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
+| MoReBench cells completed | 1 / 15 (Qwen-S done; advisor=0.595, agent=0.586) |
+| Moral Circuits cells completed | 0 / 6 (Qwen-S live) |
+| M³oralBench cells completed | 0 / 15 |
+| MoralLens cells completed | 0 / 15 |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
-| Next step | Obtain dataset files, queue benchmark runs |
+| Next step | Remaining Inspect benchmarks running via run_all_benchmarks.sh |
