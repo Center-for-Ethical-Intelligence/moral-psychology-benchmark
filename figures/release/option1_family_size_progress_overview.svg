@@ -35,153 +35,195 @@
 .outline { stroke: rgba(255,255,255,0.9); stroke-width: 1; }
 </style>
 </defs>
-<rect x="0" y="0" width="1280" height="1040" class="canvas"/>
-<rect x="24" y="24" width="1232" height="992" rx="22" class="panel"/>
-<title>Joseph benchmarks — family-size progress overview</title>
-<text x="48" y="64" class="title">Joseph Benchmarks — Family-Size Progress Overview</text>
-<text x="48" y="88" class="subtitle">5 benchmarks per line. Qwen-S: TB+MRB+MC done, M3oral partial (JSONDecodeError), MoralLens running. All other lines: TB done, 4 queued.</text>
-<text x="48" y="110" class="subtitle">Green=done, light-blue=partial, blue=running, gray=queued. Updated: April 29, 2026.</text>
-<text x="340" y="158" class="tiny">FIVE BENCHMARK CELLS PER LINE</text>
-<line x1="340.00" y1="184" x2="340.00" y2="908" class="guide"/>
-<text x="340.00" y="174" text-anchor="middle" class="small">0</text>
-<line x1="448.00" y1="184" x2="448.00" y2="908" class="guide"/>
-<text x="448.00" y="174" text-anchor="middle" class="small">1</text>
-<line x1="556.00" y1="184" x2="556.00" y2="908" class="guide"/>
-<text x="556.00" y="174" text-anchor="middle" class="small">2</text>
-<line x1="664.00" y1="184" x2="664.00" y2="908" class="guide"/>
-<text x="664.00" y="174" text-anchor="middle" class="small">3</text>
-<line x1="772.00" y1="184" x2="772.00" y2="908" class="guide"/>
-<text x="772.00" y="174" text-anchor="middle" class="small">4</text>
-<line x1="880.00" y1="184" x2="880.00" y2="908" class="guide"/>
-<text x="880.00" y="174" text-anchor="middle" class="small">5</text>
-<text x="880" y="174" text-anchor="end" class="small">5</text>
-<text x="48" y="206" class="tiny">QWEN</text>
-<text x="322" y="235" text-anchor="end" class="label">Qwen-S</text>
-<rect x="340" y="216" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="216" width="324.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="502.00" y="235" text-anchor="middle" class="celltext">3</text>
-<rect x="664.00" y="216" width="108.00" height="28" fill="#60a5fa" stroke="#fff" stroke-width="1"/>
-<text x="718.00" y="235" text-anchor="middle" class="celltext-dark">1</text>
-<rect x="772.00" y="216" width="108.00" height="28" fill="#2563eb" stroke="#fff" stroke-width="1"/>
-<text x="826.00" y="235" text-anchor="middle" class="celltext">1</text>
-<text x="910" y="235" class="label">usable now 3/5 | partial 1 | live 1</text>
-<text x="322" y="281" text-anchor="end" class="label">Qwen-M</text>
-<rect x="340" y="262" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="262" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="281" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="262" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="281" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="281" class="label">usable now 1/5</text>
-<text x="322" y="327" text-anchor="end" class="label">Qwen-L</text>
-<rect x="340" y="308" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="308" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="327" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="308" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="327" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="327" class="label">usable now 1/5</text>
-<line x1="48" y1="338" x2="1232" y2="338" class="guide"/>
-<text x="48" y="344" class="tiny">DEEPSEEK</text>
-<text x="322" y="373" text-anchor="end" class="label">DeepSeek-S</text>
-<rect x="340" y="354" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="354" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="373" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="354" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="373" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="373" class="label">usable now 1/5</text>
-<text x="322" y="419" text-anchor="end" class="label">DeepSeek-M</text>
-<rect x="340" y="400" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="400" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="419" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="400" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="419" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="419" class="label">usable now 1/5</text>
-<text x="322" y="465" text-anchor="end" class="label">DeepSeek-L</text>
-<rect x="340" y="446" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="446" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="465" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="446" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="465" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="465" class="label">usable now 1/5</text>
-<line x1="48" y1="476" x2="1232" y2="476" class="guide"/>
-<text x="48" y="482" class="tiny">LLAMA</text>
-<text x="322" y="511" text-anchor="end" class="label">Llama-S</text>
-<rect x="340" y="492" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="492" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="511" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="492" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="511" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="511" class="label">usable now 1/5</text>
-<text x="322" y="557" text-anchor="end" class="label">Llama-M</text>
-<rect x="340" y="538" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="538" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="557" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="538" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="557" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="557" class="label">usable now 1/5</text>
-<text x="322" y="603" text-anchor="end" class="label">Llama-L</text>
-<rect x="340" y="584" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="584" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="603" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="584" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="603" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="603" class="label">usable now 1/5</text>
-<line x1="48" y1="614" x2="1232" y2="614" class="guide"/>
-<text x="48" y="620" class="tiny">GEMMA</text>
-<text x="322" y="649" text-anchor="end" class="label">Gemma-S</text>
-<rect x="340" y="630" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="630" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="649" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="630" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="649" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="649" class="label">usable now 1/5</text>
-<text x="322" y="695" text-anchor="end" class="label">Gemma-M</text>
-<rect x="340" y="676" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="676" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="695" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="676" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="695" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="695" class="label">usable now 1/5</text>
-<text x="322" y="741" text-anchor="end" class="label">Gemma-L</text>
-<rect x="340" y="722" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="722" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="741" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="722" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="741" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="741" class="label">usable now 1/5</text>
-<line x1="48" y1="752" x2="1232" y2="752" class="guide"/>
-<text x="48" y="758" class="tiny">MINIMAX</text>
-<text x="322" y="787" text-anchor="end" class="label">MiniMax-S</text>
-<rect x="340" y="768" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="768" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="787" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="768" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="787" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="787" class="label">usable now 1/5</text>
-<text x="322" y="833" text-anchor="end" class="label">MiniMax-M</text>
-<rect x="340" y="814" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="814" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="833" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="814" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="833" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="833" class="label">usable now 1/5</text>
-<text x="322" y="879" text-anchor="end" class="label">MiniMax-L</text>
-<rect x="340" y="860" width="540" height="28" rx="10" fill="#e2e8f0"/>
-<rect x="340.00" y="860" width="108.00" height="28" fill="#2f855a" stroke="#fff" stroke-width="1"/>
-<text x="394.00" y="879" text-anchor="middle" class="celltext">1</text>
-<rect x="448.00" y="860" width="432.00" height="28" fill="#cbd5e1" stroke="#fff" stroke-width="1"/>
-<text x="664.00" y="879" text-anchor="middle" class="celltext-dark">4</text>
-<text x="910" y="879" class="label">usable now 1/5</text>
-<rect x="48" y="936" width="18" height="18" rx="4" fill="#2f855a"/>
-<text x="76" y="950" class="label">Done</text>
-<rect x="238" y="936" width="18" height="18" rx="4" fill="#b7791f"/>
-<text x="266" y="950" class="label">Proxy done</text>
-<rect x="428" y="936" width="18" height="18" rx="4" fill="#60a5fa"/>
-<text x="456" y="950" class="label">Partial checkpoint</text>
-<rect x="618" y="936" width="18" height="18" rx="4" fill="#2563eb"/>
-<text x="646" y="950" class="label">Running now</text>
-<rect x="808" y="936" width="18" height="18" rx="4" fill="#dc2626"/>
-<text x="836" y="950" class="label">Error</text>
-<rect x="998" y="936" width="18" height="18" rx="4" fill="#cbd5e1"/>
-<text x="1026" y="950" class="label">Pending / TBD / not planned</text>
-<text x="48" y="974" class="small">Joseph: TrolleyBench | MoReBench | Moral Circuits | M3oralBench | MoralLens</text>
+<rect class="canvas" width="1280" height="1040" rx="0"/>
+<text class="title" x="48" y="52">Joseph's Benchmark Progress Overview</text>
+<text class="subtitle" x="48" y="76">5 benchmarks x 15 model lines — updated April 30, 2026</text>
+<rect x="700" y="42" width="18" height="18" rx="4" fill="#2ea043"/>
+<text class="small" x="724" y="56">Done</text>
+<rect x="790" y="42" width="18" height="18" rx="4" fill="#d29922"/>
+<text class="small" x="814" y="56">Partial</text>
+<rect x="880" y="42" width="18" height="18" rx="4" fill="#cf222e"/>
+<text class="small" x="904" y="56">Error</text>
+<rect x="970" y="42" width="18" height="18" rx="4" fill="#1f6feb"/>
+<text class="small" x="994" y="56">Live</text>
+<rect x="1060" y="42" width="18" height="18" rx="4" fill="#dbe4ee"/>
+<text class="small" x="1084" y="56">Queue</text>
+<text class="axis" x="238" y="100" text-anchor="middle">TrolleyBench</text>
+<text class="axis" x="378" y="100" text-anchor="middle">MoReBench</text>
+<text class="axis" x="518" y="100" text-anchor="middle">Moral Circuits</text>
+<text class="axis" x="658" y="100" text-anchor="middle">M3oralBench</text>
+<text class="axis" x="798" y="100" text-anchor="middle">MoralLens</text>
+<text class="label" x="56" y="144">Qwen-S</text>
+<rect x="168" y="116" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="140" text-anchor="middle">Done</text>
+<rect x="308" y="116" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="375" y="140" text-anchor="middle">Done</text>
+<text class="cellsub" x="375" y="154" text-anchor="middle">adv=0.60</text>
+<rect x="448" y="116" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="515" y="140" text-anchor="middle">Done</text>
+<text class="cellsub" x="515" y="154" text-anchor="middle">jdg=0.93</text>
+<rect x="588" y="116" width="134" height="44" rx="8" fill="#cf222e"/>
+<text class="celltext" x="655" y="140" text-anchor="middle">Error</text>
+<text class="cellsub" x="655" y="154" text-anchor="middle">fnd=0.05</text>
+<rect x="728" y="116" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="795" y="140" text-anchor="middle">Done</text>
+<text class="cellsub" x="795" y="154" text-anchor="middle">cot=0.92</text>
+<text class="label" x="56" y="200">Qwen-M</text>
+<rect x="168" y="172" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="196" text-anchor="middle">Done</text>
+<rect x="308" y="172" width="134" height="44" rx="8" fill="#1f6feb"/>
+<text class="celltext" x="375" y="196" text-anchor="middle">Live</text>
+<rect x="448" y="172" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="196" text-anchor="middle">Queue</text>
+<rect x="588" y="172" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="196" text-anchor="middle">Queue</text>
+<rect x="728" y="172" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="196" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="256">Qwen-L</text>
+<rect x="168" y="228" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="252" text-anchor="middle">Done</text>
+<rect x="308" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="252" text-anchor="middle">Queue</text>
+<rect x="448" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="252" text-anchor="middle">Queue</text>
+<rect x="588" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="252" text-anchor="middle">Queue</text>
+<rect x="728" y="228" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="252" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="312">DS-S</text>
+<rect x="168" y="284" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="308" text-anchor="middle">Done</text>
+<rect x="308" y="284" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="308" text-anchor="middle">Queue</text>
+<rect x="448" y="284" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="308" text-anchor="middle">Queue</text>
+<rect x="588" y="284" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="308" text-anchor="middle">Queue</text>
+<rect x="728" y="284" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="308" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="368">DS-M</text>
+<rect x="168" y="340" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="364" text-anchor="middle">Done</text>
+<rect x="308" y="340" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="364" text-anchor="middle">Queue</text>
+<rect x="448" y="340" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="364" text-anchor="middle">Queue</text>
+<rect x="588" y="340" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="364" text-anchor="middle">Queue</text>
+<rect x="728" y="340" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="364" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="424">DS-L</text>
+<rect x="168" y="396" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="420" text-anchor="middle">Done</text>
+<rect x="308" y="396" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="420" text-anchor="middle">Queue</text>
+<rect x="448" y="396" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="420" text-anchor="middle">Queue</text>
+<rect x="588" y="396" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="420" text-anchor="middle">Queue</text>
+<rect x="728" y="396" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="420" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="480">Llama-S</text>
+<rect x="168" y="452" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="476" text-anchor="middle">Done</text>
+<rect x="308" y="452" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="476" text-anchor="middle">Queue</text>
+<rect x="448" y="452" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="476" text-anchor="middle">Queue</text>
+<rect x="588" y="452" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="476" text-anchor="middle">Queue</text>
+<rect x="728" y="452" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="476" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="536">Llama-M</text>
+<rect x="168" y="508" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="532" text-anchor="middle">Done</text>
+<rect x="308" y="508" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="532" text-anchor="middle">Queue</text>
+<rect x="448" y="508" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="532" text-anchor="middle">Queue</text>
+<rect x="588" y="508" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="532" text-anchor="middle">Queue</text>
+<rect x="728" y="508" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="532" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="592">Llama-L</text>
+<rect x="168" y="564" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="588" text-anchor="middle">Done</text>
+<rect x="308" y="564" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="588" text-anchor="middle">Queue</text>
+<rect x="448" y="564" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="515" y="588" text-anchor="middle">Queue</text>
+<rect x="588" y="564" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="588" text-anchor="middle">Queue</text>
+<rect x="728" y="564" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="588" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="648">Gemma-S</text>
+<rect x="168" y="620" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="644" text-anchor="middle">Done</text>
+<rect x="308" y="620" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="644" text-anchor="middle">Queue</text>
+<rect x="448" y="620" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="644" text-anchor="middle">N/A</text>
+<rect x="588" y="620" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="644" text-anchor="middle">Queue</text>
+<rect x="728" y="620" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="644" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="704">Gemma-M</text>
+<rect x="168" y="676" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="700" text-anchor="middle">Done</text>
+<rect x="308" y="676" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="700" text-anchor="middle">Queue</text>
+<rect x="448" y="676" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="700" text-anchor="middle">N/A</text>
+<rect x="588" y="676" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="700" text-anchor="middle">Queue</text>
+<rect x="728" y="676" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="700" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="760">Gemma-L</text>
+<rect x="168" y="732" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="756" text-anchor="middle">Done</text>
+<rect x="308" y="732" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="756" text-anchor="middle">Queue</text>
+<rect x="448" y="732" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="756" text-anchor="middle">N/A</text>
+<rect x="588" y="732" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="756" text-anchor="middle">Queue</text>
+<rect x="728" y="732" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="756" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="816">MM-S</text>
+<rect x="168" y="788" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="812" text-anchor="middle">Done</text>
+<rect x="308" y="788" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="812" text-anchor="middle">Queue</text>
+<rect x="448" y="788" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="812" text-anchor="middle">N/A</text>
+<rect x="588" y="788" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="812" text-anchor="middle">Queue</text>
+<rect x="728" y="788" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="812" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="872">MM-M</text>
+<rect x="168" y="844" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="868" text-anchor="middle">Done</text>
+<rect x="308" y="844" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="868" text-anchor="middle">Queue</text>
+<rect x="448" y="844" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="868" text-anchor="middle">N/A</text>
+<rect x="588" y="844" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="868" text-anchor="middle">Queue</text>
+<rect x="728" y="844" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="868" text-anchor="middle">Queue</text>
+<text class="label" x="56" y="928">MM-L</text>
+<rect x="168" y="900" width="134" height="44" rx="8" fill="#2ea043"/>
+<text class="celltext" x="235" y="924" text-anchor="middle">Done</text>
+<rect x="308" y="900" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="375" y="924" text-anchor="middle">Queue</text>
+<rect x="448" y="900" width="134" height="44" rx="8" fill="#94a3b8"/>
+<text class="celltext-dark" x="515" y="924" text-anchor="middle">N/A</text>
+<rect x="588" y="900" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="655" y="924" text-anchor="middle">Queue</text>
+<rect x="728" y="900" width="134" height="44" rx="8" fill="#dbe4ee"/>
+<text class="celltext-dark" x="795" y="924" text-anchor="middle">Queue</text>
+<rect class="panel" x="48" y="970" width="1184" height="90" rx="16"/>
+<text class="metric" x="80" y="1006">Progress: 18 / 69 cells done (26%)</text>
+<text class="body" x="80" y="1028">Qwen-S complete (4/5 usable + 1 error). Qwen-M MoReBench running. 13 models queued.</text>
+<text class="small" x="80" y="1046">MoralLens Qwen-S: CoT=0.921, Double-Standard=0.378, Post-hoc=0.887 | M3oralBench partial (text-only fallback)</text>
 </svg>

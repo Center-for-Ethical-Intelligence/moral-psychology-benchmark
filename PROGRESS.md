@@ -1,7 +1,7 @@
 # CEI Moral-Psych Benchmark — Joseph's Progress Report
 
 **Report owner:** Joseph Sun
-**Last updated:** April 29, 2026
+**Last updated:** April 30, 2026
 **Branch:** `joseph/remaining-benchmarks`
 
 ---
@@ -22,8 +22,8 @@
 
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
-| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Live** | M3: fnd=0.047, jdg=error, rsp=error (JSONDecodeError) |
-| `Qwen-M` (Qwen3-32B) | **Done** | Queue | Queue | Queue | Queue | T=0.0 + T=0.7 complete |
+| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
+| `Qwen-M` (Qwen3-32B) | **Done** | **Live** | Queue | Queue | Queue | MoReBench running |
 | `Qwen-L` (Qwen3-235B) | **Done** | Queue | Queue | Queue | Queue | Both temps; ~81 min/temp (reasoning) |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
@@ -151,7 +151,7 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
 | MoReBench cells completed | 1 / 15 (Qwen-S done; advisor=0.595, agent=0.586) |
 | Moral Circuits cells completed | 1 / 6 (Qwen-S: jdg=0.929, rsn=0.946) |
-| M³oralBench cells completed | 0 / 15 (Qwen-S partial: fnd ok, jdg+rsp error) |
-| MoralLens cells completed | 0 / 15 |
+| M³oralBench cells completed | 0 / 15 (Qwen-S partial: fnd=0.047, jdg+rsp error) |
+| MoralLens cells completed | 1 / 15 (Qwen-S: cot=0.921, ds=0.378, ph=0.887) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
 | Next step | Remaining Inspect benchmarks running via run_all_benchmarks.sh |
