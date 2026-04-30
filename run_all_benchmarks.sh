@@ -90,7 +90,7 @@ for MODEL in "${MODELS[@]}"; do
                 --model "openai/$MODEL" \
                 --no_sandbox \
                 --max_connections 20 \
-                "${LIMIT_ARGS[@]}" \
+                ${LIMIT_ARGS[@]+"${LIMIT_ARGS[@]}"} \
                 2>&1 | tee -a "$RESULTS_LOG"; then
                 echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$RESULTS_LOG"
             else
