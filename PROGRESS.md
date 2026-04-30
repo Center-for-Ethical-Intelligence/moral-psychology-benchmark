@@ -24,7 +24,7 @@
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
 | `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
 | `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
-| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Live** | Queue | MRB: adv=0.611, agt=0.587; MC: jdg=0.933, rsn=0.938 |
+| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | Queue | MRB: adv=0.611, agt=0.587; MC: jdg=0.933, rsn=0.938; M3: fnd=0.035, jdg=0.483, rsp=credit_err |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-L` (DeepSeek-R1) | **Done** | Queue | Queue | Queue | Queue | |
@@ -151,7 +151,8 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
 | MoReBench cells completed | 3 / 15 (Qwen-L best: adv=0.611, agt=0.587) |
 | Moral Circuits cells completed | 3 / 6 (Qwen-S: 0.929; Qwen-M: 0.192; Qwen-L: 0.933) |
-| M³oralBench cells completed | 1 / 15 (Qwen-M: fnd=0.012, jdg=0.076, rsp=0.005; Qwen-S partial) |
+| M³oralBench cells completed | 1 / 15 (Qwen-M: fnd=0.012, jdg=0.076, rsp=0.005; Qwen-S+L partial) |
 | MoralLens cells completed | 2 / 15 (Qwen-S: cot=0.921; Qwen-M: cot=0.243) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
-| Next step | Remaining Inspect benchmarks running via run_all_benchmarks.sh |
+| Blocker | OpenRouter credits exhausted (402 error). Need credit top-up to continue. |
+| Next step | Top up credits, then run run_parallel_remaining.sh (4 streams, max_connections=20) |
