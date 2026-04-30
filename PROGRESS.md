@@ -23,8 +23,8 @@
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
 | `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
-| `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Live** | M3: fnd=0.012, jdg=0.076, rsp=0.005 |
-| `Qwen-L` (Qwen3-235B) | **Done** | Queue | Queue | Queue | Queue | Both temps; ~81 min/temp (reasoning) |
+| `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
+| `Qwen-L` (Qwen3-235B) | **Done** | **Live** | Queue | Queue | Queue | MoReBench running |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-L` (DeepSeek-R1) | **Done** | Queue | Queue | Queue | Queue | |
@@ -152,6 +152,6 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | MoReBench cells completed | 2 / 15 (Qwen-S: adv=0.595, agt=0.586; Qwen-M: adv=0.395, agt=0.219) |
 | Moral Circuits cells completed | 2 / 6 (Qwen-S: jdg=0.929, rsn=0.946; Qwen-M: jdg=0.192, rsn=0.208) |
 | M³oralBench cells completed | 1 / 15 (Qwen-M: fnd=0.012, jdg=0.076, rsp=0.005; Qwen-S partial) |
-| MoralLens cells completed | 1 / 15 (Qwen-S: cot=0.921, ds=0.378, ph=0.887) |
+| MoralLens cells completed | 2 / 15 (Qwen-S: cot=0.921; Qwen-M: cot=0.243) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
 | Next step | Remaining Inspect benchmarks running via run_all_benchmarks.sh |
