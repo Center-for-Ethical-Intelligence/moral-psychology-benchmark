@@ -23,7 +23,7 @@
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
 | `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
-| `Qwen-M` (Qwen3-32B) | **Done** | **Live** | Queue | Queue | Queue | MoReBench running |
+| `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Live** | Queue | MRB: adv=0.395, agt=0.219; MC: jdg=0.192, rsn=0.208 |
 | `Qwen-L` (Qwen3-235B) | **Done** | Queue | Queue | Queue | Queue | Both temps; ~81 min/temp (reasoning) |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
 | `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
@@ -149,8 +149,8 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | --- | --- |
 | Harnesses complete | 5 / 5 |
 | TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
-| MoReBench cells completed | 1 / 15 (Qwen-S done; advisor=0.595, agent=0.586) |
-| Moral Circuits cells completed | 1 / 6 (Qwen-S: jdg=0.929, rsn=0.946) |
+| MoReBench cells completed | 2 / 15 (Qwen-S: adv=0.595, agt=0.586; Qwen-M: adv=0.395, agt=0.219) |
+| Moral Circuits cells completed | 2 / 6 (Qwen-S: jdg=0.929, rsn=0.946; Qwen-M: jdg=0.192, rsn=0.208) |
 | M³oralBench cells completed | 0 / 15 (Qwen-S partial: fnd=0.047, jdg+rsp error) |
 | MoralLens cells completed | 1 / 15 (Qwen-S: cot=0.921, ds=0.378, ph=0.887) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
