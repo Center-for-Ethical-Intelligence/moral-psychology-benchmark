@@ -57,3 +57,54 @@ dQLd5xZfNMu.eval
 
   >> MoralCircuits (evals/moral_circuits.py)
   >> Started: Wed Apr 29 16:59:59 PDT 2026
+Loaded 2 task(s) from evals/moral_circuits.py
+Running 2 task(s) with model: openai/qwen/qwen3-8b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│moral_circuits_judgment (480 samples): openai/qwen/qwen3-8b                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 5, max_tasks: 1, dataset: moral_circuits_judgment              
+                                                                                
+total time:           0:15:26                                                   
+openai/qwen/qwen3-8b  181,806 tokens [I: 22,007, CW: 0, CR: 0, O: 159,799, R:   
+                    156,644]                                                    
+                                                                                
+_moral_judgment_scorer                                                          
+accuracy                0.929                                                   
+stderr                  0.012                                                   
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T00-00-10-00-00_moral-circuits-judgment_6ju
+TCZz7MpVnJyKWtdVKTL.eval                                                        
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│moral_circuits_reasoning (240 samples): openai/qwen/qwen3-8b                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 5, max_tasks: 1, dataset: moral_circuits_reasoning             
+                                                                                
+total time:           0:03:17                                                   
+openai/qwen/qwen3-8b  73,960 tokens [I: 14,782, CW: 0, CR: 0, O: 59,178, R:     
+                    57,467]                                                     
+                                                                                
+_foundation_id_scorer                                                           
+accuracy               0.946                                                    
+stderr                 0.015                                                    
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T00-15-36-00-00_moral-circuits-reasoning_Zy
+EnBFVXgSYifhMKtkpMoZ.eval                                                       
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T00-00-10-00-00_moral-circuits-judgment_6juTCZz7MpVnJyKWtdVKTL.eval
+    status: success
+[04/29/26 17:18:53] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.9291666666666667 params={} metadata=None
+    stderr: name='stderr' value=0.0117218968074521 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T00-15-36-00-00_moral-circuits-reasoning_ZyEnBFVXgSYifhMKtkpMoZ.eval
+    status: success
+    accuracy: name='accuracy' value=0.9458333333333333 params={} metadata=None
+    stderr: name='stderr' value=0.014641123789219545 params={} metadata=None
+  >> MoralCircuits DONE: Wed Apr 29 17:18:53 PDT 2026
+
+  >> M3oralBench (evals/m3oralbench.py)
+  >> Started: Wed Apr 29 17:18:53 PDT 2026
