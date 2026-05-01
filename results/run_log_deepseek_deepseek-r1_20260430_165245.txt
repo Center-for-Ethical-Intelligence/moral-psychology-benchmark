@@ -1,0 +1,388 @@
+=== deepseek/deepseek-r1 started: Thu Apr 30 16:52:45 PDT 2026 ===
+  >> MoReBench started: Thu Apr 30 16:52:45 PDT 2026
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/deepseek/deepseek-r1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/deepseek/deepseek-r1                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                  0:12:55                                            
+openai/deepseek/deepseek-r1  408,055 tokens [I: 74,154, CW: 0, CR: 0, O:        
+                           333,901, R: 183,090]                                 
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.524                                                 
+stderr                    0.014                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_7yytFUrWS
+vPA58UkYtGRFb.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/deepseek/deepseek-r1                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                  0:03:46                                            
+openai/deepseek/deepseek-r1  282,904 tokens [I: 50,896, CW: 0, CR: 0, O:        
+                           232,008, R: 126,199]                                 
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.499                                                 
+stderr                    0.016                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-05-44-00-00_morebench-agent_YeC6R2iSFW7
+4cdb3gYQimt.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_7yytFUrWSvPA58UkYtGRFb.eval
+    status: success
+[04/30/26 17:09:30] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.5238907849829352 params={} metadata=None
+    stderr: name='stderr' value=0.013922051332842945 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-05-44-00-00_morebench-agent_YeC6R2iSFW74cdb3gYQimt.eval
+    status: success
+    mean: name='mean' value=0.49879227053140096 params={} metadata=None
+    stderr: name='stderr' value=0.016015269661597383 params={} metadata=None
+  >> MoReBench finished: Thu Apr 30 17:09:31 PDT 2026
+
+  >> MoralCircuits SKIPPED
+  >> M3oralBench started: Thu Apr 30 17:09:31 PDT 2026
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/deepseek/deepseek-r1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples): openai/deepseek/deepseek-r1           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_foundation                           
+                                                                                
+total time:                  0:03:44                                            
+openai/deepseek/deepseek-r1  429,709 tokens [I: 209,594, CW: 0, CR: 0, O:       
+                           220,115, R: 220,056]                                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.028                                                        
+stderr             0.005                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-09-32-00-00_m3oralbench-foundation_o4sh
+XMhPALKv9DSJRSPkA7.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/deepseek/deepseek-r1             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                  0:15:25                                            
+openai/deepseek/deepseek-r1  595,949 tokens [I: 99,024, CW: 0, CR: 0, O:        
+                           496,925, R: 440,756]                                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.178                                                        
+stderr             0.008                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-13-16-00-00_m3oralbench-judgment_QumtS5
+DK9GFzKWp68aewUs.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/deepseek/deepseek-r1             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                  0:07:21                                            
+openai/deepseek/deepseek-r1  471,462 tokens [I: 43,683, CW: 0, CR: 0, O:        
+                           427,779, R: 407,967]                                 
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.144                                                 
+stderr                    0.005                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-28-41-00-00_m3oralbench-response_J9KJ9X
+gnjJTT5jRk5nJkCU.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-09-32-00-00_m3oralbench-foundation_o4shXMhPALKv9DSJRSPkA7.eval
+    status: success
+[04/30/26 17:36:02] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.027586206896551724 params={} metadata=None
+    stderr: name='stderr' value=0.004810938794478807 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-13-16-00-00_m3oralbench-judgment_QumtS5DK9GFzKWp68aewUs.eval
+    status: success
+    accuracy: name='accuracy' value=0.17844827586206896 params={} metadata=None
+    stderr: name='stderr' value=0.007951027572481083 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-28-41-00-00_m3oralbench-response_J9KJ9XgnjJTT5jRk5nJkCU.eval
+    status: success
+    mean: name='mean' value=0.14413218390804597 params={} metadata=None
+    stderr: name='stderr' value=0.0046506215946170715 params={} metadata=None
+  >> M3oralBench finished: Thu Apr 30 17:36:03 PDT 2026
+
+  >> MoralLens started: Thu Apr 30 17:36:03 PDT 2026
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/deepseek/deepseek-r1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/deepseek/deepseek-r1                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:                  0:15:06                                            
+openai/deepseek/deepseek-r1  1,000,433 tokens [I: 46,344, CW: 0, CR: 0, O:      
+                           954,089, R: 756,179]                                 
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.615                                              
+stderr                       0.018                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-36-10-00-00_morallens-cot_Fz7MCpgB3cSD5
+kcsB8bBwG.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples): openai/deepseek/deepseek-r1        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1700 │   │   │   break                                                     │
+│   1701 │   │                                                                 │
+│   1702 │   │   assert response is not None, "could not resolve response (sho │
+│ ❱ 1703 │   │   return await self._process_response(                          │
+│   1704 │   │   │   cast_to=cast_to,                                          │
+│   1705 │   │   │   options=options,                                          │
+│   1706 │   │   │   response=response,                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _process_response                                                         │
+│                                                                              │
+│   1789 │   │   if bool(response.request.headers.get(RAW_RESPONSE_HEADER)):   │
+│   1790 │   │   │   return cast(ResponseT, api_response)                      │
+│   1791 │   │                                                                 │
+│ ❱ 1792 │   │   return await api_response.parse()                             │
+│   1793 │                                                                     │
+│   1794 │   def _request_api_list(                                            │
+│   1795 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in parse                                                                     │
+│                                                                              │
+│   430 │   │   if not self._is_sse_stream:                                    │
+│   431 │   │   │   await self.read()                                          │
+│   432 │   │                                                                  │
+│ ❱ 433 │   │   parsed = self._parse(to=to)                                    │
+│   434 │   │   if is_given(self._options.post_parser):                        │
+│   435 │   │   │   parsed = self._options.post_parser(parsed)                 │
+│   436                                                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _parse                                                                    │
+│                                                                              │
+│   265 │   │   │   # handle the response however you need to.                 │
+│   266 │   │   │   return response.text  # type: ignore                       │
+│   267 │   │                                                                  │
+│ ❱ 268 │   │   data = response.json()                                         │
+│   269 │   │                                                                  │
+│   270 │   │   return self._client._process_response_data(                    │
+│   271 │   │   │   data=data,                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in json                                                                      │
+│                                                                              │
+│    829 │   │   raise HTTPStatusError(message, request=request, response=self │
+│    830 │                                                                     │
+│    831 │   def json(self, **kwargs: typing.Any) -> typing.Any:               │
+│ ❱  832 │   │   return jsonlib.loads(self.content, **kwargs)                  │
+│    833 │                                                                     │
+│    834 │   @property                                                         │
+│    835 │   def cookies(self) -> Cookies:                                     │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in loads                                                                     │
+│                                                                              │
+│   343 │   if (cls is None and object_hook is None and                        │
+│   344 │   │   │   parse_int is None and parse_float is None and              │
+│   345 │   │   │   parse_constant is None and object_pairs_hook is None and n │
+│ ❱ 346 │   │   return _default_decoder.decode(s)                              │
+│   347 │   if cls is None:                                                    │
+│   348 │   │   cls = JSONDecoder                                              │
+│   349 │   if object_hook is not None:                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in decode                                                                    │
+│                                                                              │
+│   334 │   │   containing a JSON document).                                   │
+│   335 │   │                                                                  │
+│   336 │   │   """                                                            │
+│ ❱ 337 │   │   obj, end = self.raw_decode(s, idx=_w(s, 0).end())              │
+│   338 │   │   end = _w(s, end).end()                                         │
+│   339 │   │   if end != len(s):                                              │
+│   340 │   │   │   raise JSONDecodeError("Extra data", s, end)                │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in raw_decode                                                                │
+│                                                                              │
+│   352 │   │   try:                                                           │
+│   353 │   │   │   obj, end = self.scan_once(s, idx)                          │
+│   354 │   │   except StopIteration as err:                                   │
+│ ❱ 355 │   │   │   raise JSONDecodeError("Expecting value", s, err.value) fro │
+│   356 │   │   return obj, end                                                │
+│   357                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+JSONDecodeError: Expecting value: line 341 column 1 (char 1870)                 
+                                                                                
+Task interrupted (70 of 1,344 total samples logged before interruption).        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-51-16-00-00_morallens-double-standard_P
+VK6ZCXXTkgFgVD9p9pnjB.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/deepseek/deepseek-r1                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:                  0:09:08                                            
+openai/deepseek/deepseek-r1  604,967 tokens [I: 39,608, CW: 0, CR: 0, O:        
+                           565,359, R: 432,233]                                 
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.674                                              
+stderr                       0.017                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-52-51-00-00_morallens-posthoc_Nh3UDUYDA
+YqHj3cNWurUys.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-36-10-00-00_morallens-cot_Fz7MCpgB3cSD5kcsB8bBwG.eval
+    status: success
+[04/30/26 18:01:59] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+
+One or more eval logs finished with non-success status.
+    mean: name='mean' value=0.6145833333333334 params={} metadata=None
+    stderr: name='stderr' value=0.017881428940939987 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-51-16-00-00_morallens-double-standard_PVK6ZCXXTkgFgVD9p9pnjB.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-52-51-00-00_morallens-posthoc_Nh3UDUYDAYqHj3cNWurUys.eval
+    status: success
+    mean: name='mean' value=0.6741071428571429 params={} metadata=None
+    stderr: name='stderr' value=0.017020592584286637 params={} metadata=None
+  >> MoralLens finished: Thu Apr 30 18:01:59 PDT 2026
+
+=== deepseek/deepseek-r1 complete: Thu Apr 30 18:01:59 PDT 2026 ===

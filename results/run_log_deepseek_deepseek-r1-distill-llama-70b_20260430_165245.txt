@@ -1,0 +1,197 @@
+=== deepseek/deepseek-r1-distill-llama-70b started: Thu Apr 30 16:52:45 PDT 2026 ===
+  >> MoReBench started: Thu Apr 30 16:52:45 PDT 2026
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/deepseek/deepseek-r1-distill-llama-70b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/deepseek/deepseek-r1-distill-llama-70b│
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                               0:10:05                               
+openai/deepseek/deepseek-r1-distill-lla…  359,390 tokens [I: 73,114, CW: 0, CR: 
+                                        0, O: 286,276, R: 298,071]              
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.360                                                 
+stderr                    0.013                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_fruCGZhjk
+2Cju4drhhuz5W.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/deepseek/deepseek-r1-distill-llama-70b  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                               0:02:11                               
+openai/deepseek/deepseek-r1-distill-lla…  254,678 tokens [I: 50,588, CW: 0, CR: 
+                                        0, O: 204,090, R: 237,773]              
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.273                                                 
+stderr                    0.017                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-02-55-00-00_morebench-agent_83Ydzmc2CUT
+MvwDDsPAMqE.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_fruCGZhjk2Cju4drhhuz5W.eval
+    status: success
+[04/30/26 17:05:06] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.36006825938566556 params={} metadata=None
+    stderr: name='stderr' value=0.013301668676481873 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-02-55-00-00_morebench-agent_83Ydzmc2CUTMvwDDsPAMqE.eval
+    status: success
+    mean: name='mean' value=0.27294685990338163 params={} metadata=None
+    stderr: name='stderr' value=0.016742827544267348 params={} metadata=None
+  >> MoReBench finished: Thu Apr 30 17:05:07 PDT 2026
+
+  >> MoralCircuits SKIPPED
+  >> M3oralBench started: Thu Apr 30 17:05:07 PDT 2026
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/deepseek/deepseek-r1-distill-llama-70b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples):                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_foundation                           
+                                                                                
+total time:                               0:00:56                               
+openai/deepseek/deepseek-r1-distill-lla…  285,062 tokens [I: 210,822, CW: 0, CR:
+                                        0, O: 74,240, R: 85,338]                
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.000                                                        
+stderr             0.000                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-05-08-00-00_m3oralbench-foundation_2nXu
+v4B3TexhEL6TVddSXC.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples):                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                               0:01:31                               
+openai/deepseek/deepseek-r1-distill-lla…  248,020 tokens [I: 99,540, CW: 0, CR: 
+                                        0, O: 148,480, R: 159,477]              
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.000                                                        
+stderr             0.000                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-06-04-00-00_m3oralbench-judgment_eKe5KQ
+ZGo8rpgyT4QBPckW.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples):                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                               0:02:20                               
+openai/deepseek/deepseek-r1-distill-lla…  336,848 tokens [I: 44,966, CW: 0, CR: 
+                                        0, O: 291,882, R: 344,848]              
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.014                                                 
+stderr                    0.001                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-07-35-00-00_m3oralbench-response_SBwmEV
+ZJ5ekJS5XFFfcFaV.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-05-08-00-00_m3oralbench-foundation_2nXuv4B3TexhEL6TVddSXC.eval
+    status: success
+[04/30/26 17:09:55] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.0 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-06-04-00-00_m3oralbench-judgment_eKe5KQZGo8rpgyT4QBPckW.eval
+    status: success
+    accuracy: name='accuracy' value=0.0 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-07-35-00-00_m3oralbench-response_SBwmEVZJ5ekJS5XFFfcFaV.eval
+    status: success
+    mean: name='mean' value=0.013534482758620691 params={} metadata=None
+    stderr: name='stderr' value=0.0013740707787003811 params={} metadata=None
+  >> M3oralBench finished: Thu Apr 30 17:09:56 PDT 2026
+
+  >> MoralLens started: Thu Apr 30 17:09:56 PDT 2026
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/deepseek/deepseek-r1-distill-llama-70b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/deepseek/deepseek-r1-distill-llama-70b    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:                               0:02:54                               
+openai/deepseek/deepseek-r1-distill-lla…  389,848 tokens [I: 46,054, CW: 0, CR: 
+                                        0, O: 343,794, R: 420,538]              
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.012                                              
+stderr                       0.004                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-09-58-00-00_morallens-cot_XvCVrm3FpmCUV
+44hyeBoGZ.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples):                                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 134,        
+score_display: False, dataset: morallens_double_standard                        
+                                                                                
+total time:                               0:05:28                               
+openai/deepseek/deepseek-r1-distill-lla…  773,301 tokens [I: 85,504, CW: 0, CR: 
+                                        0, O: 687,797, R: 835,925]              
+                                                                                
+_double_standard_scorer                                                         
+mean                     0.006                                                  
+stderr                   0.002                                                  
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-12-52-00-00_morallens-double-standard_P
+itpQ7e6FpfHKkf9nbNiGR.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/deepseek/deepseek-r1-distill-llama-70b│
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:                               0:09:45                               
+openai/deepseek/deepseek-r1-distill-lla…  383,072 tokens [I: 39,300, CW: 0, CR: 
+                                        0, O: 343,772, R: 415,174]              
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.062                                              
+stderr                       0.009                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-18-20-00-00_morallens-posthoc_WpPVYxGHD
+DPwnaQp9UV7EK.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-09-58-00-00_morallens-cot_XvCVrm3FpmCUV44hyeBoGZ.eval
+    status: success
+[04/30/26 17:28:05] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.011904761904761904 params={} metadata=None
+    stderr: name='stderr' value=0.004186956993510141 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-12-52-00-00_morallens-double-standard_PitpQ7e6FpfHKkf9nbNiGR.eval
+    status: success
+    mean: name='mean' value=0.005952380952380952 params={} metadata=None
+    stderr: name='stderr' value=0.00209899279348868 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-18-20-00-00_morallens-posthoc_WpPVYxGHDDPwnaQp9UV7EK.eval
+    status: success
+    mean: name='mean' value=0.061755952380952384 params={} metadata=None
+    stderr: name='stderr' value=0.008896309890128537 params={} metadata=None
+  >> MoralLens finished: Thu Apr 30 17:28:05 PDT 2026
+
+=== deepseek/deepseek-r1-distill-llama-70b complete: Thu Apr 30 17:28:05 PDT 2026 ===

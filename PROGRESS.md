@@ -25,18 +25,18 @@
 | `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
 | `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
 | `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | Queue | MRB: adv=0.611, agt=0.587; MC: jdg=0.933, rsn=0.938; M3: fnd=0.035, jdg=0.483, rsp=credit_err |
-| `DeepSeek-S` (R1-Distill-70B) | **Done** | Queue | Queue | Queue | Queue | |
-| `DeepSeek-M` (Chat V3.1) | **Done** | Queue | Queue | Queue | Queue | |
-| `DeepSeek-L` (DeepSeek-R1) | **Done** | Queue | Queue | Queue | Queue | |
-| `Llama-S` (Llama-3.2-3B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Llama-M` (Llama-3.1-8B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Llama-L` (Llama-3.3-70B) | **Done** | Queue | **Queue** | Queue | Queue | Moral Circuits requires open-weight |
-| `Gemma-S` (Gemma-3-4B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `Gemma-M` (Gemma-3-12B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `Gemma-L` (Gemma-3-27B) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-S` (MiniMax-01) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-M` (MiniMax-M1) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
-| `MiniMax-L` (MiniMax-M2.5) | **Done** | Queue | N/A | Queue | Queue | Moral Circuits: Llama/Qwen only |
+| `DeepSeek-S` (R1-Distill-70B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.360, agt=0.273; M3: all~0; ML: cot=0.012, ph=0.062, ds=0.006 |
+| `DeepSeek-M` (Chat V3.1) | **Done** | **Partial** | N/A | **Done** | **Done** | MRB: adv=ERR, agt=0.700; M3: fnd=0.077, jdg=0.483; ML: cot=0.890, ph=0.882, ds=0.421 |
+| `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Partial** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: cot=0.615, ph=0.674, ds=ERR |
+| `Llama-S` (Llama-3.2-3B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.573, agt=0.566; MC: jdg=0.913, rsn=0.683; ML: cot=0.899, ds=0.445 |
+| `Llama-M` (Llama-3.1-8B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.535, agt=0.553; MC: jdg=0.950, rsn=0.963; ML: cot=0.888, ds=0.456 |
+| `Llama-L` (Llama-3.3-70B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.616, agt=0.639; MC: jdg=0.960, rsn=0.992; ML: cot=0.930, ds=0.500 |
+| `Gemma-S` (Gemma-3-4B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.642, agt=0.604; M3: fnd=0.225, jdg=0.489; ML: cot=0.940, ds=0.618 |
+| `Gemma-M` (Gemma-3-12B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.643, agt=0.618; M3: fnd=0.161, jdg=0.500; ML: cot=0.921, ds=0.567 |
+| `Gemma-L` (Gemma-3-27B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.645, agt=0.633; M3: fnd=0.113, jdg=0.500; ML: cot=0.958, ds=0.658 |
+| `MiniMax-S` (MiniMax-01) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.670, agt=0.716; M3: fnd=0.115, jdg=0.500; ML: cot=0.900, ds=0.440 |
+| `MiniMax-M` (MiniMax-M1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.528, agt=0.548; ML: cot=0.273, ph=0.586, ds=0.211 |
+| `MiniMax-L` (MiniMax-M2.5) | **Done** | **Done** | N/A | **Partial** | **Partial** | MRB: adv=0.445, agt=0.435; M3+ML: 402 credit error mid-run |
 
 ---
 
@@ -75,6 +75,42 @@
 - **Temperature degrades consistency** — T=0.7 causes framework mixing and higher reversal rates
 - **Footbridge is the cracking point** — physically-direct push variant breaks consequentialism first
 - **Same actions, different frameworks** — Qwen-M frames similar decisions via deontology vs Qwen-L's consequentialism
+
+---
+
+## Completed Results (Inspect AI Benchmarks)
+
+### Full Results Table
+
+| Line | MRB adv | MRB agt | MC jdg | MC rsn | M3 fnd | M3 jdg | M3 rsp | ML cot | ML ph | ML ds |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `Qwen-S` | — | — | — | — | 0.047 | ERR | ERR | 0.921 | 0.887 | 0.378 |
+| `Qwen-M` | — | — | — | — | 0.012 | 0.076 | 0.005 | 0.243 | 0.307 | 0.103 |
+| `Qwen-L` | 0.611 | 0.587 | 0.933 | 0.938 | 0.035 | 0.483 | ERR | — | — | — |
+| `DeepSeek-S` | 0.360 | 0.273 | N/A | N/A | 0.000 | 0.000 | 0.014 | 0.012 | 0.062 | 0.006 |
+| `DeepSeek-M` | ERR | 0.700 | N/A | N/A | 0.077 | 0.483 | 0.030 | 0.890 | 0.882 | 0.421 |
+| `DeepSeek-L` | 0.524 | 0.499 | N/A | N/A | 0.028 | 0.178 | 0.144 | 0.615 | 0.674 | ERR |
+| `Llama-S` | 0.573 | 0.566 | 0.913 | 0.683 | 0.000 | 0.000 | 0.047 | 0.899 | 0.830 | 0.445 |
+| `Llama-M` | 0.535 | 0.553 | 0.950 | 0.963 | 0.008 | 0.000 | 0.061 | 0.888 | 0.791 | 0.456 |
+| `Llama-L` | 0.616 | 0.639 | 0.960 | 0.992 | 0.037 | 0.003 | 0.007 | 0.930 | 0.894 | 0.500 |
+| `Gemma-S` | 0.642 | 0.604 | N/A | N/A | 0.225 | 0.489 | 0.218 | 0.940 | 0.859 | 0.618 |
+| `Gemma-M` | 0.643 | 0.618 | N/A | N/A | 0.161 | 0.500 | 0.007 | 0.921 | 0.837 | 0.567 |
+| `Gemma-L` | 0.645 | 0.633 | N/A | N/A | 0.113 | 0.500 | 0.007 | 0.958 | 0.830 | 0.658 |
+| `MiniMax-S` | 0.670 | 0.716 | N/A | N/A | 0.115 | 0.500 | 0.007 | 0.900 | 0.925 | 0.440 |
+| `MiniMax-M` | 0.528 | 0.548 | N/A | N/A | 0.000 | 0.001 | 0.002 | 0.273 | 0.586 | 0.211 |
+| `MiniMax-L` | 0.445 | 0.435 | N/A | N/A | ERR | 0.000 | ERR | ERR | ERR | ERR |
+
+**Column key:** MRB=MoReBench (adv=advisor, agt=agent), MC=Moral Circuits (jdg=judgment, rsn=reasoning), M3=M³oralBench (fnd=foundation, jdg=judgment, rsp=response), ML=MoralLens (cot=chain-of-thought, ph=posthoc, ds=double_standard). ERR=task errored (API/credit). —=run in prior session, values pending consolidation.
+
+### Key Observations (Inspect AI)
+
+- **Moral Circuits scales with size** — Llama jdg: 0.913→0.950→0.960; rsn: 0.683→0.963→0.992
+- **MoReBench is family-dependent** — MiniMax-S leads (0.716 agent), while DeepSeek-S trails (0.273)
+- **M³oralBench floor effect** — Most models score near 0 on foundation/judgment tasks (text-only mode, designed for VLMs)
+- **MoralLens CoT is high for most** — Gemma-L (0.958), Gemma-S (0.940), Llama-L (0.930) lead
+- **Double-standard detection varies** — Gemma-L (0.658), Gemma-S (0.618) > Llama-L (0.500) > DeepSeek-S (0.006)
+- **DeepSeek-S (R1-Distill) anomalously low** — Near-zero on MoralLens (cot=0.012) and M³oralBench, suggesting formatting/parsing issues
+- **MiniMax-M underperforms MiniMax-S** — Inverted size scaling on MoReBench and MoralLens
 
 ---
 
@@ -149,10 +185,11 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | --- | --- |
 | Harnesses complete | 5 / 5 |
 | TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
-| MoReBench cells completed | 3 / 15 (Qwen-L best: adv=0.611, agt=0.587) |
-| Moral Circuits cells completed | 3 / 6 (Qwen-S: 0.929; Qwen-M: 0.192; Qwen-L: 0.933) |
-| M³oralBench cells completed | 1 / 15 (Qwen-M: fnd=0.012, jdg=0.076, rsp=0.005; Qwen-S+L partial) |
-| MoralLens cells completed | 2 / 15 (Qwen-S: cot=0.921; Qwen-M: cot=0.243) |
+| MoReBench cells completed | 14 / 15 (DeepSeek-M advisor ERR; MiniMax-S best: adv=0.670, agt=0.716) |
+| Moral Circuits cells completed | 6 / 6 (Llama-L best: jdg=0.960, rsn=0.992) |
+| M³oralBench cells completed | 13 / 15 (Qwen-S+L partial, MiniMax-L partial; Gemma-S best: fnd=0.225) |
+| MoralLens cells completed | 13 / 15 (Qwen-L queue, DeepSeek-L ds=ERR; Gemma-L best: cot=0.958, ds=0.658) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
-| Blocker | OpenRouter credits exhausted (402 error). Need credit top-up to continue. |
-| Next step | Top up credits, then run run_parallel_remaining.sh (4 streams, max_connections=20) |
+| Cells completed | ~69 / 75 (~92%) |
+| Remaining | Qwen-L ML, Qwen-S M3 (partial), Qwen-L M3 rsp, DeepSeek-M MRB adv, DeepSeek-L ML ds, MiniMax-L M3+ML |
+| Next step | Rerun failed tasks after credit top-up |

@@ -1,0 +1,246 @@
+=== meta-llama/llama-3.3-70b-instruct started: Thu Apr 30 16:52:45 PDT 2026 ===
+  >> MoReBench started: Thu Apr 30 16:52:45 PDT 2026
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/meta-llama/llama-3.3-70b-instruct
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/meta-llama/llama-3.3-70b-instruct     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                               0:02:19                               
+openai/meta-llama/llama-3.3-70b-instruct  246,933 tokens [I: 76,912, CW: 0, CR: 
+                                        80, O: 169,941, R: 0]                   
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.616                                                 
+stderr                    0.009                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_Vt9qXpWcH
+gTVVivQmr7kid.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/meta-llama/llama-3.3-70b-instruct       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                               0:08:18                               
+openai/meta-llama/llama-3.3-70b-instruct  180,351 tokens [I: 53,504, CW: 0, CR: 
+                                        96, O: 126,751, R: 0]                   
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.639                                                 
+stderr                    0.010                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-55-08-00-00_morebench-agent_PSNZvVAeMGf
+jXDJZKdws3p.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_Vt9qXpWcHgTVVivQmr7kid.eval
+    status: success
+[04/30/26 17:03:27] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.6160409556313993 params={} metadata=None
+    stderr: name='stderr' value=0.008752822263155558 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-55-08-00-00_morebench-agent_PSNZvVAeMGfjXDJZKdws3p.eval
+    status: success
+    mean: name='mean' value=0.6388888888888888 params={} metadata=None
+    stderr: name='stderr' value=0.010064568577495289 params={} metadata=None
+  >> MoReBench finished: Thu Apr 30 17:03:27 PDT 2026
+
+  >> MoralCircuits started: Thu Apr 30 17:03:27 PDT 2026
+Loaded 2 task(s) from evals/moral_circuits.py
+Running 2 task(s) with model: openai/meta-llama/llama-3.3-70b-instruct
+╭──────────────────────────────────────────────────────────────────────────────╮
+│moral_circuits_judgment (480 samples):                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: moral_circuits_judgment             
+                                                                                
+total time:                               0:00:30                               
+openai/meta-llama/llama-3.3-70b-instruct  27,860 tokens [I: 26,380, CW: 0, CR:  
+                                        0, O: 1,480, R: 0]                      
+                                                                                
+_moral_judgment_scorer                                                          
+accuracy                0.960                                                   
+stderr                  0.009                                                   
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-03-29-00-00_moral-circuits-judgment_mY4
+vUzGgSPJrt7T8qYJQ9B.eval                                                        
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│moral_circuits_reasoning (240 samples):                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: moral_circuits_reasoning            
+                                                                                
+total time:                               0:00:19                               
+openai/meta-llama/llama-3.3-70b-instruct  17,628 tokens [I: 16,916, CW: 0, CR:  
+                                        0, O: 712, R: 0]                        
+                                                                                
+_foundation_id_scorer                                                           
+accuracy               0.992                                                    
+stderr                 0.006                                                    
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-03-59-00-00_moral-circuits-reasoning_hS
+3ADxRu7CYQMJ6bZ6bYCQ.eval                                                       
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-03-29-00-00_moral-circuits-judgment_mY4vUzGgSPJrt7T8qYJQ9B.eval
+    status: success
+[04/30/26 17:04:18] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.9604166666666667 params={} metadata=None
+    stderr: name='stderr' value=0.008908780714058501 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-03-59-00-00_moral-circuits-reasoning_hS3ADxRu7CYQMJ6bZ6bYCQ.eval
+    status: success
+    accuracy: name='accuracy' value=0.9916666666666667 params={} metadata=None
+    stderr: name='stderr' value=0.005880216063861438 params={} metadata=None
+  >> MoralCircuits finished: Thu Apr 30 17:04:18 PDT 2026
+
+  >> M3oralBench started: Thu Apr 30 17:04:18 PDT 2026
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/meta-llama/llama-3.3-70b-instruct
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples):                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_foundation                           
+                                                                                
+total time:                               0:01:41                               
+openai/meta-llama/llama-3.3-70b-instruct  261,093 tokens [I: 220,612, CW: 0, CR:
+                                        2,880, O: 37,601, R: 0]                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.037                                                        
+stderr             0.006                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-04-20-00-00_m3oralbench-foundation_BTib
+op5ajkifMowDmjbXj3.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/meta-llama/llama-3.3-70b-instruct│
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                               0:01:22                               
+openai/meta-llama/llama-3.3-70b-instruct  192,916 tokens [I: 30,653, CW: 0, CR: 
+                                        86,416, O: 75,847, R: 0]                
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.003                                                        
+stderr             0.001                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-06-01-00-00_m3oralbench-judgment_NDmoeC
+9d8hkeKKsdn4Gup7.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/meta-llama/llama-3.3-70b-instruct│
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                               0:00:11                               
+openai/meta-llama/llama-3.3-70b-instruct  56,356 tokens [I: 19,567, CW: 0, CR:  
+                                        33,312, O: 3,477, R: 0]                 
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.007                                                 
+stderr                    0.000                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-07-23-00-00_m3oralbench-response_DcpHxy
+VjDwN2bTbGbSBSf7.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-04-20-00-00_m3oralbench-foundation_BTibop5ajkifMowDmjbXj3.eval
+    status: success
+[04/30/26 17:07:34] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.03706896551724138 params={} metadata=None
+    stderr: name='stderr' value=0.005549592660682594 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-06-01-00-00_m3oralbench-judgment_NDmoeC9d8hkeKKsdn4Gup7.eval
+    status: success
+    accuracy: name='accuracy' value=0.0034482758620689655 params={} metadata=None
+    stderr: name='stderr' value=0.0012173082046255763 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-07-23-00-00_m3oralbench-response_DcpHxyVjDwN2bTbGbSBSf7.eval
+    status: success
+    mean: name='mean' value=0.006666666666666667 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+  >> M3oralBench finished: Thu Apr 30 17:07:35 PDT 2026
+
+  >> MoralLens started: Thu Apr 30 17:07:35 PDT 2026
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/meta-llama/llama-3.3-70b-instruct
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/meta-llama/llama-3.3-70b-instruct         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:                               0:03:52                               
+openai/meta-llama/llama-3.3-70b-instruct  389,099 tokens [I: 54,439, CW: 0, CR: 
+                                        448, O: 334,212, R: 0]                  
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.930                                              
+stderr                       0.007                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-07-37-00-00_morallens-cot_FqHkiRfqWJXui
+bZLRqcquJ.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples):                                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 134,        
+score_display: False, dataset: morallens_double_standard                        
+                                                                                
+total time:                               0:05:38                               
+openai/meta-llama/llama-3.3-70b-instruct  592,593 tokens [I: 101,058, CW: 0, CR:
+                                        1,408, O: 490,127, R: 0]                
+                                                                                
+_double_standard_scorer                                                         
+mean                     0.500                                                  
+stderr                   0.014                                                  
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-11-30-00-00_morallens-double-standard_8
+pzjFfNmrfJRkqzeMJLj7S.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/meta-llama/llama-3.3-70b-instruct     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:                               0:02:10                               
+openai/meta-llama/llama-3.3-70b-instruct  203,407 tokens [I: 47,107, CW: 0, CR: 
+                                        1,088, O: 155,212, R: 0]                
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.894                                              
+stderr                       0.009                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-17-09-00-00_morallens-posthoc_SGRP2dsWw
+Rm5mRHvh3LiLd.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-07-37-00-00_morallens-cot_FqHkiRfqWJXuibZLRqcquJ.eval
+    status: success
+[04/30/26 17:19:19] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.9300595238095238 params={} metadata=None
+    stderr: name='stderr' value=0.006695258001758823 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-11-30-00-00_morallens-double-standard_8pzjFfNmrfJRkqzeMJLj7S.eval
+    status: success
+    mean: name='mean' value=0.5 params={} metadata=None
+    stderr: name='stderr' value=0.013643694863595455 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-17-09-00-00_morallens-posthoc_SGRP2dsWwRm5mRHvh3LiLd.eval
+    status: success
+    mean: name='mean' value=0.8936011904761905 params={} metadata=None
+    stderr: name='stderr' value=0.009075897498588514 params={} metadata=None
+  >> MoralLens finished: Thu Apr 30 17:19:19 PDT 2026
+
+=== meta-llama/llama-3.3-70b-instruct complete: Thu Apr 30 17:19:19 PDT 2026 ===
