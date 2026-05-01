@@ -22,12 +22,12 @@
 
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
-| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.047, jdg+rsp=error |
+| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.067, jdg+rsp=JSONDecodeError |
 | `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
-| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | Queue | MRB: adv=0.611, agt=0.587; MC: jdg=0.933, rsn=0.938; M3: fnd=0.035, jdg=0.483, rsp=credit_err |
+| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | **Partial** | MC: jdg=0.933, rsn=0.938; M3+ML: persistent JSONDecodeError via OpenRouter |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.360, agt=0.273; M3: all~0; ML: cot=0.012, ph=0.062, ds=0.006 |
-| `DeepSeek-M` (Chat V3.1) | **Done** | **Partial** | N/A | **Done** | **Done** | MRB: adv=ERR, agt=0.700; M3: fnd=0.077, jdg=0.483; ML: cot=0.890, ph=0.882, ds=0.421 |
-| `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Partial** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: cot=0.615, ph=0.674, ds=ERR |
+| `DeepSeek-M` (Chat V3.1) | **Done** | **Partial** | N/A | **Done** | **Done** | MRB: adv=JSONDecodeError, agt=0.700; M3: fnd=0.077, jdg=0.483; ML: cot=0.890, ds=0.421 |
+| `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Partial** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: all 3 JSONDecodeError |
 | `Llama-S` (Llama-3.2-3B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.573, agt=0.566; MC: jdg=0.913, rsn=0.683; ML: cot=0.899, ds=0.445 |
 | `Llama-M` (Llama-3.1-8B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.535, agt=0.553; MC: jdg=0.950, rsn=0.963; ML: cot=0.888, ds=0.456 |
 | `Llama-L` (Llama-3.3-70B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.616, agt=0.639; MC: jdg=0.960, rsn=0.992; ML: cot=0.930, ds=0.500 |
@@ -36,7 +36,7 @@
 | `Gemma-L` (Gemma-3-27B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.645, agt=0.633; M3: fnd=0.113, jdg=0.500; ML: cot=0.958, ds=0.658 |
 | `MiniMax-S` (MiniMax-01) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.670, agt=0.716; M3: fnd=0.115, jdg=0.500; ML: cot=0.900, ds=0.440 |
 | `MiniMax-M` (MiniMax-M1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.528, agt=0.548; ML: cot=0.273, ph=0.586, ds=0.211 |
-| `MiniMax-L` (MiniMax-M2.5) | **Done** | **Done** | N/A | **Partial** | **Partial** | MRB: adv=0.445, agt=0.435; M3+ML: 402 credit error mid-run |
+| `MiniMax-L` (MiniMax-M2.5) | **Done** | **Done** | N/A | **Partial** | **Partial** | MRB: adv=0.445, agt=0.435; M3: rsp=0.011; ML: all 3 JSONDecodeError |
 
 ---
 
@@ -84,7 +84,7 @@
 
 | Line | MRB adv | MRB agt | MC jdg | MC rsn | M3 fnd | M3 jdg | M3 rsp | ML cot | ML ph | ML ds |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `Qwen-S` | — | — | — | — | 0.047 | ERR | ERR | 0.921 | 0.887 | 0.378 |
+| `Qwen-S` | — | — | — | — | 0.067 | ERR | ERR | 0.921 | 0.887 | 0.378 |
 | `Qwen-M` | — | — | — | — | 0.012 | 0.076 | 0.005 | 0.243 | 0.307 | 0.103 |
 | `Qwen-L` | 0.611 | 0.587 | 0.933 | 0.938 | 0.035 | 0.483 | ERR | — | — | — |
 | `DeepSeek-S` | 0.360 | 0.273 | N/A | N/A | 0.000 | 0.000 | 0.014 | 0.012 | 0.062 | 0.006 |
@@ -98,7 +98,7 @@
 | `Gemma-L` | 0.645 | 0.633 | N/A | N/A | 0.113 | 0.500 | 0.007 | 0.958 | 0.830 | 0.658 |
 | `MiniMax-S` | 0.670 | 0.716 | N/A | N/A | 0.115 | 0.500 | 0.007 | 0.900 | 0.925 | 0.440 |
 | `MiniMax-M` | 0.528 | 0.548 | N/A | N/A | 0.000 | 0.001 | 0.002 | 0.273 | 0.586 | 0.211 |
-| `MiniMax-L` | 0.445 | 0.435 | N/A | N/A | ERR | 0.000 | ERR | ERR | ERR | ERR |
+| `MiniMax-L` | 0.445 | 0.435 | N/A | N/A | ERR | 0.000 | 0.011 | ERR | ERR | ERR |
 
 **Column key:** MRB=MoReBench (adv=advisor, agt=agent), MC=Moral Circuits (jdg=judgment, rsn=reasoning), M3=M³oralBench (fnd=foundation, jdg=judgment, rsp=response), ML=MoralLens (cot=chain-of-thought, ph=posthoc, ds=double_standard). ERR=task errored (API/credit). —=run in prior session, values pending consolidation.
 
@@ -191,5 +191,6 @@ All routes via OpenRouter. Model IDs verified against live API on April 21, 2026
 | MoralLens cells completed | 13 / 15 (Qwen-L queue, DeepSeek-L ds=ERR; Gemma-L best: cot=0.958, ds=0.658) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
 | Cells completed | ~69 / 75 (~92%) |
-| Remaining | Qwen-L ML, Qwen-S M3 (partial), Qwen-L M3 rsp, DeepSeek-M MRB adv, DeepSeek-L ML ds, MiniMax-L M3+ML |
-| Next step | Rerun failed tasks after credit top-up |
+| Remaining ERRs | Persistent JSONDecodeError from OpenRouter on 4 models (Qwen-L, DeepSeek-M/L, MiniMax-L) |
+| Blocker | OpenRouter returns malformed responses for large/reasoning models on long benchmarks |
+| Next step | Consider using direct provider APIs (DeepSeek, Qwen) to bypass OpenRouter JSON issues |

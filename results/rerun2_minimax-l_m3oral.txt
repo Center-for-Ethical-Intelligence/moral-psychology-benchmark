@@ -1,0 +1,451 @@
+=== minimax/minimax-m2.5 M3oralBench: Thu Apr 30 22:22:02 PDT 2026 ===
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/minimax/minimax-m2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples): openai/minimax/minimax-m2.5           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1700 │   │   │   break                                                     │
+│   1701 │   │                                                                 │
+│   1702 │   │   assert response is not None, "could not resolve response (sho │
+│ ❱ 1703 │   │   return await self._process_response(                          │
+│   1704 │   │   │   cast_to=cast_to,                                          │
+│   1705 │   │   │   options=options,                                          │
+│   1706 │   │   │   response=response,                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _process_response                                                         │
+│                                                                              │
+│   1789 │   │   if bool(response.request.headers.get(RAW_RESPONSE_HEADER)):   │
+│   1790 │   │   │   return cast(ResponseT, api_response)                      │
+│   1791 │   │                                                                 │
+│ ❱ 1792 │   │   return await api_response.parse()                             │
+│   1793 │                                                                     │
+│   1794 │   def _request_api_list(                                            │
+│   1795 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in parse                                                                     │
+│                                                                              │
+│   430 │   │   if not self._is_sse_stream:                                    │
+│   431 │   │   │   await self.read()                                          │
+│   432 │   │                                                                  │
+│ ❱ 433 │   │   parsed = self._parse(to=to)                                    │
+│   434 │   │   if is_given(self._options.post_parser):                        │
+│   435 │   │   │   parsed = self._options.post_parser(parsed)                 │
+│   436                                                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _parse                                                                    │
+│                                                                              │
+│   265 │   │   │   # handle the response however you need to.                 │
+│   266 │   │   │   return response.text  # type: ignore                       │
+│   267 │   │                                                                  │
+│ ❱ 268 │   │   data = response.json()                                         │
+│   269 │   │                                                                  │
+│   270 │   │   return self._client._process_response_data(                    │
+│   271 │   │   │   data=data,                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in json                                                                      │
+│                                                                              │
+│    829 │   │   raise HTTPStatusError(message, request=request, response=self │
+│    830 │                                                                     │
+│    831 │   def json(self, **kwargs: typing.Any) -> typing.Any:               │
+│ ❱  832 │   │   return jsonlib.loads(self.content, **kwargs)                  │
+│    833 │                                                                     │
+│    834 │   @property                                                         │
+│    835 │   def cookies(self) -> Cookies:                                     │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in loads                                                                     │
+│                                                                              │
+│   343 │   if (cls is None and object_hook is None and                        │
+│   344 │   │   │   parse_int is None and parse_float is None and              │
+│   345 │   │   │   parse_constant is None and object_pairs_hook is None and n │
+│ ❱ 346 │   │   return _default_decoder.decode(s)                              │
+│   347 │   if cls is None:                                                    │
+│   348 │   │   cls = JSONDecoder                                              │
+│   349 │   if object_hook is not None:                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in decode                                                                    │
+│                                                                              │
+│   334 │   │   containing a JSON document).                                   │
+│   335 │   │                                                                  │
+│   336 │   │   """                                                            │
+│ ❱ 337 │   │   obj, end = self.raw_decode(s, idx=_w(s, 0).end())              │
+│   338 │   │   end = _w(s, end).end()                                         │
+│   339 │   │   if end != len(s):                                              │
+│   340 │   │   │   raise JSONDecodeError("Extra data", s, end)                │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in raw_decode                                                                │
+│                                                                              │
+│   352 │   │   try:                                                           │
+│   353 │   │   │   obj, end = self.scan_once(s, idx)                          │
+│   354 │   │   except StopIteration as err:                                   │
+│ ❱ 355 │   │   │   raise JSONDecodeError("Expecting value", s, err.value) fro │
+│   356 │   │   return obj, end                                                │
+│   357                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+JSONDecodeError: Expecting value: line 5533 column 1 (char 30426)               
+                                                                                
+Task interrupted (1,149 of 1,160 total samples logged before interruption).     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T05-22-05-00-00_m3oralbench-foundation_MqFH
+V9YBwNmsXMiVewFx6J.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1700 │   │   │   break                                                     │
+│   1701 │   │                                                                 │
+│   1702 │   │   assert response is not None, "could not resolve response (sho │
+│ ❱ 1703 │   │   return await self._process_response(                          │
+│   1704 │   │   │   cast_to=cast_to,                                          │
+│   1705 │   │   │   options=options,                                          │
+│   1706 │   │   │   response=response,                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _process_response                                                         │
+│                                                                              │
+│   1789 │   │   if bool(response.request.headers.get(RAW_RESPONSE_HEADER)):   │
+│   1790 │   │   │   return cast(ResponseT, api_response)                      │
+│   1791 │   │                                                                 │
+│ ❱ 1792 │   │   return await api_response.parse()                             │
+│   1793 │                                                                     │
+│   1794 │   def _request_api_list(                                            │
+│   1795 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in parse                                                                     │
+│                                                                              │
+│   430 │   │   if not self._is_sse_stream:                                    │
+│   431 │   │   │   await self.read()                                          │
+│   432 │   │                                                                  │
+│ ❱ 433 │   │   parsed = self._parse(to=to)                                    │
+│   434 │   │   if is_given(self._options.post_parser):                        │
+│   435 │   │   │   parsed = self._options.post_parser(parsed)                 │
+│   436                                                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _parse                                                                    │
+│                                                                              │
+│   265 │   │   │   # handle the response however you need to.                 │
+│   266 │   │   │   return response.text  # type: ignore                       │
+│   267 │   │                                                                  │
+│ ❱ 268 │   │   data = response.json()                                         │
+│   269 │   │                                                                  │
+│   270 │   │   return self._client._process_response_data(                    │
+│   271 │   │   │   data=data,                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in json                                                                      │
+│                                                                              │
+│    829 │   │   raise HTTPStatusError(message, request=request, response=self │
+│    830 │                                                                     │
+│    831 │   def json(self, **kwargs: typing.Any) -> typing.Any:               │
+│ ❱  832 │   │   return jsonlib.loads(self.content, **kwargs)                  │
+│    833 │                                                                     │
+│    834 │   @property                                                         │
+│    835 │   def cookies(self) -> Cookies:                                     │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in loads                                                                     │
+│                                                                              │
+│   343 │   if (cls is None and object_hook is None and                        │
+│   344 │   │   │   parse_int is None and parse_float is None and              │
+│   345 │   │   │   parse_constant is None and object_pairs_hook is None and n │
+│ ❱ 346 │   │   return _default_decoder.decode(s)                              │
+│   347 │   if cls is None:                                                    │
+│   348 │   │   cls = JSONDecoder                                              │
+│   349 │   if object_hook is not None:                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in decode                                                                    │
+│                                                                              │
+│   334 │   │   containing a JSON document).                                   │
+│   335 │   │                                                                  │
+│   336 │   │   """                                                            │
+│ ❱ 337 │   │   obj, end = self.raw_decode(s, idx=_w(s, 0).end())              │
+│   338 │   │   end = _w(s, end).end()                                         │
+│   339 │   │   if end != len(s):                                              │
+│   340 │   │   │   raise JSONDecodeError("Extra data", s, end)                │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in raw_decode                                                                │
+│                                                                              │
+│   352 │   │   try:                                                           │
+│   353 │   │   │   obj, end = self.scan_once(s, idx)                          │
+│   354 │   │   except StopIteration as err:                                   │
+│ ❱ 355 │   │   │   raise JSONDecodeError("Expecting value", s, err.value) fro │
+│   356 │   │   return obj, end                                                │
+│   357                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+JSONDecodeError: Expecting value: line 11 column 1 (char 55)                    
+                                                                                
+Task interrupted (1,964 of 2,320 total samples logged before interruption).     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T05-41-49-00-00_m3oralbench-judgment_9xPH9u
+exWtKU5ntRyBCjVy.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                  0:19:43                                            
+openai/minimax/minimax-m2.5  596,755 tokens [I: 11,067, CW: 0, CR: 72,456, O:   
+                           513,232, R: 545,058]                                 
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.011                                                 
+stderr                    0.001                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T05-42-56-00-00_m3oralbench-response_Ma8AfS
+Cvpb6aqrUMsDHBLG.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T05-22-05-00-00_m3oralbench-foundation_MqFHV9YBwNmsXMiVewFx6J.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T05-41-49-00-00_m3oralbench-judgment_9xPH9uexWtKU5ntRyBCjVy.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T05-42-56-00-00_m3oralbench-response_Ma8AfSCvpb6aqrUMsDHBLG.eval
+    status: success
+[04/30/26 23:02:39] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+
+One or more eval logs finished with non-success status.
+    mean: name='mean' value=0.010683908045977011 params={} metadata=None
+    stderr: name='stderr' value=0.00114799032491615 params={} metadata=None
