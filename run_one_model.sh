@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 # Run all benchmarks for a single model.
-# Usage: ./run_one_model.sh <model_id>
+# Usage: ./run_one_model.sh <model_id> [--limit N]
 # Example: ./run_one_model.sh deepseek/deepseek-r1
+#          ./run_one_model.sh google/gemma-3-4b-it --limit 10
+set -euo pipefail
+
+if [[ -z "${1:-}" ]]; then
+    echo "Usage: $0 <model_id> [--limit N]" >&2
+    exit 1
+fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -13,6 +20,14 @@ export M3ORAL_DATA_DIR="$SCRIPT_DIR/data/m3oralbench"
 export MORALLENS_DATA_DIR="$SCRIPT_DIR/data/morallens"
 
 MODEL="$1"
+shift
+
+LIMIT_ARGS=()
+if [[ "${1:-}" == "--limit" ]] && [[ -n "${2:-}" ]]; then
+    LIMIT_ARGS=("--limit" "$2")
+fi
+
+MAX_CONN=20
 SLUG=$(echo "$MODEL" | tr '/' '_')
 LOG="$SCRIPT_DIR/results/run_log_${SLUG}_$(date +%Y%m%d_%H%M%S).txt"
 
@@ -23,14 +38,18 @@ run_bench() {
     echo "  >> $BENCH_NAME started: $(date)" | tee -a "$LOG"
     (
         cd "$SCRIPT_DIR/src/inspect"
-        uv run --package cei-inspect python run.py \
+        if uv run --package cei-inspect python run.py \
             --tasks "$BENCH" \
             --model "openai/$MODEL" \
             --no_sandbox \
-            --max_connections 50 \
-            2>&1 | tee -a "$LOG"
+            --max_connections "$MAX_CONN" \
+            ${LIMIT_ARGS[@]+"${LIMIT_ARGS[@]}"} \
+            2>&1 | tee -a "$LOG"; then
+            echo "  >> $BENCH_NAME DONE: $(date)" | tee -a "$LOG"
+        else
+            echo "  >> $BENCH_NAME FAILED: $(date)" | tee -a "$LOG"
+        fi
     )
-    echo "  >> $BENCH_NAME finished: $(date)" | tee -a "$LOG"
     echo "" | tee -a "$LOG"
 }
 

@@ -176,12 +176,9 @@ def _foundation_id_scorer():
 
         target_foundation = target.text.lower()
 
-        # Find which foundation is mentioned
-        predicted = None
-        for foundation in FOUNDATIONS:
-            if foundation in response:
-                predicted = foundation
-                break
+        # Count mentions of each foundation, pick the most frequent
+        counts = {f: response.count(f) for f in FOUNDATIONS if f in response}
+        predicted = max(counts, key=counts.get) if counts else None
 
         is_correct = predicted == target_foundation
         return Score(
