@@ -4,7 +4,7 @@ This is the shortest frozen-snapshot readout in the repo: what the closed public
 
 ## TL;DR
 
-If you only read one section, read these six takeaways:
+If you only read one section, read these key takeaways:
 
 - **Best like-for-like line:** `Qwen-L` is the strongest fully comparable line, averaging 0.600 across UniMoral 0.665, SMID 0.483, and Value 0.653. This is the cleanest overall topline because all three comparable metrics are observed on the same line.
 - **Best text-only line:** `Llama-M` is the strongest pure text line, reaching UniMoral 0.670 and Value 0.724. It should not be called the best all-around line because there is no public SMID route on that line.

@@ -7118,7 +7118,7 @@ def append_tldr_section(
         [
             "## TL;DR",
             "",
-            "If you only read one section, read these six takeaways:",
+            "If you only read one section, read these key takeaways:",
             "",
         ]
     )
