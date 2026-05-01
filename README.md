@@ -247,6 +247,26 @@ make audit
 
 Release outputs go to `results/release/` and `figures/release/`.
 
+### Final Moral-Psych Deliverable
+
+The final public moral-psych release is packaged as a reviewer-facing deliverable, not just raw benchmark logs.
+
+- TL;DR + main visuals: [results/release/2026-04-19-option1/README.md](results/release/2026-04-19-option1/README.md)
+- Full PI-facing report: [results/release/2026-04-19-option1/jenny-group-report.md](results/release/2026-04-19-option1/jenny-group-report.md)
+- Short summary: [results/release/2026-04-19-option1/topline-summary.md](results/release/2026-04-19-option1/topline-summary.md)
+
+The release explicitly separates:
+- benchmark-faithful comparable accuracy for `UniMoral`, `SMID`, and `Value Kaleidoscope`
+- `CCD-Bench` as cultural-cluster choice behavior rather than scalar accuracy
+- `DeNEVIL` as proxy behavioral evidence rather than benchmark-faithful ethical-quality scoring
+
+Key result visuals:
+- [Comparable accuracy bars](figures/release/option1_benchmark_accuracy_bars.svg)
+- [Family scaling profile](figures/release/option1_family_scaling_profile.svg)
+- [CCD choice distribution](figures/release/option1_ccd_choice_distribution.svg)
+- [CCD dominant-option share](figures/release/option1_ccd_dominant_option_share.svg)
+- [DeNEVIL behavioral outcomes](figures/release/option1_denevil_behavior_outcomes.svg)
+
 ## Project Structure
 
 ```
