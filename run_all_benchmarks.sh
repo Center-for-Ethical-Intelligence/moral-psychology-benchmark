@@ -7,6 +7,8 @@
 #   ./run_all_benchmarks.sh --limit 10         # limit samples per task
 #   ./run_all_benchmarks.sh --models 3,5,7     # run only model indices 3, 5, 7
 #   ./run_all_benchmarks.sh --max-conn 80      # override max_connections
+# Note: -e omitted intentionally — background subshells handle errors via if/else
+# DONE/FAILED pattern; -e in the parent would mask child exit codes from `wait`.
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

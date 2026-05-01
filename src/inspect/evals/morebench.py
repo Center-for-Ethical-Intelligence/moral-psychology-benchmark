@@ -23,7 +23,7 @@ from pathlib import Path
 from inspect_ai import Task, task
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.scorer import Score, Target, mean, scorer, stderr
-from inspect_ai.solver import TaskState
+from inspect_ai.solver import TaskState, system_message
 
 from evals._benchmark_utils import env_str, generation_plan, normalize_whitespace
 
@@ -158,7 +158,7 @@ def morebench_advisor(limit: int | None = None) -> Task:
     samples = _load_scenarios(role="advisor", limit=limit)
     return Task(
         dataset=MemoryDataset(samples=samples, name="morebench_advisor"),
-        solver=generation_plan(max_tokens=1024),
+        solver=[system_message(ADVISOR_SYSTEM)] + generation_plan(max_tokens=1024),
         scorer=_rubric_reasoning_scorer(),
     )
 
@@ -169,6 +169,6 @@ def morebench_agent(limit: int | None = None) -> Task:
     samples = _load_scenarios(role="agent", limit=limit)
     return Task(
         dataset=MemoryDataset(samples=samples, name="morebench_agent"),
-        solver=generation_plan(max_tokens=1024),
+        solver=[system_message(AGENT_SYSTEM)] + generation_plan(max_tokens=1024),
         scorer=_rubric_reasoning_scorer(),
     )

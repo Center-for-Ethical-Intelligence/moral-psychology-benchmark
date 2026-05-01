@@ -14,7 +14,7 @@
 | 2 | **MoReBench** | Chiu 2025 | `src/inspect/evals/morebench.py` | **Complete** | `morebench_advisor`, `morebench_agent` |
 | 3 | **Moral Circuits** | Schacht 2025 | `src/inspect/evals/moral_circuits.py` | **Complete** | `moral_circuits_judgment`, `moral_circuits_reasoning` |
 | 4 | **M³oralBench** | Yan 2024 | `src/inspect/evals/m3oralbench.py` | **Complete** | `m3oralbench_judgment`, `m3oralbench_foundation`, `m3oralbench_response` |
-| 5 | **MoralLens** | Samway 2025 | `src/inspect/evals/morallens.py` | **Complete** | `morallens_cot`, `morallens_posthoc`, `morallens_double_standard`, `morallens_reasoning_quality` |
+| 5 | **MoralLens** | Samway 2025 | `src/inspect/evals/morallens.py` | **Complete** | `morallens_cot`, `morallens_posthoc`, `morallens_double_standard` |
 
 ---
 
@@ -84,9 +84,9 @@
 
 | Line | MRB adv | MRB agt | MC jdg | MC rsn | M3 fnd | M3 jdg | M3 rsp | ML cot | ML ph | ML ds |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `Qwen-S` | — | — | — | — | 0.067 | ERR | ERR | 0.921 | 0.887 | 0.378 |
-| `Qwen-M` | — | — | — | — | 0.012 | 0.076 | 0.005 | 0.243 | 0.307 | 0.103 |
-| `Qwen-L` | 0.611 | 0.587 | 0.933 | 0.938 | 0.035 | 0.483 | ERR | — | — | — |
+| `Qwen-S` | 0.595 | 0.586 | 0.929 | 0.946 | 0.067 | ERR | ERR | 0.921 | 0.887 | 0.378 |
+| `Qwen-M` | 0.395 | 0.219 | 0.192 | 0.208 | 0.012 | 0.076 | 0.005 | 0.243 | 0.307 | 0.103 |
+| `Qwen-L` | 0.611 | 0.587 | 0.933 | 0.938 | 0.035 | 0.483 | ERR | ERR | ERR | ERR |
 | `DeepSeek-S` | 0.360 | 0.273 | N/A | N/A | 0.000 | 0.000 | 0.014 | 0.012 | 0.062 | 0.006 |
 | `DeepSeek-M` | ERR | 0.700 | N/A | N/A | 0.077 | 0.483 | 0.030 | 0.890 | 0.882 | 0.421 |
 | `DeepSeek-L` | 0.524 | 0.499 | N/A | N/A | 0.028 | 0.178 | 0.144 | 0.615 | 0.674 | ERR |
