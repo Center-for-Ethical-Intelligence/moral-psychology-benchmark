@@ -1,0 +1,197 @@
+=== minimax/minimax-m1 started: Thu Apr 30 16:52:45 PDT 2026 ===
+  >> MoReBench started: Thu Apr 30 16:52:45 PDT 2026
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/minimax/minimax-m1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/minimax/minimax-m1                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                0:01:55                                              
+openai/minimax/minimax-m1  484,213 tokens [I: 201,473, CW: 0, CR: 0, O: 282,740,
+                         R: 144,504]                                            
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.528                                                 
+stderr                    0.011                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_ApnWEx8KS
+cGXhBfaMg4EQu.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/minimax/minimax-m1                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                0:09:41                                              
+openai/minimax/minimax-m1  350,892 tokens [I: 141,356, CW: 0, CR: 0, O: 209,536,
+                         R: 105,680]                                            
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.548                                                 
+stderr                    0.012                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-54-44-00-00_morebench-agent_V4ygsRRML6g
+cGMELMMZAhq.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_ApnWEx8KScGXhBfaMg4EQu.eval
+    status: success
+[04/30/26 17:04:25] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.5281569965870307 params={} metadata=None
+    stderr: name='stderr' value=0.011054549171773008 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-54-44-00-00_morebench-agent_V4ygsRRML6gcGMELMMZAhq.eval
+    status: success
+    mean: name='mean' value=0.5483091787439613 params={} metadata=None
+    stderr: name='stderr' value=0.012122937999274833 params={} metadata=None
+  >> MoReBench finished: Thu Apr 30 17:04:25 PDT 2026
+
+  >> MoralCircuits SKIPPED
+  >> M3oralBench started: Thu Apr 30 17:04:25 PDT 2026
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/minimax/minimax-m1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples): openai/minimax/minimax-m1             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_foundation                           
+                                                                                
+total time:                0:00:36                                              
+openai/minimax/minimax-m1  794,557 tokens [I: 720,360, CW: 0, CR: 0, O: 74,197, 
+                         R: 74,175]                                             
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.000                                                        
+stderr             0.000                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-04-27-00-00_m3oralbench-foundation_DiHj
+DuCaUTYhDpFWCh2HrZ.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/minimax/minimax-m1               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                0:01:19                                              
+openai/minimax/minimax-m1  1,271,354 tokens [I: 1,122,880, CW: 0, CR: 0, O:     
+                         148,474, R: 147,073]                                   
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.001                                                        
+stderr             0.001                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-05-03-00-00_m3oralbench-judgment_kaVzGU
+RKseg9hnTsqsGjW4.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/minimax/minimax-m1               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                0:01:22                                              
+openai/minimax/minimax-m1  848,484 tokens [I: 555,640, CW: 0, CR: 0, O: 292,844,
+                         R: 291,122]                                            
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.002                                                 
+stderr                    0.000                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-06-22-00-00_m3oralbench-response_GWvVwb
+fpfTTqmkx5Abxnq7.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-04-27-00-00_m3oralbench-foundation_DiHjDuCaUTYhDpFWCh2HrZ.eval
+    status: success
+[04/30/26 17:07:44] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.0 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-05-03-00-00_m3oralbench-judgment_kaVzGURKseg9hnTsqsGjW4.eval
+    status: success
+    accuracy: name='accuracy' value=0.0008620689655172414 params={} metadata=None
+    stderr: name='stderr' value=0.0006094433666629254 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-06-22-00-00_m3oralbench-response_GWvVwbfpfTTqmkx5Abxnq7.eval
+    status: success
+    mean: name='mean' value=0.0017701149425287355 params={} metadata=None
+    stderr: name='stderr' value=0.00045564381662568514 params={} metadata=None
+  >> M3oralBench finished: Thu Apr 30 17:07:44 PDT 2026
+
+  >> MoralLens started: Thu Apr 30 17:07:44 PDT 2026
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/minimax/minimax-m1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/minimax/minimax-m1                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:                0:02:05                                              
+openai/minimax/minimax-m1  686,202 tokens [I: 342,888, CW: 0, CR: 0, O: 343,314,
+                         R: 299,781]                                            
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.273                                              
+stderr                       0.017                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-07-47-00-00_morallens-cot_TtbDgzEexRXp4
+5XvCbd8k2.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples): openai/minimax/minimax-m1          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 134,        
+score_display: False, dataset: morallens_double_standard                        
+                                                                                
+total time:                0:03:53                                              
+openai/minimax/minimax-m1  1,327,635 tokens [I: 679,056, CW: 0, CR: 0, O:       
+                         648,579, R: 496,753]                                   
+                                                                                
+_double_standard_scorer                                                         
+mean                     0.211                                                  
+stderr                   0.011                                                  
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-09-52-00-00_morallens-double-standard_a
+XpYgNa7JfjE5v3p2ew3Hz.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/minimax/minimax-m1                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:                0:01:59                                              
+openai/minimax/minimax-m1  642,045 tokens [I: 336,168, CW: 0, CR: 0, O: 305,877,
+                         R: 195,408]                                            
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.586                                              
+stderr                       0.018                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-13-45-00-00_morallens-posthoc_HxLGSExYi
+emArkZGPbYkpy.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-07-47-00-00_morallens-cot_TtbDgzEexRXp45XvCbd8k2.eval
+    status: success
+[04/30/26 17:15:44] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.27306547619047616 params={} metadata=None
+    stderr: name='stderr' value=0.016824870451192173 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-09-52-00-00_morallens-double-standard_aXpYgNa7JfjE5v3p2ew3Hz.eval
+    status: success
+    mean: name='mean' value=0.2105654761904762 params={} metadata=None
+    stderr: name='stderr' value=0.011125348771032153 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-13-45-00-00_morallens-posthoc_HxLGSExYiemArkZGPbYkpy.eval
+    status: success
+    mean: name='mean' value=0.5863095238095238 params={} metadata=None
+    stderr: name='stderr' value=0.01805526960452751 params={} metadata=None
+  >> MoralLens finished: Thu Apr 30 17:15:44 PDT 2026
+
+=== minimax/minimax-m1 complete: Thu Apr 30 17:15:44 PDT 2026 ===

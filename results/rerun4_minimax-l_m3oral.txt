@@ -1,0 +1,71 @@
+=== minimax/minimax-m2.5 M3oralBench: Thu Apr 30 23:27:38 PDT 2026 ===
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/minimax/minimax-m2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples): openai/minimax/minimax-m2.5           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_foundation                           
+                                                                                
+total time:                  0:34:44                                            
+openai/minimax/minimax-m2.5  364,819 tokens [I: 191,704, CW: 0, CR: 63,164, O:  
+                           109,951, R: 102,361]                                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.006                                                        
+stderr             0.002                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T06-27-43-00-00_m3oralbench-foundation_9WZT
+AmeNBzPtdV4viMvdKx.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                  0:56:19                                            
+openai/minimax/minimax-m2.5  338,877 tokens [I: 6,935, CW: 0, CR: 182,312, O:   
+                           149,630, R: 154,861]                                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.000                                                        
+stderr             0.000                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T07-02-27-00-00_m3oralbench-judgment_DAQXSt
+JeNoV48qVcvuxkh8.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, log_realtime: False, log_buffer: 116,        
+score_display: False, dataset: m3oralbench_response                             
+                                                                                
+total time:                  0:14:42                                            
+openai/minimax/minimax-m2.5  480,036 tokens [I: 10,532, CW: 0, CR: 73,944, O:   
+                           395,560, R: 424,015]                                 
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.001                                                 
+stderr                    0.000                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T07-58-46-00-00_m3oralbench-response_Wy9G4m
+eTPw8rws2V2QsXtp.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T06-27-43-00-00_m3oralbench-foundation_9WZTAmeNBzPtdV4viMvdKx.eval
+    status: success
+[05/01/26 01:13:28] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.00603448275862069 params={} metadata=None
+    stderr: name='stderr' value=0.002274908673029957 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T07-02-27-00-00_m3oralbench-judgment_DAQXStJeNoV48qVcvuxkh8.eval
+    status: success
+    accuracy: name='accuracy' value=0.0004310344827586207 params={} metadata=None
+    stderr: name='stderr' value=0.0004310344827586208 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T07-58-46-00-00_m3oralbench-response_Wy9G4meTPw8rws2V2QsXtp.eval
+    status: success
+    mean: name='mean' value=0.000954022988505747 params={} metadata=None
+    stderr: name='stderr' value=0.0003668160204052797 params={} metadata=None

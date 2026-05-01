@@ -1,0 +1,845 @@
+=== minimax/minimax-m2.5 started: Thu Apr 30 16:52:45 PDT 2026 ===
+  >> MoReBench started: Thu Apr 30 16:52:45 PDT 2026
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/minimax/minimax-m2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/minimax/minimax-m2.5                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                  0:30:45                                            
+openai/minimax/minimax-m2.5  641,099 tokens [I: 77,973, CW: 0, CR: 4,343, O:    
+                           558,783, R: 459,047]                                 
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.445                                                 
+stderr                    0.017                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_nYP7vVk52
+MupVeUAFpQpFa.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/minimax/minimax-m2.5                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                  0:13:02                                            
+openai/minimax/minimax-m2.5  425,086 tokens [I: 54,096, CW: 0, CR: 3,147, O:    
+                           367,843, R: 304,608]                                 
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.435                                                 
+stderr                    0.017                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-23-34-00-00_morebench-agent_SRRyVPNZiUr
+T7EATYupVfu.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-04-30T23-52-49-00-00_morebench-advisor_nYP7vVk52MupVeUAFpQpFa.eval
+    status: success
+[04/30/26 17:36:36] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.4453924914675768 params={} metadata=None
+    stderr: name='stderr' value=0.01692268028811141 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-23-34-00-00_morebench-agent_SRRyVPNZiUrT7EATYupVfu.eval
+    status: success
+    mean: name='mean' value=0.43478260869565216 params={} metadata=None
+    stderr: name='stderr' value=0.016683940125366867 params={} metadata=None
+  >> MoReBench finished: Thu Apr 30 17:36:36 PDT 2026
+
+  >> MoralCircuits SKIPPED
+  >> M3oralBench started: Thu Apr 30 17:36:36 PDT 2026
+Loaded 3 task(s) from evals/m3oralbench.py
+Running 3 task(s) with model: openai/minimax/minimax-m2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_foundation (1,160 samples): openai/minimax/minimax-m2.5           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1700 │   │   │   break                                                     │
+│   1701 │   │                                                                 │
+│   1702 │   │   assert response is not None, "could not resolve response (sho │
+│ ❱ 1703 │   │   return await self._process_response(                          │
+│   1704 │   │   │   cast_to=cast_to,                                          │
+│   1705 │   │   │   options=options,                                          │
+│   1706 │   │   │   response=response,                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _process_response                                                         │
+│                                                                              │
+│   1789 │   │   if bool(response.request.headers.get(RAW_RESPONSE_HEADER)):   │
+│   1790 │   │   │   return cast(ResponseT, api_response)                      │
+│   1791 │   │                                                                 │
+│ ❱ 1792 │   │   return await api_response.parse()                             │
+│   1793 │                                                                     │
+│   1794 │   def _request_api_list(                                            │
+│   1795 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in parse                                                                     │
+│                                                                              │
+│   430 │   │   if not self._is_sse_stream:                                    │
+│   431 │   │   │   await self.read()                                          │
+│   432 │   │                                                                  │
+│ ❱ 433 │   │   parsed = self._parse(to=to)                                    │
+│   434 │   │   if is_given(self._options.post_parser):                        │
+│   435 │   │   │   parsed = self._options.post_parser(parsed)                 │
+│   436                                                                        │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _parse                                                                    │
+│                                                                              │
+│   265 │   │   │   # handle the response however you need to.                 │
+│   266 │   │   │   return response.text  # type: ignore                       │
+│   267 │   │                                                                  │
+│ ❱ 268 │   │   data = response.json()                                         │
+│   269 │   │                                                                  │
+│   270 │   │   return self._client._process_response_data(                    │
+│   271 │   │   │   data=data,                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in json                                                                      │
+│                                                                              │
+│    829 │   │   raise HTTPStatusError(message, request=request, response=self │
+│    830 │                                                                     │
+│    831 │   def json(self, **kwargs: typing.Any) -> typing.Any:               │
+│ ❱  832 │   │   return jsonlib.loads(self.content, **kwargs)                  │
+│    833 │                                                                     │
+│    834 │   @property                                                         │
+│    835 │   def cookies(self) -> Cookies:                                     │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in loads                                                                     │
+│                                                                              │
+│   343 │   if (cls is None and object_hook is None and                        │
+│   344 │   │   │   parse_int is None and parse_float is None and              │
+│   345 │   │   │   parse_constant is None and object_pairs_hook is None and n │
+│ ❱ 346 │   │   return _default_decoder.decode(s)                              │
+│   347 │   if cls is None:                                                    │
+│   348 │   │   cls = JSONDecoder                                              │
+│   349 │   if object_hook is not None:                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in decode                                                                    │
+│                                                                              │
+│   334 │   │   containing a JSON document).                                   │
+│   335 │   │                                                                  │
+│   336 │   │   """                                                            │
+│ ❱ 337 │   │   obj, end = self.raw_decode(s, idx=_w(s, 0).end())              │
+│   338 │   │   end = _w(s, end).end()                                         │
+│   339 │   │   if end != len(s):                                              │
+│   340 │   │   │   raise JSONDecodeError("Extra data", s, end)                │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in raw_decode                                                                │
+│                                                                              │
+│   352 │   │   try:                                                           │
+│   353 │   │   │   obj, end = self.scan_once(s, idx)                          │
+│   354 │   │   except StopIteration as err:                                   │
+│ ❱ 355 │   │   │   raise JSONDecodeError("Expecting value", s, err.value) fro │
+│   356 │   │   return obj, end                                                │
+│   357                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+JSONDecodeError: Expecting value: line 4341 column 1 (char 23870)               
+                                                                                
+Task interrupted (1,142 of 1,160 total samples logged before interruption).     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-36-38-00-00_m3oralbench-foundation_cq7W
+2rJW7qCA2NJ9Y3wUvC.eval                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 50, max_tasks: 1, log_realtime: False, log_buffer: 232,        
+score_display: False, dataset: m3oralbench_judgment                             
+                                                                                
+total time:                  0:22:44                                            
+openai/minimax/minimax-m2.5  828,632 tokens [I: 15,974, CW: 0, CR: 169,901, O:  
+                           642,757, R: 651,687]                                 
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.000                                                        
+stderr             0.000                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T00-52-42-00-00_m3oralbench-judgment_TSaDat
+SFVbGTDdhm36wGru.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/minimax/minimax-m2.5             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1695 │   │   │   │   │   await err.response.aread()                        │
+│   1696 │   │   │   │                                                         │
+│   1697 │   │   │   │   log.debug("Re-raising status error")                  │
+│ ❱ 1698 │   │   │   │   raise self._make_status_error_from_response(err.respo │
+│   1699 │   │   │                                                             │
+│   1700 │   │   │   break                                                     │
+│   1701                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits.  
+Add more using https://openrouter.ai/settings/credits', 'code': 402}}           
+                                                                                
+Task interrupted (309 of 1,160 total samples logged before interruption).       
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T01-15-26-00-00_m3oralbench-response_jtsGqy
+VLJm8zY4FpAfQx42.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-36-38-00-00_m3oralbench-foundation_cq7W2rJW7qCA2NJ9Y3wUvC.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T00-52-42-00-00_m3oralbench-judgment_TSaDatSFVbGTDdhm36wGru.eval
+    status: success
+[04/30/26 18:16:00] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+
+One or more eval logs finished with non-success status.
+    accuracy: name='accuracy' value=0.0 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T01-15-26-00-00_m3oralbench-response_jtsGqyVLJm8zY4FpAfQx42.eval
+    status: error
+  >> M3oralBench finished: Thu Apr 30 18:16:00 PDT 2026
+
+  >> MoralLens started: Thu Apr 30 18:16:00 PDT 2026
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/minimax/minimax-m2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/minimax/minimax-m2.5                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1695 │   │   │   │   │   await err.response.aread()                        │
+│   1696 │   │   │   │                                                         │
+│   1697 │   │   │   │   log.debug("Re-raising status error")                  │
+│ ❱ 1698 │   │   │   │   raise self._make_status_error_from_response(err.respo │
+│   1699 │   │   │                                                             │
+│   1700 │   │   │   break                                                     │
+│   1701                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits.  
+Add more using https://openrouter.ai/settings/credits', 'code': 402}}           
+                                                                                
+Task interrupted (no samples completed before interruption)                     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T01-16-02-00-00_morallens-cot_ENcvGznucixVb
+vdBXTTbs9.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples): openai/minimax/minimax-m2.5        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1695 │   │   │   │   │   await err.response.aread()                        │
+│   1696 │   │   │   │                                                         │
+│   1697 │   │   │   │   log.debug("Re-raising status error")                  │
+│ ❱ 1698 │   │   │   │   raise self._make_status_error_from_response(err.respo │
+│   1699 │   │   │                                                             │
+│   1700 │   │   │   break                                                     │
+│   1701                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits.  
+Add more using https://openrouter.ai/settings/credits', 'code': 402}}           
+                                                                                
+Task interrupted (no samples completed before interruption)                     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T01-16-14-00-00_morallens-double-standard_B
+o65vKV32MAZxEWEfk4tU8.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/minimax/minimax-m2.5                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in tg_collect                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_task                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in solve                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in task_generate                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in _generate                                                                 │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in async_wrapped                                                             │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in iter                                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in inner                                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in <lambda>                                                                  │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in result                                                                    │
+│                                                                              │
+│   446 │   │   │   │   if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]: │
+│   447 │   │   │   │   │   raise CancelledError()                             │
+│   448 │   │   │   │   elif self._state == FINISHED:                          │
+│ ❱ 449 │   │   │   │   │   return self.__get_result()                         │
+│   450 │   │   │   │                                                          │
+│   451 │   │   │   │   self._condition.wait(timeout)                          │
+│   452                                                                        │
+│                                                                              │
+│ /Users/bytedance/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/… │
+│ in __get_result                                                              │
+│                                                                              │
+│   398 │   def __get_result(self):                                            │
+│   399 │   │   if self._exception:                                            │
+│   400 │   │   │   try:                                                       │
+│ ❱ 401 │   │   │   │   raise self._exception                                  │
+│   402 │   │   │   finally:                                                   │
+│   403 │   │   │   │   # Break a reference cycle with the exception in self._ │
+│   404 │   │   │   │   self = None                                            │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in __call__                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate                                                                  │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in generate_completions                                                      │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in create                                                                    │
+│                                                                              │
+│   2711 │   │   timeout: float | httpx.Timeout | None | NotGiven = not_given, │
+│   2712 │   ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:           │
+│   2713 │   │   validate_response_format(response_format)                     │
+│ ❱ 2714 │   │   return await self._post(                                      │
+│   2715 │   │   │   "/chat/completions",                                      │
+│   2716 │   │   │   body=await async_maybe_transform(                         │
+│   2717 │   │   │   │   {                                                     │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in post                                                                      │
+│                                                                              │
+│   1910 │   │   opts = FinalRequestOptions.construct(                         │
+│   1911 │   │   │   method="post", url=path, json_data=body, content=content, │
+│   1912 │   │   )                                                             │
+│ ❱ 1913 │   │   return await self.request(cast_to, opts, stream=stream, strea │
+│   1914 │                                                                     │
+│   1915 │   async def patch(                                                  │
+│   1916 │   │   self,                                                         │
+│                                                                              │
+│ /Users/bytedance/Projects/sunyuding/cei/.venv/lib/python3.11/site-packages/… │
+│ in request                                                                   │
+│                                                                              │
+│   1695 │   │   │   │   │   await err.response.aread()                        │
+│   1696 │   │   │   │                                                         │
+│   1697 │   │   │   │   log.debug("Re-raising status error")                  │
+│ ❱ 1698 │   │   │   │   raise self._make_status_error_from_response(err.respo │
+│   1699 │   │   │                                                             │
+│   1700 │   │   │   break                                                     │
+│   1701                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits.  
+Add more using https://openrouter.ai/settings/credits', 'code': 402}}           
+                                                                                
+Task interrupted (no samples completed before interruption)                     
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T01-16-30-00-00_morallens-posthoc_cumrTXzom
+jnc3KfuDXGcbS.eval                                                              
+                                                                                
+One or more eval logs finished with non-success status.
+
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T01-16-02-00-00_morallens-cot_ENcvGznucixVbvdBXTTbs9.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T01-16-14-00-00_morallens-double-standard_Bo65vKV32MAZxEWEfk4tU8.eval
+    status: error
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T01-16-30-00-00_morallens-posthoc_cumrTXzomjnc3KfuDXGcbS.eval
+    status: error
+  >> MoralLens finished: Thu Apr 30 18:16:49 PDT 2026
+
+=== minimax/minimax-m2.5 complete: Thu Apr 30 18:16:49 PDT 2026 ===

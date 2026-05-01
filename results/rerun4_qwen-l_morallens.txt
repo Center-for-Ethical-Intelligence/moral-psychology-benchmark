@@ -1,0 +1,69 @@
+=== qwen/qwen3-235b-a22b MoralLens: Thu Apr 30 23:27:38 PDT 2026 ===
+Loaded 3 task(s) from evals/morallens.py
+Running 3 task(s) with model: openai/qwen/qwen3-235b-a22b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/qwen/qwen3-235b-a22b                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:                  0:42:01                                            
+openai/qwen/qwen3-235b-a22b  1,345,055 tokens [I: 48,552, CW: 0, CR: 0, O:      
+                           1,296,503, R: 1,000,104]                             
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.921                                              
+stderr                       0.007                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T06-27-43-00-00_morallens-cot_KpLmjDh5bPLcT
+8c9nY9bJs.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples): openai/qwen/qwen3-235b-a22b        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, log_realtime: False, log_buffer: 134,        
+score_display: False, dataset: morallens_double_standard                        
+                                                                                
+total time:                  1:36:36                                            
+openai/qwen/qwen3-235b-a22b  2,102,344 tokens [I: 90,384, CW: 0, CR: 0, O:      
+                           2,011,960, R: 1,601,293]                             
+                                                                                
+_double_standard_scorer                                                         
+mean                     0.440                                                  
+stderr                   0.014                                                  
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T07-09-44-00-00_morallens-double-standard_Y
+EL7Y5tFfE8ibbMR4QatYz.eval                                                      
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/qwen/qwen3-235b-a22b                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:                  1:06:56                                            
+openai/qwen/qwen3-235b-a22b  779,498 tokens [I: 41,832, CW: 0, CR: 0, O:        
+                           737,666, R: 618,521]                                 
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.847                                              
+stderr                       0.011                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T08-46-21-00-00_morallens-posthoc_fMzNwLVqE
+BLV6fDz2nzCvf.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T06-27-43-00-00_morallens-cot_KpLmjDh5bPLcT8c9nY9bJs.eval
+    status: success
+[05/01/26 02:53:17] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.9211309523809523 params={} metadata=None
+    stderr: name='stderr' value=0.0071139589859238435 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T07-09-44-00-00_morallens-double-standard_YEL7Y5tFfE8ibbMR4QatYz.eval
+    status: success
+    mean: name='mean' value=0.43973214285714285 params={} metadata=None
+    stderr: name='stderr' value=0.01354421856683897 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T08-46-21-00-00_morallens-posthoc_fMzNwLVqEBLV6fDz2nzCvf.eval
+    status: success
+    mean: name='mean' value=0.8474702380952381 params={} metadata=None
+    stderr: name='stderr' value=0.011105875611414804 params={} metadata=None
