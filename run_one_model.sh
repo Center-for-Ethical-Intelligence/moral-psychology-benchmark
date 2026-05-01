@@ -12,8 +12,10 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-export OPENAI_API_KEY="$(grep OPENROUTER_API_KEY "$SCRIPT_DIR/.env" | cut -d= -f2)"
-export OPENAI_BASE_URL=https://openrouter.ai/api/v1
+# Load env and provider routing
+set -a; source "$SCRIPT_DIR/.env"; set +a
+source "$SCRIPT_DIR/provider_config.sh"
+
 export MOREBENCH_DATA_DIR="$SCRIPT_DIR/data/morebench"
 export MORAL_CIRCUITS_DATA_DIR="$SCRIPT_DIR/data/moral_circuits"
 export M3ORAL_DATA_DIR="$SCRIPT_DIR/data/m3oralbench"
@@ -31,6 +33,9 @@ MAX_CONN=20
 SLUG=$(echo "$MODEL" | tr '/' '_')
 LOG="$SCRIPT_DIR/results/run_log_${SLUG}_$(date +%Y%m%d_%H%M%S).txt"
 
+# Resolve provider (Ark, DeepSeek, or OpenRouter fallback)
+setup_model_provider "$MODEL"
+
 echo "=== $MODEL started: $(date) ===" | tee "$LOG"
 
 run_bench() {
@@ -40,7 +45,7 @@ run_bench() {
         cd "$SCRIPT_DIR/src/inspect"
         if uv run --package cei-inspect python run.py \
             --tasks "$BENCH" \
-            --model "openai/$MODEL" \
+            --model "openai/$EFFECTIVE_MODEL" \
             --no_sandbox \
             --max_connections "$MAX_CONN" \
             ${LIMIT_ARGS[@]+"${LIMIT_ARGS[@]}"} \

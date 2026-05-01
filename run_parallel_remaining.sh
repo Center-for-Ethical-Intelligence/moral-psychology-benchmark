@@ -7,9 +7,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-# Load API key
-export OPENAI_API_KEY="$(grep OPENROUTER_API_KEY .env | cut -d= -f2)"
-export OPENAI_BASE_URL=https://openrouter.ai/api/v1
+# Load env and provider routing
+set -a; source "$SCRIPT_DIR/.env"; set +a
+source "$SCRIPT_DIR/provider_config.sh"
 
 # Data directories
 export MOREBENCH_DATA_DIR="$SCRIPT_DIR/data/morebench"
@@ -43,6 +43,9 @@ run_single_model() {
     local SLUG=$(echo "$MODEL" | tr '/' '_')
     local LOG="$SCRIPT_DIR/results/run_log_${SLUG}_$(date +%Y%m%d_%H%M%S).txt"
 
+    # Resolve provider (Ark, DeepSeek, or OpenRouter fallback)
+    setup_model_provider "$MODEL"
+
     echo "=== $MODEL started: $(date) ===" | tee "$LOG"
 
     local BENCH_IDX=0
@@ -68,7 +71,7 @@ run_single_model() {
             cd "$SCRIPT_DIR/src/inspect"
             if uv run --package cei-inspect python run.py \
                 --tasks "$BENCH" \
-                --model "openai/$MODEL" \
+                --model "openai/$EFFECTIVE_MODEL" \
                 --no_sandbox \
                 --max_connections 50 \
                 ${LIMIT_ARGS[@]+"${LIMIT_ARGS[@]}"} \

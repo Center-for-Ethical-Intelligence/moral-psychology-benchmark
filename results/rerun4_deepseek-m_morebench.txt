@@ -1,0 +1,48 @@
+=== deepseek/deepseek-chat-v3.1 MoReBench: Thu Apr 30 23:27:38 PDT 2026 ===
+Loaded 2 task(s) from evals/morebench.py
+Running 2 task(s) with model: openai/deepseek/deepseek-chat-v3.1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_advisor (293 samples): openai/deepseek/deepseek-chat-v3.1           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morebench_advisor                   
+                                                                                
+total time:                         0:24:24                                     
+openai/deepseek/deepseek-chat-v3.1  344,461 tokens [I: 84,517, CW: 0, CR: 1,835,
+                                  O: 258,109, R: 0]                             
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.806                                                 
+stderr                    0.006                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T06-27-43-00-00_morebench-advisor_6txqAGNNt
+FGvS7udPazd2R.eval                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morebench_agent (207 samples): openai/deepseek/deepseek-chat-v3.1             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morebench_agent                     
+                                                                                
+total time:                         1:08:49                                     
+openai/deepseek/deepseek-chat-v3.1  218,237 tokens [I: 57,440, CW: 0, CR: 1,589,
+                                  O: 159,208, R: 0]                             
+                                                                                
+_rubric_reasoning_scorer                                                        
+mean                      0.851                                                 
+stderr                    0.010                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T06-52-07-00-00_morebench-agent_g5rWUPbucke
+skT5fRUaibm.eval                                                                
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T06-27-43-00-00_morebench-advisor_6txqAGNNtFGvS7udPazd2R.eval
+    status: success
+[05/01/26 01:00:56] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.8063139931740614 params={} metadata=None
+    stderr: name='stderr' value=0.006111753908946067 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T06-52-07-00-00_morebench-agent_g5rWUPbuckeskT5fRUaibm.eval
+    status: success
+    mean: name='mean' value=0.8514492753623188 params={} metadata=None
+    stderr: name='stderr' value=0.009526037841895717 params={} metadata=None
