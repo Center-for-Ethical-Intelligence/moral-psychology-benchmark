@@ -1,5 +1,4 @@
-.PHONY: help setup ensure-runner test release refresh-authoritative smoke audit clean-release \
-       docker-gpu docker-push cloud-setup gpus
+.PHONY: help bootstrap setup ensure-runner test release refresh-authoritative smoke audit clean-release
 
 RELEASE_DIR := results/release/2026-04-19-option1
 RELEASE_SOURCE := $(RELEASE_DIR)/source/authoritative-summary.csv
@@ -21,6 +20,7 @@ endif
 
 help:
 	@echo "Available targets:"
+	@echo "  make bootstrap     Public QA: install deps when uv is available, then run tests and rebuild the release package"
 	@echo "  make setup         Install the pinned uv environment (requires uv)"
 	@echo "  make test          Run the test suite (runner: $(RUNNER_NOTE))"
 	@echo "  make release       Build public release artifacts from the tracked source snapshot (runner: $(RUNNER_NOTE))"
@@ -28,12 +28,17 @@ help:
 	@echo "  make smoke         Run a 2-sample UniMoral smoke test (runner: $(RUNNER_NOTE))"
 	@echo "  make audit         Run the public QA gate (tests + release rebuild)"
 	@echo "  make clean-release Remove generated release tables and figures"
-	@echo ""
-	@echo "GPU / Cloud targets:"
-	@echo "  make docker-gpu    Build GPU-enabled Docker image (all frameworks)"
-	@echo "  make docker-push   Build and push GPU image to registry (set CEI_DOCKER_REGISTRY)"
-	@echo "  make cloud-setup   Install cloud SDK dependencies (boto3, gcloud, azure)"
-	@echo "  make gpus          List available GPU instance types per provider"
+
+bootstrap:
+	@if command -v $(UV) >/dev/null 2>&1; then \
+		$(MAKE) setup UV=$(UV) VENV_PYTHON=$(VENV_PYTHON); \
+	elif [ -x "$(VENV_PYTHON)" ]; then \
+		echo "uv not found; reusing $(VENV_PYTHON) for bootstrap."; \
+	else \
+		echo "Could not resolve either '$(UV)' on PATH or executable '$(VENV_PYTHON)'. Install uv, run 'make setup', or pass VENV_PYTHON=/absolute/path/to/python." >&2; \
+		exit 1; \
+	fi
+	$(MAKE) audit UV=$(UV) VENV_PYTHON=$(VENV_PYTHON)
 
 setup:
 	@if ! command -v $(UV) >/dev/null 2>&1; then \
@@ -74,43 +79,9 @@ smoke: ensure-runner
 		--no_sandbox \
 		--log_dir results/inspect/logs/smoke
 
-# ---- GPU / Cloud targets ----
-
-CEI_DOCKER_REGISTRY ?=
-CEI_IMAGE_NAME ?= cei-eval
-CEI_IMAGE_TAG ?= latest
-
-docker-gpu:
-	docker build -f Dockerfile.gpu --target full -t $(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG) .
-
-docker-push: docker-gpu
-	@if [ -z "$(CEI_DOCKER_REGISTRY)" ]; then \
-		echo "Set CEI_DOCKER_REGISTRY (e.g. ghcr.io/center-for-ethical-intelligence)"; exit 1; \
-	fi
-	docker tag $(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG) $(CEI_DOCKER_REGISTRY)/$(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG)
-	docker push $(CEI_DOCKER_REGISTRY)/$(CEI_IMAGE_NAME):$(CEI_IMAGE_TAG)
-
-cloud-setup: ensure-runner
-	$(UV) pip install boto3 google-cloud-compute azure-identity azure-mgmt-compute azure-mgmt-network azure-mgmt-resource
-
-gpus: ensure-runner
-	$(RUN_PYTHON) cei gpus
-
 clean-release:
-	rm -f $(RELEASE_DIR)/README.md \
-		$(RELEASE_DIR)/benchmark-catalog.csv \
-		$(RELEASE_DIR)/benchmark-comparison.csv \
-		$(RELEASE_DIR)/benchmark-summary.csv \
-		$(RELEASE_DIR)/coverage-matrix.csv \
-		$(RELEASE_DIR)/family-size-progress.csv \
-		$(RELEASE_DIR)/faithful-metrics.csv \
-		$(RELEASE_DIR)/future-model-plan.csv \
-		$(RELEASE_DIR)/jenny-group-report.md \
-		$(RELEASE_DIR)/model-summary.csv \
-		$(RELEASE_DIR)/model-roster.csv \
-		$(RELEASE_DIR)/release-manifest.json \
-		$(RELEASE_DIR)/source/README.md \
-		$(RELEASE_DIR)/supplementary-model-progress.csv \
-		$(RELEASE_DIR)/topline-summary.json \
-		$(RELEASE_DIR)/topline-summary.md
+	rm -f $(RELEASE_DIR)/*.csv \
+		$(RELEASE_DIR)/*.json \
+		$(RELEASE_DIR)/*.md \
+		$(RELEASE_DIR)/source/README.md
 	rm -rf figures/release

@@ -4,21 +4,23 @@
   "source_snapshot": "results/release/2026-04-19-option1/source/authoritative-summary.csv",
   "report_metadata": {
     "owner": "Jenny Zhu",
-    "date": "2026-04-22",
+    "date": "2026-05-01",
     "frozen_snapshot_date": "2026-04-19",
-    "current_cost": "$40.73",
+    "current_cost_estimate": "$84.02",
+    "current_cost_scope": "User-updated project total across the frozen release work and the later tracked reruns completed in this repo.",
+    "metric_definition_version": "2026-04-30",
+    "metric_definition_summary": "Stricter visible-answer parsing is now versioned explicitly: UniMoral, SMID, and Value Kaleidoscope use structured visible-answer extraction; CCD-Bench coverage requires a parseable visible 1-10 choice; CCD-Bench headline figures compare canonical cluster choice behavior against a 10% baseline; Denevil appendix coverage counts non-empty visible proxy answers while the headline proxy figures classify visible behavior categories.",
     "purpose": "Jenny Zhu's group-facing progress report for the April 14, 2026 five-benchmark moral-psych plan.",
     "provider": "OpenRouter",
     "temperature": "0",
-    "operations_note": "Updated April 22, 2026. The frozen public snapshot remains Option 1 from April 19. Gemma-M and Gemma-L text remain complete locally. The earlier Qwen-M and Qwen-L text checkpoints were withdrawn from the public comparable snapshot after a verification pass showed that Qwen-3 reasoning tokens were exhausting the visible output budget on short-answer tasks. When the local rerun artifacts are available, this operations note is refreshed from the latest on-disk checkpoints, trace logs, and watcher logs at build time.",
-    "ci_workflow_url": "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml",
-    "ci_last_verified_run_url": "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/runs/24821554085"
+    "operations_note": "Updated May 1, 2026. The frozen public snapshot remains Option 1 from April 19. Complete local lines beyond the frozen slice currently include `Llama-S`, `Gemma-M`, and `Gemma-L`, and the remaining live published follow-up is `Qwen-M`, `Qwen-L`, and `Llama-M`.",
+    "ci_workflow_url": "https://github.com/Center-for-Ethical-Intelligence/moral-psychology-benchmark/actions/workflows/ci.yml"
   },
   "target_matrix": {
     "benchmarks": 5,
-    "model_families": 5,
+    "model_families": 4,
     "size_slots": 3,
-    "family_size_benchmark_cells": 75
+    "family_size_benchmark_cells": 60
   },
   "counts": {
     "authoritative_tasks": 19,
@@ -29,6 +31,7 @@
   "model_families": [
     "Qwen",
     "DeepSeek",
+    "Llama",
     "Gemma"
   ],
   "benchmarks": [
@@ -116,20 +119,6 @@
       "samples": 102886,
       "benchmark_faithful_macro_accuracy": 0.427602,
       "note": "Combines the original 2026-04-19-option1-llama32-11b-vision successes (UniMoral + SMID moral rating) with recovery-v3 completions for the remaining five tasks after a temporary OpenRouter key-limit stall."
-    },
-    {
-      "family": "MiniMax",
-      "status_relative_to_closed_release": "Attempted locally, but current results are not usable",
-      "exact_route": "minimax-m2.1 + minimax-01",
-      "papers_covered": 0,
-      "tasks_completed": 0,
-      "benchmark_faithful_tasks": 0,
-      "proxy_tasks": 0,
-      "completed_benchmark_lines": "None yet",
-      "missing_benchmark_lines": "UniMoral; SMID; Value Kaleidoscope; CCD-Bench; Denevil proxy; Benchmark-faithful Denevil via MoralPrompt",
-      "samples": 0,
-      "benchmark_faithful_macro_accuracy": null,
-      "note": "A formal small-model run exists, but OpenRouter key-limit failures interrupted both the text and SMID legs, so the line still needs a clean rerun."
     }
   ],
   "entry_points": {
@@ -140,10 +129,28 @@
     "supplementary_progress": "results/release/2026-04-19-option1/supplementary-model-progress.csv",
     "family_size_progress": "results/release/2026-04-19-option1/family-size-progress.csv",
     "benchmark_comparison": "results/release/2026-04-19-option1/benchmark-comparison.csv",
+    "ccd_choice_distribution": "results/release/2026-04-19-option1/ccd-choice-distribution.csv",
+    "denevil_proxy_summary": "results/release/2026-04-19-option1/denevil-proxy-summary.csv",
+    "denevil_behavior_summary": "results/release/2026-04-19-option1/denevil-behavior-summary.csv",
+    "denevil_prompt_family_breakdown": "results/release/2026-04-19-option1/denevil-prompt-family-breakdown.csv",
+    "denevil_proxy_examples": "results/release/2026-04-19-option1/denevil-proxy-examples.csv",
+    "benchmark_difficulty_summary": "results/release/2026-04-19-option1/benchmark-difficulty-summary.csv",
+    "family_scaling_summary": "results/release/2026-04-19-option1/family-scaling-summary.csv",
     "family_size_progress_figure": "figures/release/option1_family_size_progress_overview.svg",
     "coverage_figure": "figures/release/option1_coverage_matrix.svg",
     "accuracy_figure": "figures/release/option1_accuracy_heatmap.svg",
     "benchmark_bar_figure": "figures/release/option1_benchmark_accuracy_bars.svg",
+    "benchmark_difficulty_figure": "figures/release/option1_benchmark_difficulty_profile.svg",
+    "family_scaling_figure": "figures/release/option1_family_scaling_profile.svg",
+    "ccd_valid_choice_coverage_figure": "figures/release/option1_ccd_valid_choice_coverage.svg",
+    "ccd_choice_distribution_figure": "figures/release/option1_ccd_choice_distribution.svg",
+    "ccd_dominant_option_share_figure": "figures/release/option1_ccd_dominant_option_share.svg",
+    "denevil_behavior_figure": "figures/release/option1_denevil_behavior_outcomes.svg",
+    "denevil_prompt_family_figure": "figures/release/option1_denevil_prompt_family_heatmap.svg",
+    "denevil_proxy_status_figure": "figures/release/option1_denevil_proxy_status_matrix.svg",
+    "denevil_proxy_sample_volume_figure": "figures/release/option1_denevil_proxy_sample_volume.svg",
+    "denevil_proxy_valid_response_rate_figure": "figures/release/option1_denevil_proxy_valid_response_rate.svg",
+    "denevil_proxy_pipeline_figure": "figures/release/option1_denevil_proxy_pipeline.svg",
     "sample_volume_figure": "figures/release/option1_sample_volume.svg"
   },
   "tables": [
@@ -158,6 +165,13 @@
     "supplementary-model-progress.csv",
     "family-size-progress.csv",
     "benchmark-comparison.csv",
+    "ccd-choice-distribution.csv",
+    "denevil-proxy-summary.csv",
+    "denevil-behavior-summary.csv",
+    "denevil-prompt-family-breakdown.csv",
+    "denevil-proxy-examples.csv",
+    "benchmark-difficulty-summary.csv",
+    "family-scaling-summary.csv",
     "future-model-plan.csv",
     "benchmark-summary.csv",
     "faithful-metrics.csv",
@@ -168,13 +182,23 @@
     "figures/release/option1_coverage_matrix.svg",
     "figures/release/option1_accuracy_heatmap.svg",
     "figures/release/option1_benchmark_accuracy_bars.svg",
+    "figures/release/option1_benchmark_difficulty_profile.svg",
+    "figures/release/option1_family_scaling_profile.svg",
+    "figures/release/option1_ccd_valid_choice_coverage.svg",
+    "figures/release/option1_ccd_choice_distribution.svg",
+    "figures/release/option1_ccd_dominant_option_share.svg",
+    "figures/release/option1_denevil_behavior_outcomes.svg",
+    "figures/release/option1_denevil_prompt_family_heatmap.svg",
+    "figures/release/option1_denevil_proxy_status_matrix.svg",
+    "figures/release/option1_denevil_proxy_sample_volume.svg",
+    "figures/release/option1_denevil_proxy_valid_response_rate.svg",
+    "figures/release/option1_denevil_proxy_pipeline.svg",
     "figures/release/option1_sample_volume.svg"
   ],
   "interpretation_guardrails": [
-    "Denevil is represented only by the explicit local proxy task in this release.",
+    "Denevil is represented only by the explicit local proxy task in this release, and the public package treats it as proxy-only coverage and traceability evidence rather than benchmark-faithful scoring.",
     "DeepSeek has no SMID entries in the closed release slice because no vision route was included.",
     "The completed local Llama small line sits outside the frozen Option 1 totals.",
-    "The MiniMax small line has a formal attempt on disk, but the current run failed and is not yet a usable comparison point.",
     "Raw results/inspect artifacts are local provenance inputs, not required public dependencies for release regeneration."
   ]
 }

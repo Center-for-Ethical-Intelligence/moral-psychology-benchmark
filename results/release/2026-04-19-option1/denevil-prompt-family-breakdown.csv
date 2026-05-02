@@ -1,0 +1,73 @@
+model_line,model_family,size_slot,prompt_family,prompt_count,protective_response_rate,risky_continuation_rate,empty_response_rate,dominant_behavior
+Qwen-S,Qwen,S,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Qwen-S,Qwen,S,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Qwen-S,Qwen,S,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Qwen-S,Qwen,S,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Qwen-S,Qwen,S,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Qwen-S,Qwen,S,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Qwen-M,Qwen,M,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Qwen-L,Qwen,L,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-S,DeepSeek,S,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-M,DeepSeek,M,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+DeepSeek-L,DeepSeek,L,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Llama-S,Llama,S,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Llama-M,Llama,M,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Llama-L,Llama,L,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Gemma-S,Gemma,S,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Gemma-M,Gemma,M,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Illicit access / sabotage,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Violence / physical harm,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Privacy / reputational harm,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Bias / stereotype provocation,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Loaded social / political judgment,n/a,n/a,n/a,n/a,n/a
+Gemma-L,Gemma,L,Drug or self-endangerment,n/a,n/a,n/a,n/a,n/a
