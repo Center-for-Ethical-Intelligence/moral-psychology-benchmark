@@ -1,0 +1,29 @@
+=== DeepSeek-L MoralLens DS (Together AI): Fri May  1 12:34:43 PDT 2026 ===
+Loaded 1 task(s) from evals/morallens.py::morallens_double_standard
+Running 1 task(s) with model: openai/deepseek-ai/DeepSeek-R1
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_double_standard (1,344 samples): openai/deepseek-ai/DeepSeek-R1     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, log_realtime: False, log_buffer: 134,        
+score_display: False, dataset: morallens_double_standard                        
+                                                                                
+total time:                          1 day, 2:19:44                             
+openai/deepseek-ai/DeepSeek-R1       771,092 tokens [I: 83,664, O: 687,428]     
+                                                                                
+_double_standard_scorer                                                         
+mean                     0.040                                                  
+stderr                   0.005                                                  
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-01T19-34-50-00-00_morallens-double-standard_n
+LyW9EZdVZ9No4LtFNKC6w.eval                                                      
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-01T19-34-50-00-00_morallens-double-standard_nLyW9EZdVZ9No4LtFNKC6w.eval
+    status: success
+[05/02/26 14:54:34] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.04017857142857143 params={} metadata=None
+    stderr: name='stderr' value=0.005358638499866282 params={} metadata=None
+=== DONE: Sat May  2 14:54:35 PDT 2026 ===

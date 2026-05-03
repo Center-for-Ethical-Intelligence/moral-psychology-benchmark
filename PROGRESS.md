@@ -1,8 +1,8 @@
 # CEI Moral-Psych Benchmark — Joseph's Progress Report
 
 **Report owner:** Joseph Sun
-**Last updated:** May 1, 2026
-**Branch:** `joseph/remaining-benchmarks`
+**Last updated:** May 3, 2026
+**Branch:** `joseph/fix-remaining-errs`
 
 ---
 
@@ -22,12 +22,12 @@
 
 | Line | TrolleyBench | MoReBench | Moral Circuits | M³oralBench | MoralLens | Note |
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
-| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Partial** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.067, jdg+rsp=JSONDecodeError |
+| `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.067, jdg=0.500, rsp=0.007 |
 | `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
 | `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | **Done** | MC: jdg=0.933, rsn=0.938; M3: fnd+jdg OK, rsp=0.026; ML: cot=0.921, ds=0.440, ph=0.847 |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.360, agt=0.273; M3: all~0; ML: cot=0.012, ph=0.062, ds=0.006 |
 | `DeepSeek-M` (Chat V3.1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.806, agt=0.851; M3: fnd=0.077, jdg=0.483; ML: cot=0.890, ds=0.421 |
-| `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Partial** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: all 3 JSONDecodeError |
+| `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: cot=0.615, ph=0.674, ds=0.040 |
 | `Llama-S` (Llama-3.2-3B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.573, agt=0.566; MC: jdg=0.913, rsn=0.683; ML: cot=0.899, ds=0.445 |
 | `Llama-M` (Llama-3.1-8B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.535, agt=0.553; MC: jdg=0.950, rsn=0.963; ML: cot=0.888, ds=0.456 |
 | `Llama-L` (Llama-3.3-70B) | **Done** | **Done** | **Done** | **Done** | **Done** | MRB: adv=0.616, agt=0.639; MC: jdg=0.960, rsn=0.992; ML: cot=0.930, ds=0.500 |
@@ -36,13 +36,13 @@
 | `Gemma-L` (Gemma-3-27B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.645, agt=0.633; M3: fnd=0.113, jdg=0.500; ML: cot=0.958, ds=0.658 |
 | `MiniMax-S` (MiniMax-01) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.670, agt=0.716; M3: fnd=0.115, jdg=0.500; ML: cot=0.900, ds=0.440 |
 | `MiniMax-M` (MiniMax-M1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.528, agt=0.548; ML: cot=0.273, ph=0.586, ds=0.211 |
-| `MiniMax-L` (MiniMax-M2.5) | **Done** | **Done** | N/A | **Done** | **Partial** | MRB: adv=0.445, agt=0.435; M3: fnd=0.006, jdg=0.000, rsp=0.001; ML: ds=0.320, cot+ph=JSONDecodeError |
+| `MiniMax-L` (MiniMax-M2.5) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.445, agt=0.435; M3: fnd=0.006, jdg=0.000, rsp=0.001; ML: cot=0.830, ph=0.730, ds=0.320 |
 
 ---
 
 ## Run Configuration
 
-- **API:** OpenRouter primary; provider_config.sh routes select models to Ark, Together AI, DeepSeek, Google AI Studio
+- **API:** OpenRouter primary; provider_config.sh routes select models to Ark, Together AI, DeepSeek, Google AI Studio, MiniMax, DashScope
 - **Temperatures:** 0.0 and 0.7
 - **Harness:** Inspect AI (`@task` pattern) for MoReBench, Moral Circuits, M³oralBench, MoralLens
 - **Harness:** Custom multi-turn for TrolleyBench (`run_trolleybench.py`)
@@ -84,12 +84,12 @@
 
 | Line | MRB adv | MRB agt | MC jdg | MC rsn | M3 fnd | M3 jdg | M3 rsp | ML cot | ML ph | ML ds |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `Qwen-S` | 0.595 | 0.586 | 0.929 | 0.946 | 0.067 | ERR | ERR | 0.921 | 0.887 | 0.378 |
+| `Qwen-S` | 0.595 | 0.586 | 0.929 | 0.946 | 0.067 | 0.500 | 0.007 | 0.921 | 0.887 | 0.378 |
 | `Qwen-M` | 0.395 | 0.219 | 0.192 | 0.208 | 0.012 | 0.076 | 0.005 | 0.243 | 0.307 | 0.103 |
 | `Qwen-L` | 0.611 | 0.587 | 0.933 | 0.938 | 0.035 | 0.483 | 0.026 | 0.921 | 0.847 | 0.440 |
 | `DeepSeek-S` | 0.360 | 0.273 | N/A | N/A | 0.000 | 0.000 | 0.014 | 0.012 | 0.062 | 0.006 |
 | `DeepSeek-M` | 0.806 | 0.851 | N/A | N/A | 0.077 | 0.483 | 0.030 | 0.890 | 0.882 | 0.421 |
-| `DeepSeek-L` | 0.524 | 0.499 | N/A | N/A | 0.028 | 0.178 | 0.144 | 0.615 | 0.674 | ERR |
+| `DeepSeek-L` | 0.524 | 0.499 | N/A | N/A | 0.028 | 0.178 | 0.144 | 0.615 | 0.674 | 0.040 |
 | `Llama-S` | 0.573 | 0.566 | 0.913 | 0.683 | 0.000 | 0.000 | 0.047 | 0.899 | 0.830 | 0.445 |
 | `Llama-M` | 0.535 | 0.553 | 0.950 | 0.963 | 0.008 | 0.000 | 0.061 | 0.888 | 0.791 | 0.456 |
 | `Llama-L` | 0.616 | 0.639 | 0.960 | 0.992 | 0.037 | 0.003 | 0.007 | 0.930 | 0.894 | 0.500 |
@@ -98,7 +98,7 @@
 | `Gemma-L` | 0.645 | 0.633 | N/A | N/A | 0.113 | 0.500 | 0.007 | 0.958 | 0.830 | 0.658 |
 | `MiniMax-S` | 0.670 | 0.716 | N/A | N/A | 0.115 | 0.500 | 0.007 | 0.900 | 0.925 | 0.440 |
 | `MiniMax-M` | 0.528 | 0.548 | N/A | N/A | 0.000 | 0.001 | 0.002 | 0.273 | 0.586 | 0.211 |
-| `MiniMax-L` | 0.445 | 0.435 | N/A | N/A | 0.006 | 0.000 | 0.001 | ERR | ERR | 0.320 |
+| `MiniMax-L` | 0.445 | 0.435 | N/A | N/A | 0.006 | 0.000 | 0.001 | 0.830 | 0.730 | 0.320 |
 
 **Column key:** MRB=MoReBench (adv=advisor, agt=agent), MC=Moral Circuits (jdg=judgment, rsn=reasoning), M3=M³oralBench (fnd=foundation, jdg=judgment, rsp=response), ML=MoralLens (cot=chain-of-thought, ph=posthoc, ds=double_standard). ERR=task errored (API/credit). —=run in prior session, values pending consolidation.
 
@@ -164,7 +164,7 @@
 | `Gemma` | `google/gemma-3-4b-it` | `google/gemma-3-12b-it` | `google/gemma-3-27b-it` |
 | `MiniMax` | `minimax/minimax-01` | `minimax/minimax-m1` | `minimax/minimax-m2.5` |
 
-Primary route via OpenRouter. Select models routed to Ark, Together AI, DeepSeek, Google AI Studio via `provider_config.sh`.
+Primary route via OpenRouter. Select models routed to Ark, Together AI, DeepSeek, Google AI Studio, MiniMax, DashScope via `provider_config.sh`.
 
 ---
 
@@ -187,10 +187,9 @@ Primary route via OpenRouter. Select models routed to Ark, Together AI, DeepSeek
 | TrolleyBench cells completed | 30 / 30 (all 15 models × 2 temps) |
 | MoReBench cells completed | 15 / 15 (DeepSeek-M recovered: adv=0.806, agt=0.851; MiniMax-S best: adv=0.670, agt=0.716) |
 | Moral Circuits cells completed | 6 / 6 (Llama-L best: jdg=0.960, rsn=0.992) |
-| M³oralBench cells completed | 14 / 15 (Qwen-S partial: fnd only; Gemma-S best: fnd=0.225) |
-| MoralLens cells completed | 14 / 15 (DeepSeek-L partial: ds=ERR; MiniMax-L partial: cot+ph=ERR; Gemma-L best: cot=0.958, ds=0.658) |
+| M³oralBench cells completed | 15 / 15 (Qwen-S recovered via DashScope: jdg=0.500, rsp=0.007; Gemma-S best: fnd=0.225) |
+| MoralLens cells completed | 15 / 15 (DeepSeek-L recovered via Together AI: ds=0.040; MiniMax-L recovered via MiniMax API: cot=0.830, ph=0.730) |
 | Group plan target | 5 benchmarks × 5 families × 3 sizes = 75 cells |
-| Cells completed | ~72 / 75 (~96%) |
-| Remaining ERRs | 5 task-level ERRs: Qwen-S M3 jdg+rsp, DeepSeek-L ML ds, MiniMax-L ML cot+ph |
-| Blocker | OpenRouter JSONDecodeError for specific model+task combinations |
-| Next step | Try direct provider APIs (provider_config.sh) for remaining 5 ERR cells |
+| Cells completed | **75 / 75 (100%)** |
+| Remaining ERRs | **0** — All resolved via direct provider APIs |
+| Resolution | Qwen-S → DashScope API; DeepSeek-L → Together AI; MiniMax-L → MiniMax direct API |

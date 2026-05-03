@@ -1,0 +1,50 @@
+=== Qwen-S M3oral jdg+rsp (DashScope): Sat May  2 23:00:29 PDT 2026 ===
+Loaded 2 task(s) from evals/m3oralbench.py::m3oralbench_judgment,m3oralbench_response
+Running 2 task(s) with model: openai/qwen3-8b
+╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_judgment (2,320 samples): openai/qwen3-8b                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, extra_body: {...}, max_tasks: 1, log_realtime: False,      
+log_buffer: 232, score_display: False, dataset: m3oralbench_judgment            
+                                                                                
+total time:              0:06:01                                                
+openai/qwen3-8b          120,640 tokens [I: 116,000, O: 4,640]                  
+                                                                                
+_mc_choice_scorer                                                               
+accuracy           0.500                                                        
+stderr             0.010                                                        
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-03T06-00-31-00-00_m3oralbench-judgment_7nuAZA
+TJfMjt5Hwg6GYRWN.eval                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│m3oralbench_response (1,160 samples): openai/qwen3-8b                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, extra_body: {...}, max_tasks: 1, log_realtime: False,      
+log_buffer: 116, score_display: False, dataset: m3oralbench_response            
+                                                                                
+total time:               0:04:15                                               
+openai/qwen3-8b           55,680 tokens [I: 53,360, O: 2,320]                   
+                                                                                
+_response_quality_scorer                                                        
+mean                      0.007                                                 
+stderr                    0.000                                                 
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-03T06-06-32-00-00_m3oralbench-response_JaPqsN
+t77oj6LjFGgaZASq.eval                                                           
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-03T06-00-31-00-00_m3oralbench-judgment_7nuAZATJfMjt5Hwg6GYRWN.eval
+    status: success
+[05/02/26 23:10:47] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    accuracy: name='accuracy' value=0.5 params={} metadata=None
+    stderr: name='stderr' value=0.010382922921806387 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-03T06-06-32-00-00_m3oralbench-response_JaPqsNt77oj6LjFGgaZASq.eval
+    status: success
+    mean: name='mean' value=0.006666666666666667 params={} metadata=None
+    stderr: name='stderr' value=0.0 params={} metadata=None
+
+=== Done: Sat May  2 23:10:48 PDT 2026 ===
