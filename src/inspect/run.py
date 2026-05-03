@@ -362,6 +362,14 @@ def main():
     else:
         models = args.model
 
+    # Prevent TypeError when base_url appears in both model_args and model_base_url.
+    # Pop it from model_args and promote to the top-level model_base_url parameter.
+    if "base_url" in model_args:
+        if not args.model_base_url:
+            args.model_base_url = model_args.pop("base_url")
+        else:
+            model_args.pop("base_url")
+
     eval_kwargs = dict(
         tasks=all_tasks,
         model=models,
