@@ -1,0 +1,49 @@
+=== MiniMax-L MoralLens cot+ph (MiniMax API, max_conn=10, max_tokens=2048): Sat May  2 22:30:46 PDT 2026 ===
+Loaded 2 task(s) from evals/morallens.py::morallens_cot,morallens_posthoc
+Running 2 task(s) with model: openai/MiniMax-M2.5
+╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_cot (672 samples): openai/MiniMax-M2.5                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morallens_cot                       
+                                                                                
+total time:          0:24:39                                                    
+openai/MiniMax-M2.5  706,782 tokens [I: 45,800, CW: 0, CR: 22,912, O: 638,070,  
+                   R: 518,610]                                                  
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.830                                              
+stderr                       0.012                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-03T05-30-48-00-00_morallens-cot_3VJRC76kmtFuM
+BKVNL5dGM.eval                                                                  
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│morallens_posthoc (672 samples): openai/MiniMax-M2.5                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 10, max_tasks: 1, dataset: morallens_posthoc                   
+                                                                                
+total time:          0:05:39                                                    
+openai/MiniMax-M2.5  549,215 tokens [I: 35,432, CW: 0, CR: 26,560, O: 487,223,  
+                   R: 464,233]                                                  
+                                                                                
+_framework_detection_scorer                                                     
+mean                         0.730                                              
+stderr                       0.016                                              
+                                                                                
+Log:                                                                            
+../../results/inspect/logs/2026-05-03T05-55-27-00-00_morallens-posthoc_WDn7JBtB6
+5wZWCwsxsBPbQ.eval                                                              
+                                                                                
+=== Eval Complete ===
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-03T05-30-48-00-00_morallens-cot_3VJRC76kmtFuMBKVNL5dGM.eval
+    status: success
+[05/02/26 23:01:06] WARNING  The 'metrics' field is deprecated.    logger.py:220
+                             Access metrics through 'scores'                    
+                             instead.                                           
+    mean: name='mean' value=0.8303571428571429 params={} metadata=None
+    stderr: name='stderr' value=0.012294791547069998 params={} metadata=None
+  Log: /Users/bytedance/Projects/sunyuding/cei/results/inspect/logs/2026-05-03T05-55-27-00-00_morallens-posthoc_WDn7JBtB65wZWCwsxsBPbQ.eval
+    status: success
+    mean: name='mean' value=0.7299107142857143 params={} metadata=None
+    stderr: name='stderr' value=0.01581144402960774 params={} metadata=None
+=== DONE: Sat May  2 23:01:07 PDT 2026 ===

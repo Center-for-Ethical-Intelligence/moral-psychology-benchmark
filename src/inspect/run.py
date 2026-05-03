@@ -58,6 +58,15 @@ def configure_inspect_trace_file(log_dir: Path) -> None:
     os.environ["INSPECT_TRACE_FILE"] = str(trace_dir / f"trace-{os.getpid()}.log")
 
 
+def configure_runtime_home(home_dir: Path | None) -> None:
+    """Optionally relocate user-home based runtime state into a writable tree."""
+    if home_dir is None:
+        return
+
+    home_dir.mkdir(parents=True, exist_ok=True)
+    os.environ["HOME"] = str(home_dir)
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Run Inspect AI task suites from the CEI workspace.")
     parser.add_argument(
@@ -75,9 +84,27 @@ def parse_args():
         help="Model identifier in Inspect format (default: hf/Qwen/Qwen3-0.6B)",
     )
     parser.add_argument(
+        "--model_base_url",
+        default="",
+        help=(
+            "Top-level model base URL passed to Inspect (for OpenAI-compatible "
+            "providers such as NVIDIA NIM). Prefer this over embedding base_url "
+            "inside --model_args_json."
+        ),
+    )
+    parser.add_argument(
         "--log_dir",
         default=str(Path(__file__).parent.parent.parent / "results" / "inspect" / "logs"),
         help="Directory to write eval logs",
+    )
+    parser.add_argument(
+        "--home_dir",
+        default="",
+        help=(
+            "Optional writable runtime home directory. Use this to keep Inspect "
+            "sample-buffer state inside the workspace when the real user home "
+            "is not writable."
+        ),
     )
     parser.add_argument(
         "--limit",
@@ -290,6 +317,8 @@ def main():
 
     log_dir = _Path(args.log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
+    home_dir = _Path(args.home_dir) if args.home_dir else None
+    configure_runtime_home(home_dir)
     configure_inspect_trace_file(log_dir)
 
     from inspect_ai import eval as inspect_eval
@@ -333,6 +362,14 @@ def main():
     else:
         models = args.model
 
+    # Prevent TypeError when base_url appears in both model_args and model_base_url.
+    # Pop it from model_args and promote to the top-level model_base_url parameter.
+    if "base_url" in model_args:
+        if not args.model_base_url:
+            args.model_base_url = model_args.pop("base_url")
+        else:
+            model_args.pop("base_url")
+
     eval_kwargs = dict(
         tasks=all_tasks,
         model=models,
@@ -343,6 +380,8 @@ def main():
     )
     if args.reasoning_effort is not None:
         eval_kwargs["reasoning_effort"] = args.reasoning_effort
+    if args.model_base_url:
+        eval_kwargs["model_base_url"] = args.model_base_url
     if extra_body:
         eval_kwargs["extra_body"] = extra_body
     if args.limit is not None:

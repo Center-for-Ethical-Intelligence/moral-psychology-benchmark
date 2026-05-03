@@ -17,7 +17,7 @@ resolve_provider() {
         # Volcengine Ark models
         # NOTE: Update these with endpoint IDs (ep-xxx) after creating endpoints
         # in the Ark console: https://cloud.bytedance.net/ark/region:ark+cn-beijing/endpoint
-        "qwen/qwen3-8b")              echo "ark|qwen3-8b-20250429" ;;
+        "qwen/qwen3-8b")              echo "dashscope|qwen3-8b" ;;
         "qwen/qwen3-32b")             echo "ark|qwen3-32b-20250429" ;;
         "deepseek/deepseek-chat-v3.1") echo "ark|deepseek-v3-2-251201" ;;
 
@@ -33,6 +33,9 @@ resolve_provider() {
         "deepseek/deepseek-r1")                    echo "deepseek|deepseek-reasoner" ;;
         "deepseek/deepseek-r1-distill-llama-70b")  echo "deepseek|deepseek-r1-distill-llama-70b" ;;
 
+        # MiniMax direct API — bypasses OpenRouter JSONDecodeError
+        "minimax/minimax-m2.5") echo "minimax|MiniMax-M2.5" ;;
+
         *) return 1 ;;
     esac
 }
@@ -43,6 +46,8 @@ provider_url() {
         together)   echo "https://api.together.xyz/v1" ;;
         deepseek)   echo "https://api.deepseek.com" ;;
         google)     echo "https://generativelanguage.googleapis.com/v1beta/openai" ;;
+        minimax)    echo "https://api.minimax.io/v1" ;;
+        dashscope)  echo "https://dashscope-intl.aliyuncs.com/compatible-mode/v1" ;;
         openrouter) echo "https://openrouter.ai/api/v1" ;;
         *)          echo "https://openrouter.ai/api/v1" ;;
     esac
@@ -54,6 +59,8 @@ provider_key_var() {
         together)   echo "TOGETHER_API_KEY" ;;
         deepseek)   echo "DEEPSEEK_API_KEY" ;;
         google)     echo "GOOGLE_API_KEY" ;;
+        minimax)    echo "MINIMAX_API_KEY" ;;
+        dashscope)  echo "DASHSCOPE_API_KEY" ;;
         openrouter) echo "OPENROUTER_API_KEY" ;;
         *)          echo "OPENROUTER_API_KEY" ;;
     esac

@@ -17,10 +17,12 @@ def test_parse_args_defaults():
         args = parse_args()
     assert args.tasks == "evals/ethics.py"
     assert args.model == "hf/Qwen/Qwen3-0.6B"
+    assert args.model_base_url == ""
     assert args.limit is None
     assert args.no_sandbox is False
     assert args.reasoning_effort is None
     assert args.extra_body_json == ""
+    assert args.home_dir == ""
 
 
 def test_parse_args_custom():
@@ -35,10 +37,14 @@ def test_parse_args_custom():
             "--no_sandbox",
             "--model_args_json",
             '{"a": 1}',
+            "--model_base_url",
+            "https://integrate.api.nvidia.com/v1",
             "--extra_body_json",
             '{"chat_template_kwargs": {"enable_thinking": false}}',
             "--reasoning_effort",
             "none",
+            "--home_dir",
+            "/tmp/inspect-home",
         ],
     ):
         args = parse_args()
@@ -46,8 +52,10 @@ def test_parse_args_custom():
     assert args.limit == 10
     assert args.no_sandbox is True
     assert args.model_args_json == '{"a": 1}'
+    assert args.model_base_url == "https://integrate.api.nvidia.com/v1"
     assert args.extra_body_json == '{"chat_template_kwargs": {"enable_thinking": false}}'
     assert args.reasoning_effort == "none"
+    assert args.home_dir == "/tmp/inspect-home"
 
 
 def test_parse_model_args_merges_json_for_nested_provider_config():
