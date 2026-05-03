@@ -224,6 +224,17 @@ def extract_structured_rating_int(text: str, *, minimum: int, maximum: int) -> i
     )
     if labeled is not None:
         return labeled
+    # Match ratio-style ratings: "4/7", "4 out of 7", "4 out of a possible 7"
+    ratio_match = re.search(
+        r"\b(\d+)\s*(?:/|out\s+of(?:\s+a\s+possible)?)\s*(\d+)\b",
+        normalized,
+        flags=re.IGNORECASE,
+    )
+    if ratio_match is not None:
+        numerator = int(ratio_match.group(1))
+        denominator = int(ratio_match.group(2))
+        if minimum <= numerator <= maximum and denominator <= maximum:
+            return numerator
     exact = re.fullmatch(r"(\d+)", normalized)
     if exact is not None:
         value = int(exact.group(1))
@@ -253,10 +264,14 @@ def classify_yes_no_label(text: str) -> str | None:
     normalized = normalize_text(text)
     if not normalized:
         return None
-    if re.search(r"\b(not relevant|irrelevant|no)\b", normalized):
+    # Check explicit negative phrases first (unambiguous)
+    if re.search(r"\b(not relevant|irrelevant)\b", normalized):
         return "No"
+    # Check positive before bare "no" to avoid false negatives
     if re.search(r"\b(yes|relevant)\b", normalized):
         return "Yes"
+    if re.search(r"\bno\b", normalized):
+        return "No"
     return None
 
 
@@ -264,12 +279,13 @@ def classify_valence_label(text: str) -> str | None:
     normalized = normalize_text(text)
     if not normalized:
         return None
-    if re.search(r"\b(either|either way|mixed|neutral)\b", normalized):
-        return "Either"
+    # Check definitive stances before hedged/mixed labels
     if re.search(r"\b(opposes?|against)\b", normalized):
         return "Opposes"
     if re.search(r"\b(supports?|supportive)\b", normalized):
         return "Supports"
+    if re.search(r"\b(either|either way|mixed|neutral)\b", normalized):
+        return "Either"
     return None
 
 
