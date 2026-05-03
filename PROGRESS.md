@@ -24,7 +24,7 @@
 | :--- | :---: | :---: | :---: | :---: | :---: | --- |
 | `Qwen-S` (Qwen3-8B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.921, ds=0.378, ph=0.887; M3: fnd=0.067, jdg=0.500, rsp=0.007 |
 | `Qwen-M` (Qwen3-32B) | **Done** | **Done** | **Done** | **Done** | **Done** | ML: cot=0.243, ds=0.103, ph=0.307 |
-| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Partial** | **Done** | MC: jdg=0.933, rsn=0.938; M3: fnd+jdg OK, rsp=0.026; ML: cot=0.921, ds=0.440, ph=0.847 |
+| `Qwen-L` (Qwen3-235B) | **Done** | **Done** | **Done** | **Done** | **Done** | MC: jdg=0.933, rsn=0.938; M3: fnd=0.035, jdg=0.483, rsp=0.026; ML: cot=0.921, ds=0.440, ph=0.847 |
 | `DeepSeek-S` (R1-Distill-70B) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.360, agt=0.273; M3: all~0; ML: cot=0.012, ph=0.062, ds=0.006 |
 | `DeepSeek-M` (Chat V3.1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.806, agt=0.851; M3: fnd=0.077, jdg=0.483; ML: cot=0.890, ds=0.421 |
 | `DeepSeek-L` (DeepSeek-R1) | **Done** | **Done** | N/A | **Done** | **Done** | MRB: adv=0.524, agt=0.499; M3: jdg=0.178, rsp=0.144; ML: cot=0.615, ph=0.674, ds=0.040 |
