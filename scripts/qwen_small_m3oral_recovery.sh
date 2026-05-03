@@ -22,7 +22,10 @@ RUN_ID="${RUN_ID:-2026-05-02-qwen-small-m3oral-recovery}"
 RUN_BASE="$ROOT/results/inspect/full-runs/$RUN_ID"
 LOG_BASE="$ROOT/results/inspect/logs/$RUN_ID"
 MODEL="${MODEL:-openai/qwen/qwen3-8b}"
-PROVIDER_ARGS_JSON="${PROVIDER_ARGS_JSON:-{\"extra_body\":{\"provider\":{\"only\":[\"nebius\",\"novita\",\"parasail\"],\"allow_fallbacks\":true}}}}"
+# MODEL_ARGS_JSON is passed to --model_args_json verbatim. By default it pins
+# OpenRouter to a constrained provider set that has worked for other Qwen recoveries.
+DEFAULT_MODEL_ARGS_JSON='{"extra_body":{"provider":{"only":["nebius","novita","parasail"],"allow_fallbacks":true}}}'
+MODEL_ARGS_JSON="${MODEL_ARGS_JSON:-${PROVIDER_ARGS_JSON:-$DEFAULT_MODEL_ARGS_JSON}}"
 MAX_CONNECTIONS="${MAX_CONNECTIONS:-1}"
 SMOKE_LIMIT="${SMOKE_LIMIT:-25}"
 
@@ -42,9 +45,15 @@ Environment overrides:
   VENV_PYTHON=/absolute/path/to/.venv/bin/python
   RUN_ID=custom-run-id
   MODEL=openai/qwen/qwen3-8b
-  PROVIDER_ARGS_JSON='{"extra_body":{"provider":{"only":["nebius"],"allow_fallbacks":false}}}'
+  MODEL_ARGS_JSON='{"extra_body":{"provider":{"only":["nebius"],"allow_fallbacks":false}}}'
+  MODEL_ARGS_JSON='{"base_url":"https://integrate.api.nvidia.com/v1"}'
+  NVIDIA_API_KEY=nvapi-...
   MAX_CONNECTIONS=1
   SMOKE_LIMIT=25
+
+Notes:
+  - NVIDIA Build uses the OpenAI-compatible base URL https://integrate.api.nvidia.com/v1
+  - If you still use PROVIDER_ARGS_JSON, it is treated as an alias for MODEL_ARGS_JSON
 EOF
 }
 
@@ -83,12 +92,12 @@ run_task() {
   start_at="$(now_iso)"
   if (
     set +e
-    echo "[$start_at] START task=$task_name model=$MODEL max_connections=$MAX_CONNECTIONS model_args_json=$PROVIDER_ARGS_JSON"
+    echo "[$start_at] START task=$task_name model=$MODEL max_connections=$MAX_CONNECTIONS model_args_json=$MODEL_ARGS_JSON"
     cmd=(
       "${RUN_PREFIX[@]}" "$RUNNER"
       --tasks "$task_spec"
       --model "$MODEL"
-      --model_args_json "$PROVIDER_ARGS_JSON"
+      --model_args_json "$MODEL_ARGS_JSON"
       --temperature 0
       --no_sandbox
       --max_connections "$MAX_CONNECTIONS"
